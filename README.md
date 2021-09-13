@@ -19,3 +19,10 @@ Rol: PO.<br>
 Datos: Nací en La Ceja Antioquia pero vivo en Medellín
 Estudio Ingeniería de Sistemas en la UdeA.  Tengo 28 años.
 Me gustan los retos y aprender siempre cosas buenas. Además me gusta tocar guitarra y leer.
+
+
+Integrante: Jhon Alexander Castro<br>
+Rol: Desarrollador <br>
+Datos básicos: Soy de Castilla la nueva, Meta, soy profesional en negocios internacionales
+de la Universidad Santo Tomás, tengo 25 años, mis gustos son los videouegos, voleibol, futbol, 
+me gusta la programación tambien soy muy curioso con el hardware.
