@@ -10,5 +10,6 @@ y estar a la vangüardia con los avances científicos y tecnológicos.
 
 Integrante: Cristian Camilo Sandoval Torres.<br>
 Rol: Scrum Master.<br>
-Datos: Soy estudiante de Implementación de infraestructura de las TICS en el SENA tengo 17 años
-Y soy apasionado en general en cuanto a tecnología se trata,
+Datos: Soy oriundo de Buenaventura - Valle del cauca pero resido en Ibagué - Tolima, donde 
+estudio Implementación de infraestructura de las TICS en el SENA tengo 17 años, soy apasionado de 
+la tecnología en general y espero poder ser desarrollador en el futuro
