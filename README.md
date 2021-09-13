@@ -18,4 +18,4 @@ Integrante: Juan Pablo Bedoya Sanchez.<br>
 Rol: PO.<br>
 Datos: Nací en La Ceja Antioquia pero vivo en Medellín
 Estudio Ingeniería de Sistemas en la UdeA.  Tengo 28 años.
-Me gustan los retos y aprender siempre cosas buenas. Además me gusta tocar guitarra.
+Me gustan los retos y aprender siempre cosas buenas. Además me gusta tocar guitarra y leer.
