@@ -26,3 +26,8 @@ Rol: Desarrollador <br>
 Datos básicos: Soy de Castilla la nueva, Meta, soy profesional en negocios internacionales
 de la Universidad Santo Tomás, tengo 25 años, mis gustos son los videouegos, voleibol, futbol, 
 me gusta la programación tambien soy muy curioso con el hardware.
+
+Integrante: Juan Esteban Aristizabal Aristizabal<br>
+Rol: Analista.<br>
+Datos básicos: soy de la ciudad de Medellín, soy estudiante de ingenieria de sistemas en la Universidad de Antioquia.
+Tengo 24 años, me gustan los videojuegos, los sistemas, los deportes de combate.También soy licenciado en educación fisica.
