@@ -1,5 +1,31 @@
 # EQUIPO DEVEAPPS
 
+Descripción del proyecto:
+
+El objetivo del proyecto es conformar un equipo de trabajo de 5 compañeros del curso, los cuales tendrán diferentes roles dentro del proyecto en general. El proyecto consiste en analizar, diseñar y construir una aplicación software que permita controlar las ventas físicas y virtuales de una empresa de manufactura y hacerles el correspondiente seguimiento.
+La metodología de desarrollo del proyecto será bajo los estándares de la metodología SCRUM y aplicando en el desarrollo los conocimientos adquiridos en lógica, programación y diseño.
+Los insumos que serán empleados para la realización del proyecto durante los diferentes sprints, serán los siguientes:
+
+● Stack tecnológico. La plataforma tecnológica expuesta en el curso Desarrollo de aplicaciones web es Heroku, o la que se crea más pertinente para los despliegues.
+Además, el lenguaje que se puede usar es JavaScript, y el stack tecnológico a emplear será:
+
+
+o	React JS
+o	HTML 5 
+o	CSS3 
+o	Lenguaje JavaScript
+o	Lenguaje TypeScript 
+o	Node Js
+o	Plataformas de desarrollo para Backend (Node JS)
+o	Stack MERN
+o	(OAuth2)
+o	(Heroku)
+o	(Git / GitHub)
+
+Adicional se usará bootstrap como ayuda con html y css
+A continuación, se puede ver la distribución del equipo con sus diferentes roles.
+
+
 Presentaciones:
 
 Integrante: Jaime Andrés Muñoz Quiñones<br>
