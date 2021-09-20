@@ -1,0 +1,70 @@
+.contenedorLogin {
+    width: 300px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 auto;
+    background-color: rgb(29, 7, 150);
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px rgb(3, 3, 100);
+  }
+  
+  .datosFormulario {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  
+  .tituloForm {
+    color: white;
+    border-bottom: 1px solid white;
+    font-weight: bold;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .etiqueta {
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
+  }
+  
+  .campo {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid white;
+  }
+  
+  .campoEntrada {
+    width: 200px;
+    outline: none;
+    border-radius: 5px;
+  }
+  
+  .botonGrupo {
+    width: 200px;
+    height: 28px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .boton {
+    outline: none;
+    background-color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 2px 2px rgb(45, 4, 121);
+  }
+  
+  .boton:hover {
+    cursor: pointer;
+    transform: scale(1.09);
+  }
+  
+  .campoEntrada:focus {
+    border-color: black;
+    box-shadow: 1px 1px rgba(1, 2, 12, 0.7);
+  }

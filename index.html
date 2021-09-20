@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./estilos/styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <section>
+        <form class="contenedorLogin">
+          <h1 class="tituloForm">Iniciar Sesión</h1>
+          <div class="datosFormulario">
+            <div class="campo">
+              <div>
+                <label for="usuario">
+                  <span class="etiqueta">Identificación</span>
+                </label>
+              </div>
+              <div>
+                <input
+                  name="usuario"
+                  type="text"
+                  required
+                  class="campoEntrada"
+                />
+              </div>
+              <br />
+            </div>
+
+            <div class="campo">
+              <div>
+                <label for="contraseña">
+                  <span class="etiqueta">Contraseña</span>
+                </label>
+              </div>
+              <div>
+                <input type="password" required class="campoEntrada" />
+              </div>
+              <br />
+            </div>
+
+            <div class="campo">
+              <div>
+                <label for="rol">
+                  <span class="etiqueta">Rol</span>
+                </label>
+              </div>
+              <div>
+                <select name="rol" class="campoEntrada">
+                  <option value="rol1">Vendedor</option>
+                  <option value="rol2">Administrador</option>
+                  <option value="rol3">Ejecutivo</option>
+                  <option value="rol4">Operario</option>
+                  <option value="rol5">Director</option>
+                  <option value="rol6">Gerente Comercial</option>
+                </select>
+              </div>
+              <br />
+            </div>
+          </div>
+          <div class="botonGrupo">
+            <button type="submit" class="boton">Ingresar</button>
+            <button type="reset" class="boton">Limpiar</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
