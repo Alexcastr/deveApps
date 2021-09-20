@@ -33,11 +33,9 @@
   }
   
   .campo {
-    display: flex;
-    flex-direction: column;
     border-bottom: 1px solid white;
   }
-  
+
   .campoEntrada {
     width: 200px;
     outline: none;
