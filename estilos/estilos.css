@@ -12,7 +12,8 @@
   }
   
   .datosFormulario {
-    height: 150px;
+    height: auto;
+    width: 200px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -32,19 +33,23 @@
     font-style: italic;
   }
   
-  .campo {
+  .seccionDatos {
     border-bottom: 1px solid white;
   }
 
+  .campo{
+    display: flex;
+  }
+
   .campoEntrada {
-    width: 200px;
+    flex-grow: 1;
     outline: none;
     border-radius: 5px;
   }
   
-  .botonGrupo {
+  .botonCaja {
     width: 200px;
-    height: 28px;
+    height: 30px;
     display: flex;
     justify-content: space-around;
   }
