@@ -1,13 +1,13 @@
 .contenedorPrincipal{
   background-color: rgb(147, 147, 245);
-  width: 100%;
+  width: 100vw;
   display: flex;
   height: 100vh;
   align-items: center;
 }
 .contenedorLogin {
-  width: 50vh;
-  height: 58vh;
+  width: 290px;
+  height: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +20,7 @@
 
 .datosFormulario {
   height: auto;
-  width: 35vh;
+  width: 220px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -30,7 +30,7 @@
   color: white;
   border-bottom: 1px solid white;
   font-weight: bold;
-  width: 35vh;
+  width: 220px;
   text-align: center;
 }
 
@@ -42,9 +42,13 @@
 
 .seccionDatos {
   border-bottom: 1px solid white;
+  height: 70px;
+  display: inline-flex;
+  flex-direction: column;
 }
 
 .campo{
+  flex-grow: 1;
   display: flex;
 }
 
@@ -55,8 +59,8 @@
 }
 
 .botonCaja {
-  width: 35vh;
-  height: 6vh;
+  width: 200px;
+  height: 35px;
   display: flex;
   justify-content: space-around;
 }
@@ -65,7 +69,8 @@
   outline: none;
   background-color: white;
   border-radius: 5px;
-  font-weight: bold;
+  font-weight: bolder;
+  font-size: medium;
   box-shadow: 2px 2px rgb(45, 4, 121);
 }
 
