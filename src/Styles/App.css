@@ -1,6 +1,13 @@
+.contenedorPrincipal{
+  background-color: rgb(147, 147, 245);
+  width: 100%;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+}
 .contenedorLogin {
-  width: 300px;
-  height: 320px;
+  width: 50vh;
+  height: 58vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +20,7 @@
 
 .datosFormulario {
   height: auto;
-  width: 200px;
+  width: 35vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -23,7 +30,7 @@
   color: white;
   border-bottom: 1px solid white;
   font-weight: bold;
-  width: 200px;
+  width: 35vh;
   text-align: center;
 }
 
@@ -48,8 +55,8 @@
 }
 
 .botonCaja {
-  width: 200px;
-  height: 30px;
+  width: 35vh;
+  height: 6vh;
   display: flex;
   justify-content: space-around;
 }

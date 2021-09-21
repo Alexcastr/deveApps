@@ -5,7 +5,7 @@ function App() {
     <div className="App">
        <header></header>
     <main>
-      <section>
+      <section className="contenedorPrincipal">
         <form className="contenedorLogin">
           <h1 className="tituloForm">Iniciar Sesión</h1>
           <div className="datosFormulario">
