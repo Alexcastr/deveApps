@@ -1,38 +1,73 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.contenedorLogin {
+  width: 300px;
+  height: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-around;
+  margin: 0 auto;
+  background-color: rgb(29, 7, 150);
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px rgb(3, 3, 100);
+}
+
+.datosFormulario {
+  height: auto;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.tituloForm {
   color: white;
+  border-bottom: 1px solid white;
+  font-weight: bold;
+  width: 200px;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+.etiqueta {
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.seccionDatos {
+  border-bottom: 1px solid white;
+}
+
+.campo{
+  display: flex;
+}
+
+.campoEntrada {
+  flex-grow: 1;
+  outline: none;
+  border-radius: 5px;
+}
+
+.botonCaja {
+  width: 200px;
+  height: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.boton {
+  outline: none;
+  background-color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  box-shadow: 2px 2px rgb(45, 4, 121);
+}
+
+.boton:hover {
+  cursor: pointer;
+  transform: scale(1.09);
+}
+
+.campoEntrada:focus {
+  border-color: black;
+  box-shadow: 1px 1px rgba(1, 2, 12, 0.7);
 }
