@@ -19,7 +19,7 @@
 }
 
 .datosFormulario {
-  height: auto;
+  height: 60%;
   width: 220px;
   display: flex;
   flex-direction: column;
