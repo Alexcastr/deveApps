@@ -6,8 +6,8 @@
   align-items: center;
 }
 .contenedorLogin {
-  width: 290px;
-  height: 60%;
+  width: 350px;
+  height: 55%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +20,7 @@
 
 .datosFormulario {
   height: 60%;
-  width: 220px;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -30,7 +30,7 @@
   color: white;
   border-bottom: 1px solid white;
   font-weight: bold;
-  width: 220px;
+  width: 80%;
   text-align: center;
 }
 
@@ -38,6 +38,15 @@
   color: white;
   font-family: "Times New Roman", Times, serif;
   font-style: italic;
+}
+
+.crearCuenta{
+  font-size: small;
+}
+
+.crearCuenta:hover{
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .seccionDatos {
@@ -54,23 +63,28 @@
 
 .campoEntrada {
   flex-grow: 1;
-  outline: none;
+  border: 0px;
   border-radius: 5px;
 }
 
 .botonCaja {
-  width: 200px;
-  height: 35px;
-  display: flex;
-  justify-content: space-around;
+  width: 80%;
+  height: 20%;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .boton {
-  outline: none;
+  height: 50%;
+  width: 50%;
+  border: 0px;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 10px;
   font-weight: bolder;
-  font-size: medium;
+  font-size: large;
+  margin: 1%;
   box-shadow: 2px 2px rgb(45, 4, 121);
 }
 

@@ -3,22 +3,21 @@ import React from "react";
 const Index = () => {
   return (
     <>
-      <header></header>
       <main>
         <section className="contenedorPrincipal">
           <form className="contenedorLogin">
-            <h1 className="tituloForm">Iniciar Sesión</h1>
+            <h1 className="tituloForm">DEVEAPP'S</h1>
             <div className="datosFormulario">
               <div className="seccionDatos">
                 <div>
-                  <label for="usuario">
-                    <span className="etiqueta">Identificación</span>
+                  <label for="correo">
+                    <span className="etiqueta">Correo</span>
                   </label>
                 </div>
                 <div className="campo">
                   <input
-                    name="usuario"
-                    type="text"
+                    name="correo"
+                    type="email"
                     required
                     className="campoEntrada"
                   />
@@ -37,33 +36,12 @@ const Index = () => {
                 </div>
                 <br />
               </div>
-
-              <div className="seccionDatos">
-                <div>
-                  <label for="rol">
-                    <span className="etiqueta">Rol</span>
-                  </label>
-                </div>
-                <div className="campo">
-                  <select name="rol" className="campoEntrada">
-                    <option value="rol1">Vendedor</option>
-                    <option value="rol2">Administrador</option>
-                    <option value="rol3">Ejecutivo</option>
-                    <option value="rol4">Operario</option>
-                    <option value="rol5">Director</option>
-                    <option value="rol6">Gerente Comercial</option>
-                  </select>
-                </div>
-                <br />
-              </div>
             </div>
             <div className="botonCaja">
               <button type="submit" className="boton">
-                Ingresar
+                LOG IN
               </button>
-              <button type="reset" className="boton">
-                Limpiar
-              </button>
+              <span className="etiqueta crearCuenta">¿No tienes una cuenta?</span>
             </div>
           </form>
         </section>
