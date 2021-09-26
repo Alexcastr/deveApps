@@ -1,5 +1,5 @@
 .contenedorPrincipal{
-  background-color: rgb(147, 147, 245);
+  background: linear-gradient(#010740, #210339);
   width: 100vw;
   display: flex;
   height: 100vh;
@@ -13,13 +13,13 @@
   align-items: center;
   justify-content: space-around;
   margin: 0 auto;
-  background-color: rgb(29, 7, 150);
+  background-color: #24225a;
   border-radius: 20px;
-  box-shadow: 5px 5px 5px rgb(3, 3, 100);
+  box-shadow: 2px 2px 2px rgb(3, 3, 100);
 }
 
 .datosFormulario {
-  height: 60%;
+  height: 50%;
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -51,13 +51,14 @@
 
 .seccionDatos {
   border-bottom: 1px solid white;
-  height: 70px;
+  margin: 1%;
+  height: 100%;
   display: inline-flex;
   flex-direction: column;
 }
 
 .campo{
-  flex-grow: 1;
+  height: 40%;
   display: flex;
 }
 
@@ -69,7 +70,7 @@
 
 .botonCaja {
   width: 80%;
-  height: 20%;
+  height: 25%;
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
@@ -77,8 +78,8 @@
 }
 
 .boton {
-  height: 50%;
-  width: 50%;
+  height: 40%;
+  width: 40%;
   border: 0px;
   background-color: white;
   border-radius: 10px;

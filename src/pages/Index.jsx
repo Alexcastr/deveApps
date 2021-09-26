@@ -22,7 +22,7 @@ const Index = () => {
                     className="campoEntrada"
                   />
                 </div>
-                <br />
+                {/* <br /> */}
               </div>
 
               <div className="seccionDatos">
@@ -34,7 +34,7 @@ const Index = () => {
                 <div className="campo">
                   <input type="password" required className="campoEntrada" />
                 </div>
-                <br />
+                {/* <br /> */}
               </div>
             </div>
             <div className="botonCaja">
