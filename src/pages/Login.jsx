@@ -1,6 +1,6 @@
 import React from "react";
 
-const Index = () => {
+const Login = () => {
   return (
     <>
       <main>
@@ -50,4 +50,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Login;
