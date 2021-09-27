@@ -1,4 +1,4 @@
-.contenedorPrincipal{
+.mainContainer{
   background: linear-gradient(#010740, #210339);
   width: 100vw;
   display: flex;
@@ -6,7 +6,7 @@
   align-items: center;
 }
 
-.contenedorLogin {
+.loginContainer {
   width: 350px;
   height: 55%;
   display: flex;
@@ -19,7 +19,7 @@
   box-shadow: 2px 2px 2px rgb(3, 3, 100);
 }
 
-.datosFormulario {
+.formField {
   height: 50%;
   width: 80%;
   display: flex;
@@ -27,7 +27,7 @@
   justify-content: space-around;
 }
 
-.tituloForm {
+.formTittle {
   color: white;
   border-bottom: 1px solid white;
   font-weight: bold;
@@ -35,22 +35,22 @@
   text-align: center;
 }
 
-.etiqueta {
+.label {
   color: white;
   font-family: "Times New Roman", Times, serif;
   font-style: italic;
 }
 
-.crearCuenta{
+.newAccount{
   font-size: small;
 }
 
-.crearCuenta:hover{
+.newAccount:hover{
   cursor: pointer;
   text-decoration: underline;
 }
 
-.seccionDatos {
+.dataSection {
   border-bottom: 1px solid white;
   margin: 1%;
   height: 50%;
@@ -58,18 +58,18 @@
   flex-direction: column;
 }
 
-.campo{
+.field{
   height: 40%;
   display: flex;
 }
 
-.campoEntrada {
+.entry {
   flex-grow: 1;
   border: 0px;
   border-radius: 5px;
 }
 
-.botonCaja {
+.buttonField {
   width: 80%;
   height: 25%;
   display: inline-flex;
@@ -78,24 +78,30 @@
   align-items: center;
 }
 
-.boton {
+.loginButton {
+  display: flex;
   height: 40%;
   width: 40%;
-  border: 0px;
+  margin: 1%;
+  box-shadow: 2px 2px rgb(45, 4, 121);
+  border-radius: 10px;
+}
+
+.loginButton > button{
   background-color: white;
+  border: 0px;
   border-radius: 10px;
   font-weight: bolder;
   font-size: large;
-  margin: 1%;
-  box-shadow: 2px 2px rgb(45, 4, 121);
+  flex-grow: 1;
 }
 
-.boton:hover {
+.loginButton > button:hover {
   cursor: pointer;
   transform: scale(1.09);
 }
 
-.campoEntrada:focus {
+.entry:focus {
   border-color: black;
   box-shadow: 1px 1px rgba(1, 2, 12, 0.7);
 }
