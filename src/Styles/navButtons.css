@@ -1,0 +1,67 @@
+.buttonLink {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.buttonLink > .navButton {
+  font-size: 50px;
+  color: white;
+  margin-right: 2px;
+}
+
+
+.currentButtonLink {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 20px;
+  color: red;
+  text-decoration: none;
+}
+
+.currentButtonLink > .navButton {
+  font-size: 50px;
+  color: red;
+  margin-right: 2px;
+}
+
+
+.buttonLink:hover {
+  text-decoration: none;
+}
+
+.currentButtonLink:hover {
+  text-decoration: none;
+}
+
+.buttonContainer:hover {
+  transform: scale(1.2);
+}
+
+.buttonLink > p {
+  color: white;
+  font-size: 2em;
+  margin-bottom: 0px;
+}
+
+.buttonLink > p {
+  color: white;
+  font-size: 2em;
+  margin-bottom: 0px;
+}
+
+.currentButtonLink > p {
+  color: red;
+  font-size: 2em;
+  margin-bottom: 0px;
+}
+
+.navButton {
+  font-size: 50px;
+  color: white;
+  margin-right: 2px;
+}
