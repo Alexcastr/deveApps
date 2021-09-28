@@ -18,15 +18,10 @@ const Bodyproduct = () => {
             <td>
               {" "}
               <div class="btn-group">
-                <button
-                  class="btn btn-secondary btn-sm dropdown-toggle"
-                  type="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  no disponible
-                </button>
+              <select>
+                  <option>Disponible</option>
+                  <option>No Disponible</option>
+                </select>
                 <div class="dropdown-menu"></div>
               </div>
             </td>
