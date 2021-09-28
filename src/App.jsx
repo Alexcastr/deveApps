@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "Styles/App.css";
 import "Styles/Header.css";
 import "Styles/navButtons.css";
+import "Styles/Body.css"
 
 function App() {
   return (

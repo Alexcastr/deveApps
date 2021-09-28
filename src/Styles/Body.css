@@ -1,0 +1,22 @@
+body {
+    background-color: #010740;
+    text-align: center;
+}
+
+body .center-content {
+    border: 1px solid #1228ec3d;
+    margin: 0 250px;
+    background-color: #31376998;
+    height: 31rem;
+    border-collapse: separate;
+    border-spacing: 10;
+    border: 1px solid black;
+    border-radius: 15px;
+    -moz-border-radius: 20px;
+    padding: 2px;
+}
+
+body table {
+    color: white;
+    width: 98%;
+} 
