@@ -1,101 +1,124 @@
-.contenedorPrincipal{
-  background: linear-gradient(#010740, #210339);
-  width: 100vw;
-  display: flex;
-  height: 100vh;
-  align-items: center;
+body {
+    background-color: #010740;
+    text-align: center;
+}
+
+body .center-content {
+    border: 1px solid #1228ec3d;
+    margin: 0 250px;
+    background-color: #31376998;
+    height: 31rem;
+    border-collapse: separate;
+    border-spacing: 10;
+    border: 1px solid black;
+    border-radius: 15px;
+    -moz-border-radius: 20px;
+    padding: 2px;
+}
+
+body table {
+    color: white;
+    width: 98%;
+}
+
+.contenedorPrincipal {
+    background: linear-gradient(#010740, #210339);
+    width: 100vw;
+    display: flex;
+    height: 100vh;
+    align-items: center;
 }
 
 .contenedorLogin {
-  width: 350px;
-  height: 55%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  margin: 0 auto;
-  background-color: #24225a;
-  border-radius: 20px;
-  box-shadow: 2px 2px 2px rgb(3, 3, 100);
+    width: 350px;
+    height: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 auto;
+    background-color: #24225a;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px rgb(3, 3, 100);
 }
 
 .datosFormulario {
-  height: 50%;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+    height: 50%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .tituloForm {
-  color: white;
-  border-bottom: 1px solid white;
-  font-weight: bold;
-  width: 80%;
-  text-align: center;
+    color: white;
+    border-bottom: 1px solid white;
+    font-weight: bold;
+    width: 80%;
+    text-align: center;
 }
 
 .etiqueta {
-  color: white;
-  font-family: "Times New Roman", Times, serif;
-  font-style: italic;
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
 }
 
-.crearCuenta{
-  font-size: small;
+.crearCuenta {
+    font-size: small;
 }
 
-.crearCuenta:hover{
-  cursor: pointer;
-  text-decoration: underline;
+.crearCuenta:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .seccionDatos {
-  border-bottom: 1px solid white;
-  margin: 1%;
-  height: 50%;
-  display: inline-flex;
-  flex-direction: column;
+    border-bottom: 1px solid white;
+    margin: 1%;
+    height: 50%;
+    display: inline-flex;
+    flex-direction: column;
 }
 
-.campo{
-  height: 40%;
-  display: flex;
+.campo {
+    height: 40%;
+    display: flex;
 }
 
 .campoEntrada {
-  flex-grow: 1;
-  border: 0px;
-  border-radius: 5px;
+    flex-grow: 1;
+    border: 0px;
+    border-radius: 5px;
 }
 
 .botonCaja {
-  width: 80%;
-  height: 25%;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    width: 80%;
+    height: 25%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .boton {
-  height: 40%;
-  width: 40%;
-  border: 0px;
-  background-color: white;
-  border-radius: 10px;
-  font-weight: bolder;
-  font-size: large;
-  margin: 1%;
-  box-shadow: 2px 2px rgb(45, 4, 121);
+    height: 40%;
+    width: 40%;
+    border: 0px;
+    background-color: white;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: large;
+    margin: 1%;
+    box-shadow: 2px 2px rgb(45, 4, 121);
 }
 
 .boton:hover {
-  cursor: pointer;
-  transform: scale(1.09);
+    cursor: pointer;
+    transform: scale(1.09);
 }
 
 .campoEntrada:focus {
-  border-color: black;
-  box-shadow: 1px 1px rgba(1, 2, 12, 0.7);
+    border-color: black;
+    box-shadow: 1px 1px rgba(1, 2, 12, 0.7);
 }
