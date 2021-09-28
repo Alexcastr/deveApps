@@ -97,7 +97,7 @@ select:focus {
   text-decoration: none;
 }
 .redirectButton:hover > .redirectIcon {
-  color: orangered;
+  color: red;
 }
 
 .redirectIcon {
