@@ -37,7 +37,7 @@ const Login = () => {
               </div>
             </div>
             <div className="buttonField">
-              <Link to="/usuarios" className="loginButton">
+              <Link to="/goto" className="loginButton">
               <button type="submit">
                 LOGIN
               </button>
