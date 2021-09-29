@@ -10,8 +10,8 @@ const Header = ({ current }) => {
       <header className="header">
         <Search />
         <UsersButton clase="currentButtonLink" />
-        <ProductButton clase="buttonLink" />
         <SalesButton clase="buttonLink" />
+        <ProductButton clase="buttonLink" />
         <DoneButton />
       </header>
     );
@@ -20,8 +20,8 @@ const Header = ({ current }) => {
       <header className="header">
         <Search />
         <UsersButton clase="buttonLink" />
-        <ProductButton clase="buttonLink" />
         <SalesButton clase="currentButtonLink" />
+        <ProductButton clase="buttonLink" />
         <DoneButton />
       </header>
     );
@@ -30,8 +30,8 @@ const Header = ({ current }) => {
       <header className="header">
         <Search />
         <UsersButton clase="buttonLink" />
-        <ProductButton clase="currentButtonLink" />
         <SalesButton clase="buttonLink" />
+        <ProductButton clase="currentButtonLink" />
         <DoneButton />
       </header>
     );
