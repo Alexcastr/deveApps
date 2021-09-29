@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 const Bodyproduct = () => {
   return (
@@ -10,6 +10,13 @@ const Bodyproduct = () => {
             <th>Nombre</th>
             <th>Valor unitario</th>
             <th>Estado</th>
+          </tr>
+          <tr>
+            <td colSpan="10">
+              <Link to="/goto" className="tableAddLink">
+                <i class="bi bi-plus-circle-fill tableAddIcon"></i>
+              </Link>
+            </td>
           </tr>
           <tr class="fila_impar">
             <td>1123</td>
