@@ -20,6 +20,14 @@ body .center-content {
   padding: 2px;
 }
 
+.center-content tr:hover {
+  background-color: #242e79;
+}
+
+.salesTable tr:hover {
+  background-color: #242e79;
+}
+
 body table {
   margin-top: 3px;
   color: white;
@@ -68,7 +76,6 @@ select:focus {
 
 .tableAddLink:hover {
   transform: scale(1.1);
-  background-color: #242e79;
   transition: all 0.2s ease-in-out;
 }
 
