@@ -17,23 +17,31 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/AddProducts">
-            <AddProducts/>
+          <Route path={["/ventas/agregarventa", "/ventas"]}>
+            <Switch>
+              <Route path="/ventas/agregarventa">
+                <AddSale />
+              </Route>
+              <Route path="/ventas">
+                <Sales />
+              </Route>
+            </Switch>
+          </Route>
+          <Route path={["/productos", "/productos/agregarproducto"]}>
+            <Switch>
+              <Route path="/productos/agregarproducto">
+                <AddProducts />
+              </Route>
+              <Route path="/productos">
+                <Products />
+              </Route>
+            </Switch>
           </Route>
           <Route path="/goto">
             <Redirect />
           </Route>
-          <Route path="/AddSale">
-            <AddSale/>
-          </Route>          
-          <Route path="/ventas">
-            <Sales />
-          </Route>
           <Route path="/usuarios">
             <Users />
-          </Route>
-          <Route path="/productos">
-            <Products />
           </Route>
           <Route path="/">
             <Login />
