@@ -1,14 +1,15 @@
 import FormBody from "Components/FormBody";
-import Header from "Components/header";
 import React from "react";
-
+import AddingPageHeader from "Components/AddingPageHeader";
+import DoneButton from "Components/doneButton";
 const AddSale = () => {
   return (
     <>
-    <div className = "AddVenta">
-        <Header current = "AddVenta" />
-        <FormBody/>
-    </div>
+      <div className="AddVenta">
+        <AddingPageHeader pageTitle="Añadir Venta" backPage="/ventas"/>
+        <FormBody />
+        <DoneButton/>
+      </div>
     </>
   );
 };
