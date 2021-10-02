@@ -5,6 +5,7 @@ import Redirect from "pages/Redirect";
 import Login from "pages/Login";
 import Users from "pages/Users";
 import Products from "pages/Products";
+import AddProducts from "pages/addProducts";
 import "Styles/App.css";
 import "Styles/Header.css";
 import "Styles/navButtons.css";
@@ -16,6 +17,9 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
+          <Route path="/AddProducts">
+            <AddProducts/>
+          </Route>
           <Route path="/goto">
             <Redirect />
           </Route>
