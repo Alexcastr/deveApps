@@ -36,6 +36,17 @@ const Header = ({ current }) => {
       </header>
     );
   }
+  else if (current === "AddVenta") {
+    return (
+      <header className="header">
+        <Search />
+        <UsersButton clase="buttonLink" />
+        <SalesButton clase="currentButtonLink" />
+        <ProductButton clase="buttonLink" />
+        <DoneButton />
+      </header>
+    );
+  } 
 };
 
 export default Header;

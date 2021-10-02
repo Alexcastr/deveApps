@@ -18,7 +18,7 @@ const SalesBody = () => {
           </tr>
           <tr>
             <td colSpan="10">
-              <Link to="/goto" className="tableAddLink">
+              <Link to="/AddSale" className="tableAddLink">
                 <i class="bi bi-plus-circle-fill tableAddIcon"></i>
               </Link>
             </td>

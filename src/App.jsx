@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import AddSale from "pages/AddSale";
 import Sales from "pages/Sales";
 import Redirect from "pages/Redirect";
 import Login from "pages/Login";
@@ -8,6 +9,7 @@ import "Styles/App.css";
 import "Styles/Header.css";
 import "Styles/navButtons.css";
 import "Styles/Body.css";
+import "Styles/formVentas.css";
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
           <Route path="/goto">
             <Redirect />
           </Route>
+          <Route path="/AddSale">
+            <AddSale/>
+          </Route>          
           <Route path="/ventas">
             <Sales />
           </Route>
