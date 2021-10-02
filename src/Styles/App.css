@@ -59,13 +59,16 @@
   flex-direction: column;
 }
 
-.field{
-  height: 40%;
+.dataSection > label {
   display: flex;
+  flex-direction: column;
+  justify-content: left;
+  height: 75%;
 }
 
-.entry {
-  flex-grow: 1;
+.field{
+  height: 80%;
+  display: flex;
   border: 0px;
   border-radius: 5px;
 }
@@ -102,7 +105,7 @@
   transform: scale(1.09);
 }
 
-.entry:focus {
+.field:focus {
   border-color: black;
   box-shadow: 1px 1px rgba(1, 2, 12, 0.7);
 }

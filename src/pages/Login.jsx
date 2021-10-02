@@ -10,37 +10,26 @@ const Login = () => {
             <h1 className="formTittle">DEVEAPP'S</h1>
             <div className="formField">
               <div className="dataSection">
-                <div>
-                  <label for="correo">
-                    <span className="label">Correo</span>
-                  </label>
-                </div>
-                <div className="field">
+                <label for="correo">
+                  <span className="label">Correo</span>
                   <input
                     name="correo"
                     type="email"
                     required
-                    className="entry"
+                    className="field"
                   />
-                </div>
-               </div>
-
+                </label>
+              </div>
               <div className="dataSection">
-                <div>
-                  <label for="contraseña">
-                    <span className="label">Contraseña</span>
-                  </label>
-                </div>
-                <div className="field">
-                  <input type="password" required className="entry" />
-                </div>
+                <label for="contraseña">
+                  <span className="label">Contraseña</span>
+                  <input type="password" name="contraseña" required className="field" />
+                </label>
               </div>
             </div>
             <div className="buttonField">
               <Link to="/goto" className="loginButton">
-              <button type="submit">
-                LOGIN
-              </button>
+                <button type="submit">LOGIN</button>
               </Link>
               <span className="label newAccount">¿No tienes una cuenta?</span>
             </div>
