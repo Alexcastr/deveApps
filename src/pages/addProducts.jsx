@@ -1,10 +1,10 @@
 import React from 'react'
-import Header from 'Components/header'
 import AddProduct from 'Components/addProduct'
+import AddingPageHeader from 'Components/AddingPageHeader'
 const AProducts = () => {
     return (
         <>
-         <Header current="productos"/>
+         <AddingPageHeader backPage="/productos" pageTitle="Añadir Producto"/>
          <AddProduct/>
         </>
     )
