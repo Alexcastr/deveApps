@@ -13,7 +13,7 @@ const Bodyproduct = () => {
           </tr>
           <tr>
             <td colSpan="10">
-              <Link to="/goto" className="tableAddLink">
+              <Link to="/AddProducts" className="tableAddLink">
                 <i class="bi bi-plus-circle-fill tableAddIcon"></i>
               </Link>
             </td>
