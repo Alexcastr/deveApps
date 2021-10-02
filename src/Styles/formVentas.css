@@ -1,0 +1,87 @@
+.AddVenta{
+    background-color:#e0e9ff;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.FormVenta{
+    background-color: #cfdbff;
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    margin-left: 30%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10%;
+    border-radius: 40px;
+}
+.DivForm1{
+    display:flex;
+    flex-direction: column;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+.DivForm2{
+    display:flex;
+    flex-direction: column;
+    margin-top: 5%;
+    margin-right: 5%;
+    justify-content:start;
+}
+.DivForm3{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.labelForm{
+    margin: 15px;
+    font-size: 1.8em;
+}
+.labelForm2{
+    margin: 15px;
+    font-size: 1.8em;
+}
+
+.labelForm3{
+    margin: 15px;
+    font-size: 1.8em;
+}
+.InputForm{
+    margin-left: 20px;
+    border-radius: 10px;
+    outline: none;
+    border-color: white;
+    width: 300px;
+    height: 35px;
+    float: right;
+}
+
+.Div1{
+    display: flex;
+    flex-direction: row;
+}
+.TableGeneral{
+    background-color: white;
+    margin-left: 5%;
+}
+.TableGeneral > th{
+    color: black;
+    padding: 5px;
+    text-align: center;
+}
+.TableLP{
+    margin-left: 2%;
+    margin-right: 10%;
+}
+
+.IconAgregar{
+    font-size: 4em;
+    margin: auto;
+}
+.IconAgregar:hover{
+    cursor: pointer;
+    color: #3C538F;
+    transform: scale(1.1);
+}

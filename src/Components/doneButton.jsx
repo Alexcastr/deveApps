@@ -2,7 +2,7 @@ const done = () => {
   alert("Hecho");
 };
 
-const doneButton = () => {
+const DoneButton = () => {
   return (
       <div className="headerButton" onClick={done}>
         <p>Terminado</p>
@@ -11,4 +11,4 @@ const doneButton = () => {
   );
 };
 
-export default doneButton;
+export default DoneButton;
