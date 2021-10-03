@@ -16,8 +16,8 @@ const AddProduct = () => {
     const nuevoProducto = {};
     fd.forEach((value, key) => {
       nuevoProducto[key] = value;
-      toast.success('Vehículo agregado con éxito');
     });
+    toast.success('Vehículo agregado con éxito');
   }; 
   return (
       <>
