@@ -167,7 +167,6 @@ select:focus {
   justify-content: space-between;
   padding: 10px;
   
-
 }
 
 .iconAddProduct>i{
@@ -195,6 +194,7 @@ select:focus {
 height: 25%;
 margin: 2%;
 display: flex;
+width: 100%;
 justify-content: space-around;
 align-items: center;
 }
@@ -228,4 +228,17 @@ align-items: center;
   margin: 0px auto;
 }
 
+.buttonAddProduct > button{
+  border: 0px;
+  background-color: #3c548c;
+  color: #fff;
+  width: 30%;
+  font-size: large;
+  border-radius: 5%;
+}
+
+.buttonAddProduct > button:hover{
+  transform: scale(1.09);
+  background-color: #3857a0;
+}
 
