@@ -3,25 +3,21 @@ import React from "react";
 const AddProduct = () => {
   return (
       <>
-      <body className="center-content mt-1">
-       <div className="table">
+      <div className="AddProduct">
         <div className="BodyAddProduct">
-          <div className="iconAddProduct">
-            <i class="bi bi-server navButton"></i>
-                </div>
-                <div className="gridAddProduct">
+                <div>
                 <form>
                     <div className="item1">
-                    <div>
-                    <label>
-                    ID:
-                    <input type="number"/>
+                    <div className="IDContainer">
+                    <label className= "labelForm" htmlFor = "ID">
+                    ID
+                    <input className= "InputForm" required type="number"/>
                     </label>
                     </div>
-                    <div>
-                    <label>
-                    Estado:
-                    <select placeholder="seleccionar">
+                    <div className="EstadoContainer">
+                    <label className= "labelForm" htmlFor = "Estado">
+                    Estado
+                    <select className= "InputForm" id="selectEstado" placeholder="seleccionar">
                         <option>Disponible</option>
                         <option>No Disponible</option>
                     </select>
@@ -29,26 +25,27 @@ const AddProduct = () => {
                     </div>
                     </div>
                     <div className="item3">
-                    <label>
-                    Valor unitario:
-                    <input type="number"/>
+                    <label className= "labelForm" htmlFor = "ValorUnitario">
+                    Valor unitario
+                    <input className= "InputForm" required type="number"/>
                     </label>
                     </div>
                     <div className="item4">
-                    <label>
-                    Descripción:
+                    <label className= "labelForm" htmlFor = "Descripcion">
+                    Descripción
                     <br/>
-                    <textarea rows="5" cols="80"></textarea>
+                    <div>
+                  <textarea className="TArea" cols="75"></textarea>
+                    </div>
                     </label>
                     </div>
-                    <div>
-                    <input type="submit" value="Guardar"/>
+                    <div className="BotonContainer">
+                    <input className="BotonEnviar" type="submit" value="Guardar"/>
                     </div>
                 </form>
                 </div>
             </div>
         </div>
-      </body>
      </>
   );
 };
