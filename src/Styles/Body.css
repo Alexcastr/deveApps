@@ -162,20 +162,53 @@ select:focus {
 }
 
 .iconActions{
+  display: flex;
+  justify-content: space-around;
   align-items: center;
+  font-size: large;
   margin: 0px;
   padding: 0px;
 }
 
-.editButton{
-  background-color: rgb(38, 38, 129);
+.editButton, .confirmButton, .deleteButton{
+  background-color:rgb(48, 48, 236);
   color: #fff;
-  margin-right: 10%;
+  border-radius: 50%;
+  border: 0px;
+}
+
+.confirmButton{
+  background-color:rgb(14, 235, 51);
 }
 
 .deleteButton{
+  background-color: rgb(241, 25, 25);
+}
+.deleteButton:hover{
+  transform: scale(1.15);
   background-color: red;
-  color: #fff;
 }
 
+.editButton:hover{
+  transform: scale(1.15);
+  background-color: rgb(47, 47, 231);
+}
 
+.confirmButton:hover{
+  transform: scale(1.15);
+  background-color: rgb(12, 224, 30);
+}
+
+.confirmButton:focus, .editButton:focus, .deleteButton:focus{
+  outline: none;
+}
+
+.editInput{
+  border-radius: 5%;
+  width: 80%;
+  border: 0px;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
