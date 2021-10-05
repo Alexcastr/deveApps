@@ -10,6 +10,7 @@ const Bodyproduct = () => {
             <th>Nombre</th>
             <th>Valor unitario</th>
             <th>Estado</th>
+            <th>Acciones</th>
           </tr>
           <tr>
             <td colSpan="10">
@@ -25,12 +26,18 @@ const Bodyproduct = () => {
             <td>
               {" "}
               <div class="btn-group">
-              <select>
+                <select>
                   <option>Disponible</option>
                   <option>No Disponible</option>
                 </select>
                 <div class="dropdown-menu"></div>
               </div>
+            </td>
+            <td className="iconActions">
+              <button className="editButton">
+                <i class="bi bi-pencil-fill"></i>
+              </button>
+              <button className="deleteButton"><i class="bi bi-x-circle-fill"></i></button>
             </td>
           </tr>
           <tr class="fila_resaltada">
