@@ -11,7 +11,7 @@ import "Styles/Header.css";
 import "Styles/navButtons.css";
 import "Styles/Body.css";
 import "Styles/formVentas.css";
-import "Styles/Formproduct.css";
+import "Styles/formProduct.css";
 
 function App() {
   return (

@@ -19,49 +19,52 @@ const AddProduct = () => {
     toast.success("Producto agregado con éxito");
   };
   return (
-    <>
-      <body className="FormVenta">
+      <>
+      <div className="AddProduct">
         <div className="BodyAddProduct">
-          <div className="iconAddProduct">
-            <i class="bi bi-server navButton"></i>
-          </div>
-          <div className="gridAddProduct">
-            <form ref={form} onSubmit={submitForm} className="productForm">
-              <div className="item1">
-                <label>
-                  ID:
-                  <input type="number" name="id" required />
-                </label>
-                <label>
-                  Estado:
-                  <select
-                    className="item1-select"
-                    placeholder="seleccionar"
-                    name="available"
-                    required
-                  >
-                    <option>Disponible</option>
-                    <option>No Disponible</option>
-                  </select>
-                </label>
-              </div>
-              <label className="item2">
-                Valor unitario:
-                <input type="number" name="value" required />
-              </label>
-              <label className="item3">
-                Descripción:
-                <textarea rows="5" cols="80" name="description"></textarea>
-              </label>
-              <div className="buttonAddProduct">
-                <button type="submit">Guardar</button>
-              </div>
-            </form>
-          </div>
+                <div>
+                <form ref={form} onSubmit={submitForm}>
+                    <div className="item1">
+                    <div className="IDContainer">
+                    <label className= "labelForm" htmlFor = "ID">
+                    ID
+                    <input className= "InputForm" required type="number"/>
+                    </label>
+                    </div>
+                    <div className="EstadoContainer">
+                    <label className= "labelForm" htmlFor = "Estado">
+                    Estado
+                    <select className= "InputForm" id="selectEstado" placeholder="seleccionar">
+                        <option>Disponible</option>
+                        <option>No Disponible</option>
+                    </select>
+                    </label>
+                    </div>
+                    </div>
+                    <div className="item3">
+                    <label className= "labelForm" htmlFor = "ValorUnitario">
+                    Valor unitario
+                    <input className= "InputForm" required type="number"/>
+                    </label>
+                    </div>
+                    <div className="item4">
+                    <label className= "labelForm" htmlFor = "Descripcion">
+                    Descripción
+                    <br/>
+                    <div>
+                  <textarea className="TArea" cols="75"></textarea>
+                    </div>
+                    </label>
+                    </div>
+                    <div className="BotonContainer">
+                   <button className="addProductButton" type="submit">Guardar</button>
+                    </div>
+                </form>
+                </div>
+                <ToastContainer position='bottom-center' autoClose={5000} />
+            </div>
         </div>
-        <ToastContainer position="bottom-center" autoClose={5000} />
-      </body>
-    </>
+     </>
   );
 };
 
