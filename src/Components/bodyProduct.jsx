@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Bodyproduct = () => {
   const productList = [
@@ -8,37 +10,37 @@ const Bodyproduct = () => {
       id: "1",
       name: "producto1",
       value: 5900,
-      selection: "disponible",
+      selection: "Disponible",
     },
     {
       id: "2dc",
       name: "producto2",
       value: 10000,
-      selection: "disponible",
+      selection: "Disponible",
     },
     {
       id: "99f",
       name: "producto3",
       value: 3000,
-      selection: "disponible",
+      selection: "Disponible",
     },
     {
       id: "40pc",
       name: "producto4",
       value: 8900,
-      selection: "disponible",
+      selection: "Disponible",
     },
     {
       id: "45-p",
       name: "producto5",
       value: 4900,
-      selection: "disponible",
+      selection: "Disponible",
     },
     {
       id: "00-5c",
       name: "producto6",
       value: 7000,
-      selection: "disponible",
+      selection: "Disponible",
     },
   ];
   const [products, setProducts] = useState([]);
@@ -60,14 +62,16 @@ const ProductRow = ({ product }) => {
 
   const updateProduct = () => {
     console.log(infoNewProduct);
+    //enviar la info al backend
+    toast.success("Producto modificado con éxito");
   };
 
   const getSelected = () => {
-    const combo = document.getElementById("list")
+    const combo = document.getElementById("list");
     const selected = combo.options[combo.selectedIndex].text;
-    setInfoNewProduct({...infoNewProduct, selection:selected})
-    return(infoNewProduct)
-  }
+    setInfoNewProduct({ ...infoNewProduct, selection: selected });
+    return infoNewProduct;
+  };
 
   return (
     <tr class="fila_impar">
@@ -97,7 +101,7 @@ const ProductRow = ({ product }) => {
           <td>
             {" "}
             <div class="btn-group">
-              <select id="list" name="list" onChange={()=>getSelected()}>
+              <select id="list" name="list" onChange={() => getSelected()}>
                 <option value="Disponible">Disponible</option>
                 <option value="No Disponible">No Disponible</option>
               </select>
@@ -175,6 +179,7 @@ const TableList = ({ productList }) => {
             })}
           </tbody>
         </table>
+        <ToastContainer position="bottom-center" autoClose={5000} />
       </div>
     </body>
   );
