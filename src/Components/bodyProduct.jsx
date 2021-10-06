@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Dialog from "@mui/material/Dialog";
+import Tooltip from "@mui/material/Tooltip";
 
 const Bodyproduct = () => {
   const productList = [
@@ -65,14 +66,14 @@ const ProductRow = ({ product }) => {
   const updateProduct = () => {
     console.log(infoNewProduct);
     //enviar la info al backend
-    setEdit(!edit)
+    setEdit(!edit);
     toast.success("Producto modificado con éxito");
   };
 
   const deleteProduct = () => {
-    setShowDialog(!showDialog)
-    toast.success("Producto eliminado con éxito")
-  }
+    setShowDialog(!showDialog);
+    toast.success("Producto eliminado con éxito");
+  };
 
   const getSelected = () => {
     const combo = document.getElementById("list");
@@ -118,14 +119,22 @@ const ProductRow = ({ product }) => {
           </td>
           <td>
             <div className="iconActions">
-              <button onClick={() => updateProduct()} className="confirmButton">
-                <i
-                  class="bi bi-check-circle-fill"
-                ></i>
-              </button>
-              <button onClick={() => setEdit(!edit)} className="cancelProductButton">
-              <i class="bi bi-x-circle-fill "></i>
-              </button>
+              <Tooltip title="Confirmar edición" arrow>
+                <button
+                  onClick={() => updateProduct()}
+                  className="confirmButton"
+                >
+                  <i class="bi bi-check-circle-fill"></i>
+                </button>
+              </Tooltip>
+              <Tooltip title="Cancelar edición" arrow>
+                <button
+                  onClick={() => setEdit(!edit)}
+                  className="cancelProductButton"
+                >
+                  <i class="bi bi-x-circle-fill "></i>
+                </button>
+              </Tooltip>
             </div>
           </td>
         </>
@@ -147,12 +156,22 @@ const ProductRow = ({ product }) => {
           </td>
           <td>
             <div className="iconActions">
-              <button className="editButton">
-                <i onClick={() => setEdit(!edit)} class="bi bi-pencil-fill"></i>
-              </button>
-              <button className="deleteButton">
-                <i onClick={() => setShowDialog(!showDialog)} class="bi bi-trash-fill"></i>
-              </button>
+              <Tooltip title="Editar producto" arrow>
+                <button className="editButton">
+                  <i
+                    onClick={() => setEdit(!edit)}
+                    class="bi bi-pencil-fill"
+                  ></i>
+                </button>
+              </Tooltip>
+              <Tooltip title="Eliminar producto" arrow>
+                <button className="deleteButton">
+                  <i
+                    onClick={() => setShowDialog(!showDialog)}
+                    class="bi bi-trash-fill"
+                  ></i>
+                </button>
+              </Tooltip>
             </div>
           </td>
           <Dialog open={showDialog}>
