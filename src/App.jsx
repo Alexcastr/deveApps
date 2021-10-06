@@ -13,6 +13,8 @@ import "Styles/Body.css";
 import "Styles/formVentas.css";
 import "Styles/formProduct.css";
 
+import "Styles/EntryStyles.css";
+
 function App() {
   return (
     <div className="App">
