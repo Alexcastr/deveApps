@@ -42,10 +42,10 @@ const Sale = ({ datos }) => {
         <td>{datos.Seller}</td>
         <td>
           <button className="entryButton" onClick={() => setEditMode(true)}>
-            <i class="bi bi-pencil-fill editButton"></i>
+            <i class="bi bi-pencil-fill editSaleButton"></i>
           </button>
           <button className="entryButton" onClick={() => setShowDialog(true)}>
-            <i class="bi bi-trash-fill deleteButton"></i>
+            <i class="bi bi-trash-fill deleteSaleButton"></i>
           </button>
         </td>
       </tr>

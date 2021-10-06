@@ -65,7 +65,7 @@
     transition: all .2s ease-in-out;
 }
 
-.editButton:hover {
+.editSaleButton:hover {
     transition: all .2s ease-in-out;
     color: rgb(0, 127, 173)
 }
@@ -74,7 +74,7 @@
     outline: none;
 }
 
-.editButton {
+.editSaleButton {
     color: #0BF
 }
 
@@ -95,10 +95,10 @@
     color: rgb(0, 90, 0)
 }
 
-.deleteButton {
+.deleteSaleButton {
     color: #D00;
 }
 
-.deleteButton:hover {
+.deleteSaleButton:hover {
     color: #A00;
 }
