@@ -161,7 +161,7 @@ select:focus {
   color: white;
 }
 
-.iconActions{
+.iconActions {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -170,40 +170,58 @@ select:focus {
   padding: 0px;
 }
 
-.editButton, .confirmButton, .deleteButton{
-  background-color:rgb(48, 48, 236);
+.editButton,
+.confirmButton,
+.deleteButton {
+  background-color: rgb(48, 48, 236);
   color: #fff;
   border-radius: 50%;
   border: 0px;
 }
 
-.confirmButton{
-  background-color:rgb(14, 235, 51);
+.confirmButton {
+  background-color: rgb(14, 235, 51);
 }
 
-.deleteButton{
+.deleteButton {
   background-color: rgb(241, 25, 25);
 }
-.deleteButton:hover{
+.deleteButton:hover {
   transform: scale(1.15);
   background-color: red;
+  transition: all .2s ease-in-out;
 }
 
-.editButton:hover{
+.editButton:hover {
   transform: scale(1.15);
   background-color: rgb(47, 47, 231);
 }
 
-.confirmButton:hover{
+.confirmButton:hover {
   transform: scale(1.15);
-  background-color: rgb(12, 224, 30);
+  background-color: rgb(7, 146, 19);
+  transition: all .2s ease-in-out;
 }
 
-.confirmButton:focus, .editButton:focus, .deleteButton:focus{
+.cancelProductButton {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+}
+
+.cancelProductButton:hover {
+  transform: scale(1.15);
+  background-color: rgba(218, 21, 21, 0.644);
+  transition: all .2s ease-in-out;
+}
+
+.confirmButton:focus,
+.editButton:focus,
+.deleteButton:focus {
   outline: none;
 }
 
-.editInput{
+.editInput {
   border-radius: 5%;
   width: 80%;
   border: 0px;

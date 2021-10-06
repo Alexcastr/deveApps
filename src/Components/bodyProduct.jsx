@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Dialog from "@mui/material/Dialog";
 
 const Bodyproduct = () => {
   const productList = [
@@ -54,6 +55,7 @@ const Bodyproduct = () => {
 
 const ProductRow = ({ product }) => {
   const [edit, setEdit] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
   const [infoNewProduct, setInfoNewProduct] = useState({
     name: product.name,
     value: product.value,
@@ -63,8 +65,14 @@ const ProductRow = ({ product }) => {
   const updateProduct = () => {
     console.log(infoNewProduct);
     //enviar la info al backend
+    setEdit(!edit)
     toast.success("Producto modificado con éxito");
   };
+
+  const deleteProduct = () => {
+    setShowDialog(!showDialog)
+    toast.success("Producto eliminado con éxito")
+  }
 
   const getSelected = () => {
     const combo = document.getElementById("list");
@@ -112,12 +120,11 @@ const ProductRow = ({ product }) => {
             <div className="iconActions">
               <button onClick={() => updateProduct()} className="confirmButton">
                 <i
-                  onClick={() => setEdit(!edit)}
                   class="bi bi-check-circle-fill"
                 ></i>
               </button>
-              <button className="deleteButton">
-                <i class="bi bi-trash-fill"></i>
+              <button onClick={() => setEdit(!edit)} className="cancelProductButton">
+              <i class="bi bi-x-circle-fill "></i>
               </button>
             </div>
           </td>
@@ -144,10 +151,32 @@ const ProductRow = ({ product }) => {
                 <i onClick={() => setEdit(!edit)} class="bi bi-pencil-fill"></i>
               </button>
               <button className="deleteButton">
-                <i class="bi bi-trash-fill"></i>
+                <i onClick={() => setShowDialog(!showDialog)} class="bi bi-trash-fill"></i>
               </button>
             </div>
           </td>
+          <Dialog open={showDialog}>
+            <div className="deleteSaleDialog">
+              <h2>Seguro que deseas eliminar este producto?</h2>
+              <div className="deleteSaleDialogButtonsDiv">
+                <button
+                  onClick={() => {
+                    deleteProduct();
+                  }}
+                  className="confirmSaleDelete"
+                >
+                  Si
+                  <i className="bi bi-check" />
+                </button>
+                <button
+                  onClick={() => setShowDialog(false)}
+                  className="cancelSaleDelete"
+                >
+                  No <i className="bi bi-x" />
+                </button>
+              </div>
+            </div>
+          </Dialog>
         </>
       )}
     </tr>
