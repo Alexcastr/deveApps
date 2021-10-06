@@ -44,6 +44,17 @@ const Bodyproduct = () => {
       value: 7000,
       selection: "Disponible",
     },
+    {
+      id: "00-5c",
+      name: "producto6",
+      value: 7000,
+      selection: "Disponible",
+    },    {
+      id: "00-5c",
+      name: "producto6",
+      value: 7000,
+      selection: "Disponible",
+    },
   ];
   const [products, setProducts] = useState([]);
 
