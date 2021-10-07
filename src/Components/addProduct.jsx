@@ -22,73 +22,46 @@ const AddProduct = () => {
   return (
     <>
       <div className="AddProduct">
-        <div className="BodyAddProduct">
-          <div>
-            <form ref={form} onSubmit={submitForm}>
-            <div className ="containerItems">
-              <div className="item1">
-                
-                  <label className="labelForm" htmlFor="ID">
-                    ID
-                    <input
-                      name="id"
-                      className="InputForm"
-                      required
-                      type="number"
-                    />
-                  </label>
-                <label className="labelForm" htmlFor="NameProducto">
-              Producto
-              <input
-                name="name"
-                className="InputForm"
-                type="text"
-                required
-              />
-              </label>
-              </div>
-              <div className="item3">
-                  <label className="labelForm" htmlFor="Estado">
-                    Estado
-                    <select
-                      className="InputForm"
-                      id="selection"
-                      name="selection"
-                    >
-                      <option>Disponible</option>
-                      <option>No Disponible</option>
-                    </select>
-                  </label>
-                  <label className="labelForm" htmlFor="ValorUnitario">
-                  Valor unitario
-                  <input
-                    name="value"
-                    className="InputForm"
-                    required
-                    type="number"
-                  />
-                </label>
-                </div>
-                </div>
-              
-              <div className="item4">
-                <label className="labelForm" htmlFor="Descripcion">
-                  Descripción
-                  <br />
-                  <div>
-                    <textarea className="TArea" cols="75"></textarea>
-                  </div>
-                </label>
-              </div>
-              <div className="BotonContainer">
-                <button className="addProductButton" type="submit">
-                  Guardar
-                </button>
-              </div>
-            </form>
+        <form ref={form} onSubmit={submitForm} className="BodyAddProduct">
+          <div className="item1">
+            <label className="labelForm" htmlFor="ID">
+              ID
+              <input name="id" className="InputForm" required type="number" />
+            </label>
+            <label className="labelForm" htmlFor="Estado">
+              Estado
+              <select className="InputForm" id="selection" name="selection">
+                <option>Disponible</option>
+                <option>No Disponible</option>
+              </select>
+            </label>
           </div>
-          <ToastContainer position="bottom-center" autoClose={5000} />
-        </div>
+          <div className="item3">
+            <label className="labelForm" htmlFor="ValorUnitario">
+              Valor unitario
+              <input
+                name="value"
+                className="InputForm"
+                required
+                type="number"
+              />
+            </label>
+          </div>
+          <div className="item4">
+            <label className="labelForm" htmlFor="Descripcion">
+              Descripción
+              <div>
+                <textarea className="TArea" cols="75"></textarea>
+              </div>
+            </label>
+          </div>
+          <div className="BotonContainer">
+            <button className="addProductButton" type="submit">
+              Guardar
+            </button>
+          </div>
+        </form>
+        <ToastContainer position="bottom-center" autoClose={5000} />
       </div>
     </>
   );
