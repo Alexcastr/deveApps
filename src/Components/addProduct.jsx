@@ -25,8 +25,9 @@ const AddProduct = () => {
         <div className="BodyAddProduct">
           <div>
             <form ref={form} onSubmit={submitForm}>
+            <div className ="containerItems">
               <div className="item1">
-                <div className="IDContainer">
+                
                   <label className="labelForm" htmlFor="ID">
                     ID
                     <input
@@ -36,8 +37,17 @@ const AddProduct = () => {
                       type="number"
                     />
                   </label>
-                </div>
-                <div className="EstadoContainer">
+                <label className="labelForm" htmlFor="NameProducto">
+              Producto
+              <input
+                name="name"
+                className="InputForm"
+                type="text"
+                required
+              />
+              </label>
+              </div>
+              <div className="item3">
                   <label className="labelForm" htmlFor="Estado">
                     Estado
                     <select
@@ -49,10 +59,7 @@ const AddProduct = () => {
                       <option>No Disponible</option>
                     </select>
                   </label>
-                </div>
-              </div>
-              <div className="item3">
-                <label className="labelForm" htmlFor="ValorUnitario">
+                  <label className="labelForm" htmlFor="ValorUnitario">
                   Valor unitario
                   <input
                     name="value"
@@ -61,7 +68,9 @@ const AddProduct = () => {
                     type="number"
                   />
                 </label>
-              </div>
+                </div>
+                </div>
+              
               <div className="item4">
                 <label className="labelForm" htmlFor="Descripcion">
                   Descripción

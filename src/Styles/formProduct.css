@@ -8,7 +8,7 @@
 
 .BodyAddProduct {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   padding: 10px;
   background-color: #cfdbff;
   height: 60%;
@@ -17,17 +17,23 @@
   border-radius: 40px;
   box-shadow: 0px 0px 15px 1px black;
 }
-
+.containerItems{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 .item1 {
   display: flex;
-  justify-content: space-between;
+    flex-direction: column;
+    margin-top:5%;
+    margin-left:5%;
 }
 
 .EstadoContainer {
   margin-left: 50px;
 }
 
-#selectEstado {
+#selection {
   background-color: #fff;
   text-align: center;
   background-color: #fff;
@@ -36,10 +42,16 @@
 
 .item3 {
   display: flex;
-  justify-content: center;
+    flex-direction: column;
+    margin-top: 5%;
+    margin-right: 5%;
+    justify-content: flex-start;
 }
+
 .item4 {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .TArea {
