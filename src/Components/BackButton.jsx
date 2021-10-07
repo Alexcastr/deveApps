@@ -4,7 +4,7 @@ const BackButton = ({ backPage }) => {
   return (
     <div className="buttonContainer">
       <Link to={backPage} className="buttonLink">
-        <i class="bi bi-arrow-left-circle-fill navButton"></i>
+        <i className="bi bi-arrow-left-circle-fill navButton"></i>
         <p>Volver</p>
       </Link>
     </div>

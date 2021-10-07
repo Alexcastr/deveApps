@@ -33,9 +33,11 @@
 
 .DivForm3 {
     display: flex;
+    align-items: center;
     flex-direction: column;
-    margin-left: 5%;
-    margin-right: 5%;
+    max-height: 35%;
+    margin: auto;
+    width: 76%;
 }
 
 .labelForm {
@@ -46,6 +48,11 @@
 .labelForm2 {
     margin: 15px;
     font-size: 1.8em;
+}
+
+.productInSale>td {
+    padding: 3px;
+    border: 1px white solid;
 }
 
 .labelForm3 {
@@ -69,20 +76,77 @@
     justify-content: center;
 }
 
-.TableGeneral {
-    background-color: white;
-    margin-left: 5%;
+.addSaleButton {
+    background: #3C538F;
+    color: white;
+    font-weight: bolder;
+    font-size: 2em;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
-.TableGeneral>th {
-    color: black;
-    padding: 5px;
+.addSaleButton:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.1);
+    background-color: #5874bb;
+}
+
+.addSaleButton:focus {
+    border: none;
+    outline: none;
+}
+
+.addProductInSale {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.addProductInSale:focus {
+    border: none;
+    outline: none;
+}
+
+.addProductInSaleLabel {
     text-align: center;
+    font-size: 1.5em;
 }
 
-.TableLP {
-    margin-left: 2%;
-    margin-right: 10%;
+.productsInSaleDiv {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 300px;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.productsInSaleItem1 {
+    border: 1px black dashed;
+    border-radius: 20px;
+    margin: 5px;
+    text-align: center;
+    width: 100%;
+    padding: 2px;
+    background-color: white;
+    font-weight: bold;
+}
+
+.productsInSaleItem2 {
+    border: 1px black dashed;
+    border-radius: 20px;
+    margin: 5px;
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    background-color: #5874bb;
+    color: white
+}
+
+.productsInSale {
+    width: 100%;
+    display: flex;
 }
 
 .IconAgregar {
