@@ -24,9 +24,9 @@ const AddProduct = () => {
       <div className="AddProduct">
         <form ref={form} onSubmit={submitForm} className="BodyAddProduct">
           <div className="item1">
-            <label className="labelForm" htmlFor="ID">
-              Nombre
-              <input name="id" className="InputForm" required type="number" />
+            <label className="labelForm" htmlFor="name">
+              Producto
+              <input name="name" className="InputForm" required type="text" />
             </label>
             <label className="labelForm" htmlFor="Estado">
               Estado
