@@ -26,7 +26,15 @@
   margin-top: 2%;
   height: 25%;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  }
+
+  .item1 >label{
+    display: flex;
+  }
+
+  .item1 >label > input{
+    width: 80%;
   }
 
 .EstadoContainer {

@@ -25,7 +25,7 @@ const AddProduct = () => {
         <form ref={form} onSubmit={submitForm} className="BodyAddProduct">
           <div className="item1">
             <label className="labelForm" htmlFor="ID">
-              ID
+              Nombre
               <input name="id" className="InputForm" required type="number" />
             </label>
             <label className="labelForm" htmlFor="Estado">
