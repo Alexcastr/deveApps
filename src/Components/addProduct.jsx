@@ -2,14 +2,14 @@ import React from "react";
 import { useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const AddProduct = () => {
-  // const [mostrarProductos,setMostrarProductos] = useState(false);
-
+  
   const form = useRef(null);
   const nuevoProducto = {};
 
-  const submitForm = (e) => {
+  const submitForm = async(e) => {
     e.preventDefault();
     const fd = new FormData(form.current);
 
@@ -17,7 +17,29 @@ const AddProduct = () => {
       console.log(value, key);
       nuevoProducto[key] = value;
     });
-    toast.success("Producto agregado con éxito");
+
+    const options = {
+      method: "POST",
+      url: "http://localhost:5000/productos/crear",
+      headers: { "Content-Type": "application/json" },
+      data: {
+        name: nuevoProducto.name,
+        selection: nuevoProducto.selection,
+        value: nuevoProducto.value,
+      },
+    };
+
+    await axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+        toast.success("Producto agregado con éxito");
+      })
+      .catch(function (error) {
+        console.error(error);
+        toast.error("Producto agregado con éxito");
+      });
+  
   };
   return (
     <>
