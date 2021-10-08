@@ -159,3 +159,8 @@
     color: #3C538F;
     transform: scale(1.1);
 }
+
+#EstadoVenta{
+    background-color: white;
+    color: black;
+}

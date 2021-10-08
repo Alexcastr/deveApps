@@ -15,7 +15,12 @@ const FormBody = () => {
             </label>
             <label className="labelForm" htmlFor="Estado">
               Estado
-              <input className="InputForm" required />
+              <select id="EstadoVenta" className="InputForm" required>
+          <option disabled selected>Seleccionar</option>
+          <option>En proceso</option>
+          <option>Entregada</option>
+          <option>Cancelada</option>
+              </select>
             </label>
             <label className="labelForm" htmlFor="IDProducto">
               ID Producto
@@ -33,7 +38,7 @@ const FormBody = () => {
           <div className="DivForm2">
             <label className="labelForm2" htmlFor="Fecha">
               Fecha
-              <input className="InputForm" required />
+              <input type="date" className="InputForm" required />
             </label>
             <label className="labelForm2" htmlFor="Cliente">
               Cliente
