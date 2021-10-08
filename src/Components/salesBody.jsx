@@ -37,7 +37,7 @@ const SalesBody = () => {
             </tr>
             {tableData.map((item) => {
               return (
-                <Sale key={item.ID} datos={item} setData = {setTableData}/>
+                <Sale key={item.ID} datos={item} setData={setTableData}/>
               );
             })}
           </tbody>

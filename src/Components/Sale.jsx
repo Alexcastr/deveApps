@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Dialog from "@mui/material/Dialog";
+import Tooltip from "@mui/material/Tooltip";
 
 const Sale = ({ datos }) => {
   const [showDialog, setShowDialog] = useState(false);
@@ -41,12 +42,24 @@ const Sale = ({ datos }) => {
         <td>{datos.State}</td>
         <td>{datos.Seller}</td>
         <td>
-          <button className="entryButton" onClick={() => setEditMode(true)}>
-            <i class="bi bi-pencil-fill editSaleButton"></i>
-          </button>
-          <button className="entryButton" onClick={() => setShowDialog(true)}>
-            <i class="bi bi-trash-fill deleteSaleButton"></i>
-          </button>
+          <div className="iconActions">
+            <Tooltip title="Editar producto" arrow>
+              <button className="editButton">
+                <i
+                  onClick={() => setEditMode(!editMode)}
+                  class="bi bi-pencil-fill"
+                ></i>
+              </button>
+            </Tooltip>
+            <Tooltip title="Eliminar producto" arrow>
+              <button className="deleteButton">
+                <i
+                  onClick={() => setShowDialog(!showDialog)}
+                  class="bi bi-trash-fill"
+                ></i>
+              </button>
+            </Tooltip>
+          </div>
         </td>
       </tr>
       <Dialog open={showDialog}>
@@ -97,7 +110,9 @@ const Sale = ({ datos }) => {
           })}
         </ul>
       </td>
-      <td></td>
+      <td>
+        <input type="date" />
+      </td>
       <td>
         <input
           placeholder="ID del cliente"
@@ -132,12 +147,26 @@ const Sale = ({ datos }) => {
         />
       </td>
       <td>
-        <button className="entryButton" onClick={() => setEditMode(false)}>
-          <i class="bi bi-check-circle-fill saveButton"></i>
-        </button>
-        <button className="entryButton" onClick={() => setEditMode(false)}>
-          <i class="bi bi-x-circle-fill cancelButton"></i>
-        </button>
+        <div className="iconActions">
+          <Tooltip title="Confirmar edición" arrow>
+            <button
+              onClick={() => {
+                setEditMode(!editMode);
+              }}
+              className="confirmButton"
+            >
+              <i class="bi bi-check-circle-fill"></i>
+            </button>
+          </Tooltip>
+          <Tooltip title="Cancelar edición" arrow>
+            <button
+              onClick={() => setEditMode(!editMode)}
+              className="cancelProductButton"
+            >
+              <i class="bi bi-x-circle-fill "></i>
+            </button>
+          </Tooltip>
+        </div>
       </td>
     </tr>
   );
