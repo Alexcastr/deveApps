@@ -5,67 +5,77 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Dialog from "@mui/material/Dialog";
 import Tooltip from "@mui/material/Tooltip";
+import { obtenerProductos } from "utils/apiProduct";
+import axios from "axios";
 
 const Bodyproduct = () => {
-  const productList = [
-    {
-      id: "1",
-      name: "producto1",
-      value: 5900,
-      selection: "Disponible",
-    },
-    {
-      id: "2dc",
-      name: "producto2",
-      value: 10000,
-      selection: "Disponible",
-    },
-    {
-      id: "99f",
-      name: "producto3",
-      value: 3000,
-      selection: "Disponible",
-    },
-    {
-      id: "40pc",
-      name: "producto4",
-      value: 8900,
-      selection: "Disponible",
-    },
-    {
-      id: "45-p",
-      name: "producto5",
-      value: 4900,
-      selection: "Disponible",
-    },
-    {
-      id: "00-5c",
-      name: "producto6",
-      value: 7000,
-      selection: "Disponible",
-    },
-    {
-      id: "00-5c",
-      name: "producto6",
-      value: 7000,
-      selection: "Disponible",
-    },    {
-      id: "00-5c",
-      name: "producto6",
-      value: 7000,
-      selection: "Disponible",
-    },
-  ];
+  // const productList = [
+  //   {
+  //     id: "1",
+  //     name: "producto1",
+  //     value: 5900,
+  //     selection: "Disponible",
+  //   },
+  //   {
+  //     id: "2dc",
+  //     name: "producto2",
+  //     value: 10000,
+  //     selection: "Disponible",
+  //   },
+  //   {
+  //     id: "99f",
+  //     name: "producto3",
+  //     value: 3000,
+  //     selection: "Disponible",
+  //   },
+  //   {
+  //     id: "40pc",
+  //     name: "producto4",
+  //     value: 8900,
+  //     selection: "Disponible",
+  //   },
+  //   {
+  //     id: "45-p",
+  //     name: "producto5",
+  //     value: 4900,
+  //     selection: "Disponible",
+  //   },
+  //   {
+  //     id: "00-5c",
+  //     name: "producto6",
+  //     value: 7000,
+  //     selection: "Disponible",
+  //   },
+  //   {
+  //     id: "00-5c",
+  //     name: "producto6",
+  //     value: 7000,
+  //     selection: "Disponible",
+  //   },    {
+  //     id: "00-5c",
+  //     name: "producto6",
+  //     value: 7000,
+  //     selection: "Disponible",
+  //   },
+  // ];
   const [products, setProducts] = useState([]);
+  const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
 
   useEffect(() => {
-    setProducts(productList);
-  }, []);
+    if (ejecutarConsulta) {
+      obtenerProductos(setProducts, setEjecutarConsulta);
+    }
+  }, [ejecutarConsulta]);
 
-  return <TableList productList={products} />;
+  return (
+    <TableList
+      productList={products}
+      setEjecutarConsulta={setEjecutarConsulta}
+    />
+  );
 };
 
-const ProductRow = ({ product }) => {
+const ProductRow = ({ product, setEjecutarConsulta }) => {
   const [edit, setEdit] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
   const [infoNewProduct, setInfoNewProduct] = useState({
@@ -74,16 +84,49 @@ const ProductRow = ({ product }) => {
     selection: product.selection,
   });
 
-  const updateProduct = () => {
+  const updateProduct = async () => {
     console.log(infoNewProduct);
     //enviar la info al backend
-    setEdit(!edit);
-    toast.success("Producto modificado con éxito");
+    const options = {
+      method: "PATCH",
+      url: "http://localhost:5000/productos/actualizar",
+      headers: { "Content-Type": "application/json" },
+      data: { ...infoNewProduct, id: product._id },
+    };
+    await axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+        toast.success("Producto modificado con éxito");
+        setEdit(false);
+        setEjecutarConsulta(true);
+      })
+      .catch(function (error) {
+        toast.error("Error modificando el producto");
+        console.error(error);
+      });
   };
 
-  const deleteProduct = () => {
+  const deleteProduct = async() => {
+    const options = {
+      method: "DELETE",
+      url: "http://localhost:5000/productos/eliminar",
+      headers: { "Content-Type": "application/json" },
+      data: { id: product._id },
+    };
+
+    await axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+        toast.success("Producto eliminado con éxito");
+        setEjecutarConsulta(true);
+      })
+      .catch(function (error) {
+        console.error(error);
+        toast.error('No se pudo eliminar el producto');
+      });
     setShowDialog(!showDialog);
-    toast.success("Producto eliminado con éxito");
   };
 
   const getSelected = () => {
@@ -97,13 +140,13 @@ const ProductRow = ({ product }) => {
     <tr class="fila_impar">
       {edit ? (
         <>
-          <td>{product.id}</td>
+          <td>{product._id.slice(20)}</td>
           <td>
             <input
               className="editInput"
               type="text"
               defaultValue={infoNewProduct.name}
-              onClick={(e) =>
+              onChange={(e) =>
                 setInfoNewProduct({ ...infoNewProduct, name: e.target.value })
               }
             />
@@ -113,7 +156,7 @@ const ProductRow = ({ product }) => {
               className="editInput"
               type="number"
               defaultValue={infoNewProduct.value}
-              onClick={(e) =>
+              onChange={(e) =>
                 setInfoNewProduct({ ...infoNewProduct, value: e.target.value })
               }
             />
@@ -122,6 +165,9 @@ const ProductRow = ({ product }) => {
             {" "}
             <div class="btn-group">
               <select id="list" name="list" onChange={() => getSelected()}>
+                <option selected disabled>
+                  Seleccione una opción
+                </option>
                 <option value="Disponible">Disponible</option>
                 <option value="No Disponible">No Disponible</option>
               </select>
@@ -151,7 +197,7 @@ const ProductRow = ({ product }) => {
         </>
       ) : (
         <>
-          <td>{product.id}</td>
+          <td>{product._id.slice(20)}</td>
           <td>{product.name}</td>
           <td>{product.value}</td>
           <td>
@@ -213,7 +259,7 @@ const ProductRow = ({ product }) => {
   );
 };
 
-const TableList = ({ productList }) => {
+const TableList = ({ productList, setEjecutarConsulta }) => {
   return (
     <body className="center-content mt-1">
       <div className="table">
@@ -234,7 +280,13 @@ const TableList = ({ productList }) => {
           </tr>
           <tbody>
             {productList.map((product) => {
-              return <ProductRow key={nanoid} product={product} />;
+              return (
+                <ProductRow
+                  setEjecutarConsulta={setEjecutarConsulta}
+                  key={nanoid}
+                  product={product}
+                />
+              );
             })}
           </tbody>
         </table>
