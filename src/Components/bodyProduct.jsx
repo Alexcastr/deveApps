@@ -89,9 +89,9 @@ const ProductRow = ({ product, setEjecutarConsulta }) => {
     //enviar la info al backend
     const options = {
       method: "PATCH",
-      url: "http://localhost:5000/productos/actualizar",
+      url: `http://localhost:5000/productos/${product._id}/`,
       headers: { "Content-Type": "application/json" },
-      data: { ...infoNewProduct, id: product._id },
+      data: { ...infoNewProduct},
     };
     await axios
       .request(options)
@@ -110,9 +110,8 @@ const ProductRow = ({ product, setEjecutarConsulta }) => {
   const deleteProduct = async() => {
     const options = {
       method: "DELETE",
-      url: "http://localhost:5000/productos/eliminar",
+      url: `http://localhost:5000/productos/${product._id}/`,
       headers: { "Content-Type": "application/json" },
-      data: { id: product._id },
     };
 
     await axios

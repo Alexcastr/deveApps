@@ -20,7 +20,7 @@ const AddProduct = () => {
 
     const options = {
       method: "POST",
-      url: "http://localhost:5000/productos/crear",
+      url: "http://localhost:5000/productos/",
       headers: { "Content-Type": "application/json" },
       data: {
         name: nuevoProducto.name,
@@ -37,7 +37,7 @@ const AddProduct = () => {
       })
       .catch(function (error) {
         console.error(error);
-        toast.error("Producto agregado con éxito");
+        toast.error("No se pudo agregar el producto");
       });
   
   };
