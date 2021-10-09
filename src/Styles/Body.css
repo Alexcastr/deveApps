@@ -90,6 +90,7 @@ select:focus {
 .tablerow td {
   vertical-align: middle;
 }
+
 .productList {
   list-style-type: none;
   padding: 0px;
@@ -140,7 +141,7 @@ select:focus {
   text-align: center;
 }
 
-.redirectButton > h1 {
+.redirectButton>h1 {
   color: white;
   margin-bottom: 50px;
   text-shadow: 3px 3px 5px black;
@@ -151,7 +152,8 @@ select:focus {
   transition: all 0.3s ease-in-out;
   text-decoration: none;
 }
-.redirectButton:hover > .redirectIcon {
+
+.redirectButton:hover>.redirectIcon {
   color: red;
 }
 
@@ -185,6 +187,7 @@ select:focus {
 .deleteButton {
   background-color: rgb(241, 25, 25);
 }
+
 .deleteButton:hover {
   transform: scale(1.15);
   background-color: red;
@@ -228,4 +231,17 @@ select:focus {
   padding-right: 3%;
   padding-top: 1%;
   padding-bottom: 1%;
+}
+
+.tableSearch {
+  margin-left: 5px;
+  outline: none;
+}
+
+.tableSearch:focus {
+  outline: none;
+}
+
+.tableSearch:hover {
+  background-color: grey;
 }
