@@ -3,7 +3,7 @@ import axios from "axios";
 export const obtenerProductos = async (setProducts, setEjecutarConsulta) => {
   const options = {
     method: "GET",
-    url: "http://localhost:5000/productos/registros",
+    url: "http://localhost:5000/productos/",
   };
 
   await axios
