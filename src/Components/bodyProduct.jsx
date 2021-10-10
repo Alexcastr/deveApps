@@ -9,55 +9,7 @@ import { obtenerProductos } from "utils/apiProduct";
 import axios from "axios";
 
 const Bodyproduct = () => {
-  // const productList = [
-  //   {
-  //     id: "1",
-  //     name: "producto1",
-  //     value: 5900,
-  //     selection: "Disponible",
-  //   },
-  //   {
-  //     id: "2dc",
-  //     name: "producto2",
-  //     value: 10000,
-  //     selection: "Disponible",
-  //   },
-  //   {
-  //     id: "99f",
-  //     name: "producto3",
-  //     value: 3000,
-  //     selection: "Disponible",
-  //   },
-  //   {
-  //     id: "40pc",
-  //     name: "producto4",
-  //     value: 8900,
-  //     selection: "Disponible",
-  //   },
-  //   {
-  //     id: "45-p",
-  //     name: "producto5",
-  //     value: 4900,
-  //     selection: "Disponible",
-  //   },
-  //   {
-  //     id: "00-5c",
-  //     name: "producto6",
-  //     value: 7000,
-  //     selection: "Disponible",
-  //   },
-  //   {
-  //     id: "00-5c",
-  //     name: "producto6",
-  //     value: 7000,
-  //     selection: "Disponible",
-  //   },    {
-  //     id: "00-5c",
-  //     name: "producto6",
-  //     value: 7000,
-  //     selection: "Disponible",
-  //   },
-  // ];
+ 
   const [products, setProducts] = useState([]);
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
 
