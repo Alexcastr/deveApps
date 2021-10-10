@@ -9,55 +9,7 @@ import { obtenerProductos } from "utils/apiProduct";
 import axios from "axios";
 
 const Bodyproduct = () => {
-  // const productList = [
-  //   {
-  //     id: "1",
-  //     name: "producto1",
-  //     value: 5900,
-  //     selection: "Disponible",
-  //   },
-  //   {
-  //     id: "2dc",
-  //     name: "producto2",
-  //     value: 10000,
-  //     selection: "Disponible",
-  //   },
-  //   {
-  //     id: "99f",
-  //     name: "producto3",
-  //     value: 3000,
-  //     selection: "Disponible",
-  //   },
-  //   {
-  //     id: "40pc",
-  //     name: "producto4",
-  //     value: 8900,
-  //     selection: "Disponible",
-  //   },
-  //   {
-  //     id: "45-p",
-  //     name: "producto5",
-  //     value: 4900,
-  //     selection: "Disponible",
-  //   },
-  //   {
-  //     id: "00-5c",
-  //     name: "producto6",
-  //     value: 7000,
-  //     selection: "Disponible",
-  //   },
-  //   {
-  //     id: "00-5c",
-  //     name: "producto6",
-  //     value: 7000,
-  //     selection: "Disponible",
-  //   },    {
-  //     id: "00-5c",
-  //     name: "producto6",
-  //     value: 7000,
-  //     selection: "Disponible",
-  //   },
-  // ];
+ 
   const [products, setProducts] = useState([]);
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
 
@@ -85,13 +37,12 @@ const ProductRow = ({ product, setEjecutarConsulta }) => {
   });
 
   const updateProduct = async () => {
-    console.log(infoNewProduct);
     //enviar la info al backend
     const options = {
       method: "PATCH",
       url: `http://localhost:5000/productos/${product._id}/`,
       headers: { "Content-Type": "application/json" },
-      data: { ...infoNewProduct},
+      data: { ...infoNewProduct },
     };
     await axios
       .request(options)
@@ -107,7 +58,7 @@ const ProductRow = ({ product, setEjecutarConsulta }) => {
       });
   };
 
-  const deleteProduct = async() => {
+  const deleteProduct = async () => {
     const options = {
       method: "DELETE",
       url: `http://localhost:5000/productos/${product._id}/`,
@@ -123,7 +74,7 @@ const ProductRow = ({ product, setEjecutarConsulta }) => {
       })
       .catch(function (error) {
         console.error(error);
-        toast.error('No se pudo eliminar el producto');
+        toast.error("No se pudo eliminar el producto");
       });
     setShowDialog(!showDialog);
   };
@@ -259,13 +210,61 @@ const ProductRow = ({ product, setEjecutarConsulta }) => {
 };
 
 const TableList = ({ productList, setEjecutarConsulta }) => {
+  const [filteringId, setFilteringId] = useState(false);
+  const [filteringName, setFilteringName] = useState(false);
   return (
     <body className="center-content mt-1">
       <div className="table">
         <table className="ml-auto mr-auto">
           <tr className="head-body">
-            <th>ID</th>
-            <th>Nombre</th>
+            <th>
+              {!filteringId ? (
+                <>
+                  ID
+                  <button
+                    onClick={() => {
+                      setFilteringId(true);
+                    }}
+                    className="tableSearch"
+                  >
+                    <i className="bi bi-search"></i>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <input type="number" min="1" placeholder="ID del producto" />
+                  <button
+                    onClick={() => setFilteringId(false)}
+                    className="tableSearch"
+                  >
+                    <i className="bi bi-x-circle-fill"></i>
+                  </button>
+                </>
+              )}
+            </th>
+            <th>{!filteringName ? (
+                <>
+                  Nombre
+                  <button
+                    onClick={() => {
+                      setFilteringName(true);
+                    }}
+                    className="tableSearch"
+                  >
+                    <i className="bi bi-search"></i>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <input type="text" placeholder="Nombre del producto" />
+                  <button
+                    onClick={() => setFilteringName(false)}
+                    className="tableSearch"
+                  >
+                    <i className="bi bi-x-circle-fill"></i>
+                  </button>
+                </>
+              )}</th>
             <th>Valor unitario</th>
             <th>Estado</th>
             <th>Acciones</th>
