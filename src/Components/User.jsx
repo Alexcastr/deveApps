@@ -13,7 +13,7 @@ const User = ({ user, setExecuteQuery }) => {
     role: user.role,
   });
 
-  const updateUser = () => {
+  const updateUser = async () => {
     const options = {
       method: "PATCH",
       url: `http://localhost:5000/usuarios/${user._id}/`,
@@ -21,7 +21,7 @@ const User = ({ user, setExecuteQuery }) => {
       data: { ...infoNewUser },
     };
 
-    axios
+    await axios
       .request(options)
       .then(function (response) {
         console.log(response.data);
@@ -32,6 +32,28 @@ const User = ({ user, setExecuteQuery }) => {
       .catch(function (error) {
         console.error(error);
         toast.error("Error actualizando el usuario");
+      });
+  };
+
+  const deleteUser = async () => {
+    const options = {
+      method: "DELETE",
+      url: `http://localhost:5000/usuarios/${user._id}/`,
+      headers: { "Content-Type": "application/json" },
+    };
+
+    await axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+        setShowDialog(false);
+        setExecuteQuery(true);
+        toast.success("Usuario eliminado con éxito");
+      })
+      .catch(function (error) {
+        console.error(error);
+        setShowDialog(false);
+        toast.error("Error eliminando el usuario");
       });
   };
 
@@ -71,7 +93,7 @@ const User = ({ user, setExecuteQuery }) => {
         </td>
         <td>
           <div className="iconActions">
-            <Tooltip title="Editar producto" arrow>
+            <Tooltip title="Editar usuario" arrow>
               <button className="editButton">
                 <i
                   onClick={() => setIsEditing(!isEditing)}
@@ -79,10 +101,12 @@ const User = ({ user, setExecuteQuery }) => {
                 ></i>
               </button>
             </Tooltip>
-            <Tooltip title="Eliminar producto" arrow>
+            <Tooltip title="Eliminar usuario" arrow>
               <button className="deleteButton">
                 <i
-                  onClick={() => setShowDialog(!showDialog)}
+                  onClick={() => {
+                    setShowDialog(!showDialog);
+                  }}
                   class="bi bi-trash-fill"
                 ></i>
               </button>
@@ -92,11 +116,11 @@ const User = ({ user, setExecuteQuery }) => {
       </tr>
       <Dialog open={showDialog}>
         <div className="deleteSaleDialog">
-          <h2>Seguro que deseas eliminar esta venta?</h2>
+          <h2>Seguro que deseas eliminar este usuario?</h2>
           <div className="deleteSaleDialogButtonsDiv">
             <button
               onClick={() => {
-                setShowDialog(false);
+                deleteUser();
               }}
               className="confirmSaleDelete"
             >

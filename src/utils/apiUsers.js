@@ -3,7 +3,7 @@ import axios from "axios";
 export const getUsers = async (setUsers, setExecuteQuery) => {
   const options = { method: "GET", url: "http://localhost:5000/usuarios" };
 
-  axios
+  await axios
     .request(options)
     .then(function (response) {
       setUsers(response.data);
