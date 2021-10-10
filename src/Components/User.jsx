@@ -4,7 +4,7 @@ import Tooltip from "@mui/material/Tooltip";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const User = ({ user }) => {
+const User = ({ user, setExecuteQuery }) => {
   const [showDialog, setShowDialog] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [infoNewUser, setInfoNewUser] = useState({
@@ -26,6 +26,7 @@ const User = ({ user }) => {
       .then(function (response) {
         console.log(response.data);
         setIsEditing(false);
+        setExecuteQuery(true);
         toast.success("Usuario actualizado con éxito");
       })
       .catch(function (error) {

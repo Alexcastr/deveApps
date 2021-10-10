@@ -87,6 +87,7 @@ const Bodyuser = () => {
                 <User
                   key={nanoid}
                   user = {user}
+                  setExecuteQuery={setExecuteQuery}
                 />
               );
             })}
