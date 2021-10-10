@@ -37,7 +37,6 @@ const ProductRow = ({ product, setEjecutarConsulta }) => {
   });
 
   const updateProduct = async () => {
-    console.log(infoNewProduct);
     //enviar la info al backend
     const options = {
       method: "PATCH",

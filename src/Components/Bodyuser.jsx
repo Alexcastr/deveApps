@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import { nanoid } from "nanoid";
+import React, { useState, useEffect } from "react";
+import { getUsers } from "utils/apiUsers";
 import User from "./User";
-const usuarios = [
-  {
-    id: 2001,
-    name: "Pedro Martinez",
-    state: "Autorizado",
-    rol: "Administrador",
-  },
-];
+import { ToastContainer, toast } from "react-toastify";
+
 const Bodyuser = () => {
   const [filteringId, setFilteringId] = useState(false);
   const [filteringName, setFilteringName] = useState(false);
+  const [users, setUsers] = useState([]);
+  const [executeQuery, setExecuteQuery] = useState(true);
+
+  useEffect(() => {
+    if (executeQuery) {
+      getUsers(setUsers, setExecuteQuery);
+    }
+  }, [executeQuery]);
+
   return (
     <body className="center-content mt-1">
       <div className="table">
@@ -57,7 +62,11 @@ const Bodyuser = () => {
                   </>
                 ) : (
                   <>
-                    <input type="text" min="1" placeholder="Nombre del usuario" />
+                    <input
+                      type="text"
+                      min="1"
+                      placeholder="Nombre del usuario"
+                    />
                     <button
                       onClick={() => setFilteringName(false)}
                       className="tableSearch"
@@ -73,18 +82,17 @@ const Bodyuser = () => {
             </tr>
           </thead>
           <tbody>
-            {usuarios.map((item) => {
+            {users.map((user) => {
               return (
                 <User
-                  id={item.id}
-                  name={item.name}
-                  state={item.state}
-                  rol={item.rol}
+                  key={nanoid}
+                  user = {user}
                 />
               );
             })}
           </tbody>
         </table>
+        <ToastContainer position="bottom-center" autoClose={5000} />
       </div>
     </body>
   );

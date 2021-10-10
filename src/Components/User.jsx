@@ -1,18 +1,73 @@
 import React, { useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import Tooltip from "@mui/material/Tooltip";
+import axios from "axios";
+import { toast } from "react-toastify";
 
-const User = ({ id, name, state, rol }) => {
+const User = ({ user }) => {
   const [showDialog, setShowDialog] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [infoNewUser, setInfoNewUser] = useState({
+    name: user.name,
+    state: user.state,
+    role: user.role,
+  });
+
+  const updateUser = () => {
+    const options = {
+      method: "PATCH",
+      url: `http://localhost:5000/usuarios/${user._id}/`,
+      headers: { "Content-Type": "application/json" },
+      data: { ...infoNewUser },
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+        setIsEditing(false);
+        toast.success("Usuario actualizado con éxito");
+      })
+      .catch(function (error) {
+        console.error(error);
+        toast.error("Error actualizando el usuario");
+      });
+  };
+
+  const getSelectedState = () => {
+    const combo = document.getElementById("state");
+    const selected = combo.options[combo.selectedIndex].text;
+    setInfoNewUser({ ...infoNewUser, state: selected });
+    return infoNewUser;
+  };
+
+  const getSelectedRole = () => {
+    const combo = document.getElementById("role");
+    const selected = combo.options[combo.selectedIndex].text;
+    setInfoNewUser({ ...infoNewUser, role: selected });
+    return infoNewUser;
+  };
 
   return !isEditing ? (
     <>
       <tr className="tablerow">
-        <td>{id}</td>
-        <td>{name}</td>
-        <td>{state}</td>
-        <td>{rol}</td>
+        <td>{user._id.slice(20)}</td>
+        <td>{user.name}</td>
+        <td>
+          <select>
+            <option selected disabled>
+              {user.state}
+            </option>
+          </select>
+        </td>
+        <td>
+          {" "}
+          <select>
+            <option selected disabled>
+              {user.role}
+            </option>
+          </select>
+        </td>
         <td>
           <div className="iconActions">
             <Tooltip title="Editar producto" arrow>
@@ -59,21 +114,29 @@ const User = ({ id, name, state, rol }) => {
     </>
   ) : (
     <tr>
-      <td>{id}</td>
+      <td>{user._id.slice(20)}</td>
       <td>
-        <input type="text" placeholder="Nombre del Usuario" />
+        <input
+          type="text"
+          defaultValue={infoNewUser.name}
+          onChange={(e) =>
+            setInfoNewUser({ ...infoNewUser, name: e.target.value })
+          }
+        />
       </td>
       <td>
-        <select>
-          <option disabled>Pendiente</option>
-          <option>Autorizado</option>
-          <option>No Autorizado</option>
+        <select name="state" id="state" onChange={() => getSelectedState()}>
+          <option selected disabled>
+            seleccione una opción
+          </option>
+          <option value="Autorizado">Autorizado</option>
+          <option value="No Autorizado">No Autorizado</option>
         </select>
       </td>
       <td>
-        <select>
-          <option>Administrador</option>
-          <option>Vendedor</option>
+        <select name="role" id="role" onChange={() => getSelectedRole()}>
+          <option value="Administrador">Administrador</option>
+          <option value="Vendedor">Vendedor</option>
         </select>
       </td>
       <td>
@@ -81,7 +144,7 @@ const User = ({ id, name, state, rol }) => {
           <Tooltip title="Confirmar edición" arrow>
             <button
               onClick={() => {
-                setIsEditing(!isEditing);
+                updateUser();
               }}
               className="confirmButton"
             >
