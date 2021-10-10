@@ -154,6 +154,7 @@ const User = ({ user, setExecuteQuery }) => {
           <option selected disabled>
             seleccione una opción
           </option>
+          <option value="Pendiente">Pendiente</option>
           <option value="Autorizado">Autorizado</option>
           <option value="No Autorizado">No Autorizado</option>
         </select>
