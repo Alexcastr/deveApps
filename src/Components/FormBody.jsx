@@ -3,6 +3,14 @@ import ProductInSale from "./ProductInSale";
 const productsInSale = [
   { id: 200, name: "producto1", amount: 200, singlePrice: 2000 },
 ];
+
+var date = new Date();
+var dd = date.getDate();
+var mm = date.getMonth() + 1;
+var yy = date.getFullYear();
+console.log(date)
+var fechaActual = dd + "/" + mm + "/" + yy;
+
 const FormBody = () => {
   return (
     <div className="FormVenta">
@@ -10,25 +18,26 @@ const FormBody = () => {
         <div className="Div1">
           <div className="DivForm1">
             <label className="labelForm" htmlFor="ID">
-              ID Vendedor
-              <input className="InputForm" id="ID" required />
+               Vendedor
+              <select id="SeleccionarVendedor" className="InputForm" required>
+              <option value="1" selected disabled>Seleccionar</option>
+              </select>
             </label>
             <label className="labelForm" htmlFor="Estado">
               Estado
               <select id="EstadoVenta" className="InputForm" required>
-          <option disabled selected>Seleccionar</option>
-          <option>En proceso</option>
-          <option>Entregada</option>
-          <option>Cancelada</option>
+          <option value="-1" disabled selected>Seleccionar</option>
               </select>
             </label>
             <label className="labelForm" htmlFor="IDProducto">
-              ID Producto
-              <input className="InputForm" required />
+              Producto
+              <select id="SeleccionarProducto" className="InputForm" required>
+                <option value="0" disabled selected>Seleccionar</option>
+              </select>
             </label>
             <label className="labelForm" htmlFor="Cantidad">
               Cantidad
-              <input className="InputForm" required />
+              <input type="number" min="0" max="99" className="InputForm" required />
             </label>
             <button className="addProductInSale IconAgregar">
               <i className="bi bi-plus-circle-fill"></i>
@@ -38,7 +47,13 @@ const FormBody = () => {
           <div className="DivForm2">
             <label className="labelForm2" htmlFor="Fecha">
               Fecha
-              <input type="date" className="InputForm" required />
+              <input
+                type="text"
+                value={fechaActual}
+                disabled
+                className="InputForm"
+                required
+              />
             </label>
             <label className="labelForm2" htmlFor="Cliente">
               Cliente
@@ -51,9 +66,7 @@ const FormBody = () => {
           </div>
         </div>
         <div className="DivForm3">
-          <h1>
-            Productos en la venta actual
-          </h1>
+          <h1>Productos en la venta actual</h1>
           <div className="productsInSaleDiv">
             <li className="productsInSale">
               <h4 className="productsInSaleItem1">ID</h4>
@@ -73,9 +86,9 @@ const FormBody = () => {
               );
             })}
           </div>
-        <button type="submit" className="addSaleButton">
-          Añadir
-        </button>
+          <button type="submit" className="addSaleButton">
+            Añadir
+          </button>
         </div>
       </form>
     </div>
