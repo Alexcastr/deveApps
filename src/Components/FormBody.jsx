@@ -2,13 +2,16 @@ import React from "react";
 import ProductInSale from "./ProductInSale";
 const productsInSale = [
   { id: 200, name: "producto1", amount: 200, singlePrice: 2000 },
+  { id: 200, name: "producto1", amount: 200, singlePrice: 2000 },
+  { id: 200, name: "producto1", amount: 200, singlePrice: 2000 },
+  { id: 200, name: "producto1", amount: 200, singlePrice: 2000 },
 ];
 
 var date = new Date();
 var dd = date.getDate();
 var mm = date.getMonth() + 1;
 var yy = date.getFullYear();
-console.log(date)
+console.log(date);
 var fechaActual = dd + "/" + mm + "/" + yy;
 
 const FormBody = () => {
@@ -18,16 +21,30 @@ const FormBody = () => {
         <div className="Div1">
           <div className="DivForm1">
             <label className="labelForm" htmlFor="ID">
-              ID Vendedor
-              <input className="InputForm" id="ID" required />
+              Vendedor
+              <select
+                className="InputForm"
+                id="SellerDropdown"
+                defaultValue=""
+                required
+              >
+                <option disabled value="">
+                  1
+                </option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
             </label>
             <label className="labelForm" htmlFor="Estado">
               Estado
               <select id="EstadoVenta" className="InputForm" required>
-          <option disabled selected>Seleccionar</option>
-          <option>En proceso</option>
-          <option>Entregada</option>
-          <option>Cancelada</option>
+                <option disabled selected>
+                  Seleccionar
+                </option>
+                <option>En proceso</option>
+                <option>Entregada</option>
+                <option>Cancelada</option>
               </select>
             </label>
             <label className="labelForm" htmlFor="IDProducto">
