@@ -1,7 +1,7 @@
 import UsersButton from "./usersButton";
 import ProductButton from "./productButton";
 import SalesButton from "./salesButton";
-
+import LogoutButton from "./LogoutButton";
 const Header = ({ current }) => {
   if (current === "usuarios") {
     return (
@@ -9,6 +9,7 @@ const Header = ({ current }) => {
         <UsersButton clase="currentButtonLink" />
         <SalesButton clase="buttonLink" />
         <ProductButton clase="buttonLink" />
+        <LogoutButton />
       </header>
     );
   } else if (current === "ventas") {
@@ -17,6 +18,7 @@ const Header = ({ current }) => {
         <UsersButton clase="buttonLink" />
         <SalesButton clase="currentButtonLink" />
         <ProductButton clase="buttonLink" />
+        <LogoutButton />
       </header>
     );
   } else if (current === "productos") {
@@ -25,6 +27,7 @@ const Header = ({ current }) => {
         <UsersButton clase="buttonLink" />
         <SalesButton clase="buttonLink" />
         <ProductButton clase="currentButtonLink" />
+        <LogoutButton />
       </header>
     );
   }
