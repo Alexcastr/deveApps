@@ -76,21 +76,8 @@ const User = ({ user, setExecuteQuery }) => {
       <tr className="tablerow">
         <td>{user._id.slice(20)}</td>
         <td>{user.name}</td>
-        <td>
-          <select>
-            <option selected disabled>
-              {user.state}
-            </option>
-          </select>
-        </td>
-        <td>
-          {" "}
-          <select>
-            <option selected disabled>
-              {user.role}
-            </option>
-          </select>
-        </td>
+        <td>{user.state}</td>
+        <td>{user.role}</td>
         <td>
           <div className="iconActions">
             <Tooltip title="Editar usuario" arrow>
