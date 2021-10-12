@@ -18,25 +18,26 @@ const FormBody = () => {
         <div className="Div1">
           <div className="DivForm1">
             <label className="labelForm" htmlFor="ID">
-              ID Vendedor
-              <input className="InputForm" id="ID" required />
+               Vendedor
+              <select id="SeleccionarVendedor" className="InputForm" required>
+              <option value="1" selected disabled>Seleccionar</option>
+              </select>
             </label>
             <label className="labelForm" htmlFor="Estado">
               Estado
               <select id="EstadoVenta" className="InputForm" required>
-          <option disabled selected>Seleccionar</option>
-          <option>En proceso</option>
-          <option>Entregada</option>
-          <option>Cancelada</option>
+          <option value="-1" disabled selected>Seleccionar</option>
               </select>
             </label>
             <label className="labelForm" htmlFor="IDProducto">
-              ID Producto
-              <input className="InputForm" required />
+              Producto
+              <select id="SeleccionarProducto" className="InputForm" required>
+                <option value="0" disabled selected>Seleccionar</option>
+              </select>
             </label>
             <label className="labelForm" htmlFor="Cantidad">
               Cantidad
-              <input className="InputForm" required />
+              <input type="number" min="0" max="99" className="InputForm" required />
             </label>
             <button className="addProductInSale IconAgregar">
               <i className="bi bi-plus-circle-fill"></i>
