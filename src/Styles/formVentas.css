@@ -35,7 +35,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    max-height: 35%;
+    max-height: 36%;
     margin: auto;
     width: 76%;
 }
@@ -161,6 +161,16 @@
 }
 
 #EstadoVenta{
+    background-color: white;
+    color: black;
+}
+
+#SeleccionarProducto{
+    background-color: white;
+    color: black;
+}
+
+#SeleccionarVendedor{
     background-color: white;
     color: black;
 }
