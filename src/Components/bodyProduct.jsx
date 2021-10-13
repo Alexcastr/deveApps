@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
-import { ToastContainer} from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getProducts } from "utils/apiProduct";
 import ProductRow from "./ProductRow";
@@ -21,8 +21,8 @@ const Bodyproduct = () => {
   }, [ejecutarConsulta, products]);
 
   useEffect(() => {
-    if (ejecutarConsulta) {
-      getProducts(
+    const fetchProducts = async () => {
+      await getProducts(
         (response) => {
           setProducts(response.data);
           setEjecutarConsulta(false);
@@ -31,6 +31,9 @@ const Bodyproduct = () => {
           console.error(error);
         }
       );
+    };
+    if (ejecutarConsulta) {
+      fetchProducts();
     }
   }, [ejecutarConsulta]);
 

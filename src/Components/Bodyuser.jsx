@@ -2,7 +2,7 @@ import { nanoid } from "nanoid";
 import React, { useState, useEffect } from "react";
 import { getUsers } from "utils/apiUsers";
 import User from "./User";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer} from "react-toastify";
 
 const Bodyuser = () => {
   const [filteringId, setFilteringId] = useState(false);
@@ -16,11 +16,20 @@ const Bodyuser = () => {
 
   useEffect(() => {
     setFiltro(users);
-  }, [executeQuery]);
+  }, [executeQuery, users]);
 
   useEffect(() => {
+    const fetchUsers = async() =>{
+      await getUsers((response) => {
+        setUsers(response.data);
+        setExecuteQuery(false);
+      },
+      (error) => {
+        console.error(error);
+      });
+    }
     if (executeQuery) {
-      getUsers(setUsers, setExecuteQuery);
+      fetchUsers();
     }
   }, [executeQuery]);
 
@@ -32,7 +41,7 @@ const Bodyuser = () => {
           .includes(filteringByIdValue.toLowerCase());
       })
     );
-  }, [filteringByIdValue]);
+  }, [filteringByIdValue, users]);
 
   useEffect(() => {
     setFiltro(
@@ -42,7 +51,7 @@ const Bodyuser = () => {
           .includes(filteringByNameValue.toLowerCase());
       })
     );
-  }, [filteringByNameValue]);
+  }, [filteringByNameValue, users]);
 
   return (
     <body className="center-content mt-1">
