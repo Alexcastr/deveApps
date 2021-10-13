@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { obtenerProductos } from "utils/apiProduct";
+import { getProducts } from "utils/apiProduct";
 import ProductRow from "./ProductRow";
 
 const Bodyproduct = () => {
@@ -18,11 +18,19 @@ const Bodyproduct = () => {
 
   useEffect(() => {
     setFiltro(products);
-  }, [ejecutarConsulta]);
+  }, [ejecutarConsulta, products]);
 
   useEffect(() => {
     if (ejecutarConsulta) {
-      obtenerProductos(setProducts, setEjecutarConsulta);
+      getProducts(
+        (response) => {
+          setProducts(response.data);
+          setEjecutarConsulta(false);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
     }
   }, [ejecutarConsulta]);
 
@@ -34,7 +42,7 @@ const Bodyproduct = () => {
           .includes(filteringByIdValue.toLowerCase());
       })
     );
-  }, [filteringByIdValue]);
+  }, [filteringByIdValue, products]);
 
   useEffect(() => {
     setFiltro(
@@ -44,7 +52,7 @@ const Bodyproduct = () => {
           .includes(filteringByNameValue.toLowerCase());
       })
     );
-  }, [filteringByNameValue]);
+  }, [filteringByNameValue, products]);
 
   return (
     <body className="center-content mt-1">

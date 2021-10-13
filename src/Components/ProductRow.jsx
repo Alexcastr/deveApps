@@ -1,12 +1,9 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { nanoid } from "nanoid";
-import { ToastContainer, toast } from "react-toastify";
+import { useState } from "react";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Dialog from "@mui/material/Dialog";
 import Tooltip from "@mui/material/Tooltip";
-import { obtenerProductos } from "utils/apiProduct";
-import axios from "axios";
+import { updateProduct, deleteProduct } from "utils/apiProduct";
 
 const ProductRow = ({ product, setEjecutarConsulta }) => {
   const [edit, setEdit] = useState(false);
@@ -17,47 +14,37 @@ const ProductRow = ({ product, setEjecutarConsulta }) => {
     selection: product.selection,
   });
 
-  const updateProduct = async () => {
-    //enviar la info al backend
-    const options = {
-      method: "PATCH",
-      url: `http://localhost:5000/productos/${product._id}/`,
-      headers: { "Content-Type": "application/json" },
-      data: { ...infoNewProduct },
-    };
-    await axios
-      .request(options)
-      .then(function (response) {
+  const editProduct = async () => {
+    await updateProduct(
+      product._id,
+      infoNewProduct,
+      (response) => {
         console.log(response.data);
         toast.success("Producto modificado con éxito");
         setEdit(false);
         setEjecutarConsulta(true);
-      })
-      .catch(function (error) {
-        toast.error("Error modificando el producto");
+      },
+      (error) => {
         console.error(error);
-      });
+        toast.error("Error modificando el producto");
+      }
+    );
   };
 
-  const deleteProduct = async () => {
-    const options = {
-      method: "DELETE",
-      url: `http://localhost:5000/productos/${product._id}/`,
-      headers: { "Content-Type": "application/json" },
-    };
-
-    await axios
-      .request(options)
-      .then(function (response) {
+  const eliminarProducto = async () => {
+    await deleteProduct(
+      product._id,
+      (response) => {
         console.log(response.data);
         toast.success("Producto eliminado con éxito");
         setEjecutarConsulta(true);
-      })
-      .catch(function (error) {
+      },
+      (error) => {
         console.error(error);
-        toast.error("No se pudo eliminar el producto");
-      });
-    setShowDialog(!showDialog);
+        toast.error("Error eliminando el producto");
+      }
+    );
+    setShowDialog(!setShowDialog);
   };
 
   const getSelected = () => {
@@ -108,10 +95,7 @@ const ProductRow = ({ product, setEjecutarConsulta }) => {
           <td>
             <div className="iconActions">
               <Tooltip title="Confirmar edición" arrow>
-                <button
-                  onClick={() => updateProduct()}
-                  className="confirmButton"
-                >
+                <button onClick={() => editProduct()} className="confirmButton">
                   <i class="bi bi-check-circle-fill"></i>
                 </button>
               </Tooltip>
@@ -158,7 +142,7 @@ const ProductRow = ({ product, setEjecutarConsulta }) => {
               <div className="deleteSaleDialogButtonsDiv">
                 <button
                   onClick={() => {
-                    deleteProduct();
+                    eliminarProducto();
                   }}
                   className="confirmSaleDelete"
                 >
