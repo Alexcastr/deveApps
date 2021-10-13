@@ -39,10 +39,7 @@ const FormBody = () => {
               Cantidad
               <input type="number" min="0" max="99" className="InputForm" required />
             </label>
-            <button className="addProductInSale IconAgregar">
-              <i className="bi bi-plus-circle-fill"></i>
-            </button>
-            <h2 className="addProductInSaleLabel">Añadir Producto</h2>
+            
           </div>
           <div className="DivForm2">
             <label className="labelForm2" htmlFor="Fecha">
@@ -63,6 +60,10 @@ const FormBody = () => {
               ID Cliente
               <input className="InputForm" required />
             </label>
+            <button className="addProductInSale IconAgregar">
+              <i className="bi bi-plus-circle-fill"></i>
+            </button>
+            <h2 className="addProductInSaleLabel">Añadir Producto</h2>
           </div>
         </div>
         <div className="DivForm3">
