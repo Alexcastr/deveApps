@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-// import { Link } from "react-router-dom";
+import ReactLoading from "react-loading";
 
 const PrivateRoute = ({ children }) => {
   const {
@@ -23,21 +23,13 @@ const PrivateRoute = ({ children }) => {
   },[isAuthenticated, getAccessTokenSilently]);
 
   if (isLoading) {
-    return <div>Loading ...</div>;
+    return <div><ReactLoading type="cylon" color="blue" height={667} width={375} /></div>;
   }
   if (!isAuthenticated) {
     return loginWithRedirect();
   }
   return <>{children}</>;
 
-  // return isAuthenticated ? (
-  //   <>{children}</>
-  // ) : (
-  //   <div>
-  //     <div>No estás autorizado para ver este sitio</div>
-  //     <Link to="/"><span>Registrarse</span></Link>
-  //   </div>
-  // );
 };
 
 export default PrivateRoute;
