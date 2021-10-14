@@ -137,6 +137,9 @@ const User = ({ user, setExecuteQuery }) => {
       </td>
       <td>
         <select name="role" id="role" onChange={() => getSelectedRole()}>
+        <option selected disabled>
+            seleccione una opción
+          </option>
           <option value="Administrador">Administrador</option>
           <option value="Vendedor">Vendedor</option>
         </select>
