@@ -11,7 +11,7 @@
     width: 70%;
     flex-direction: column;
     margin: 20px auto;
-    padding: 10px;
+    padding: 20px;
     border-radius: 40px;
     box-shadow: 0px 0px 15px 1px black;
 }
@@ -31,7 +31,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    max-height: 35%;
+    max-height: 36%;
     margin: auto;
     width: 76%;
 }
@@ -76,7 +76,7 @@
     background: #3C538F;
     color: white;
     font-weight: bolder;
-    font-size: 2em;
+    font-size: 1.5em;
     margin-top: 10px;
     padding: 10px;
     border-radius: 10px;
@@ -161,6 +161,16 @@
 
 #EstadoVenta,
 #SellerDropdown {
+    background-color: white;
+    color: black;
+}
+
+#SeleccionarProducto{
+    background-color: white;
+    color: black;
+}
+
+#SeleccionarVendedor{
     background-color: white;
     color: black;
 }

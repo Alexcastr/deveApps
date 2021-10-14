@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import Tooltip from "@mui/material/Tooltip";
-import axios from "axios";
 import { toast } from "react-toastify";
+import { updateUser, deleteUser } from "utils/apiUsers";
 
 const User = ({ user, setExecuteQuery }) => {
   const [showDialog, setShowDialog] = useState(false);
@@ -13,48 +13,37 @@ const User = ({ user, setExecuteQuery }) => {
     role: user.role,
   });
 
-  const updateUser = async () => {
-    const options = {
-      method: "PATCH",
-      url: `http://localhost:5000/usuarios/${user._id}/`,
-      headers: { "Content-Type": "application/json" },
-      data: { ...infoNewUser },
-    };
-
-    await axios
-      .request(options)
-      .then(function (response) {
+  const UpdateUser = async () => {
+    await updateUser(
+      user._id,
+      infoNewUser,
+      (response) => {
         console.log(response.data);
+        toast.success("Usuario actualizado con éxito");
         setIsEditing(false);
         setExecuteQuery(true);
-        toast.success("Usuario actualizado con éxito");
-      })
-      .catch(function (error) {
+      },
+      (error) => {
         console.error(error);
         toast.error("Error actualizando el usuario");
-      });
+      }
+    );
   };
 
-  const deleteUser = async () => {
-    const options = {
-      method: "DELETE",
-      url: `http://localhost:5000/usuarios/${user._id}/`,
-      headers: { "Content-Type": "application/json" },
-    };
-
-    await axios
-      .request(options)
-      .then(function (response) {
+  const DeleteUser = async () => {
+    await deleteUser(
+      user._id,
+      (response) => {
         console.log(response.data);
         setShowDialog(false);
         setExecuteQuery(true);
         toast.success("Usuario eliminado con éxito");
-      })
-      .catch(function (error) {
+      },
+      (error) => {
         console.error(error);
-        setShowDialog(false);
         toast.error("Error eliminando el usuario");
-      });
+      }
+    );
   };
 
   const getSelectedState = () => {
@@ -107,7 +96,7 @@ const User = ({ user, setExecuteQuery }) => {
           <div className="deleteSaleDialogButtonsDiv">
             <button
               onClick={() => {
-                deleteUser();
+                DeleteUser();
               }}
               className="confirmSaleDelete"
             >
@@ -148,6 +137,9 @@ const User = ({ user, setExecuteQuery }) => {
       </td>
       <td>
         <select name="role" id="role" onChange={() => getSelectedRole()}>
+        <option selected disabled>
+            seleccione una opción
+          </option>
           <option value="Administrador">Administrador</option>
           <option value="Vendedor">Vendedor</option>
         </select>
@@ -157,7 +149,7 @@ const User = ({ user, setExecuteQuery }) => {
           <Tooltip title="Confirmar edición" arrow>
             <button
               onClick={() => {
-                updateUser();
+                UpdateUser();
               }}
               className="confirmButton"
             >

@@ -2,14 +2,13 @@ import React from "react";
 import { useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
+import { addProduct } from "utils/apiProduct";
 
 const AddProduct = () => {
-  
   const form = useRef(null);
   const nuevoProducto = {};
 
-  const submitForm = async(e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
     const fd = new FormData(form.current);
 
@@ -18,29 +17,22 @@ const AddProduct = () => {
       nuevoProducto[key] = value;
     });
 
-    const options = {
-      method: "POST",
-      url: "http://localhost:5000/productos/",
-      headers: { "Content-Type": "application/json" },
-      data: {
+    await addProduct(
+      {
         name: nuevoProducto.name,
         selection: nuevoProducto.selection,
         value: nuevoProducto.value,
       },
-    };
-
-    await axios
-      .request(options)
-      .then(function (response) {
+      (response) => {
         console.log(response.data);
         toast.success("Producto agregado con éxito");
-      })
-      .catch(function (error) {
+      },
+      (error) => {
+        toast.error("Error agregando el producto");
         console.error(error);
-        toast.error("No se pudo agregar el producto");
-      });
-  
-  };
+      }
+    );
+};
   return (
     <>
       <div className="AddProduct">

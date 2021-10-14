@@ -1,11 +1,14 @@
 import Header from "Components/header";
 import SalesBody from "Components/salesBody";
+import PrivateRoute from "Components/PrivateRoute";
 const Sales = () => {
   return (
-    <>
-      <Header current="ventas" />
-      <SalesBody/>
-    </>
+    <PrivateRoute>
+      <>
+        <Header current="ventas" />
+        <SalesBody />
+      </>
+    </PrivateRoute>
   );
 };
 

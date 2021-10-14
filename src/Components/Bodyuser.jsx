@@ -2,7 +2,8 @@ import { nanoid } from "nanoid";
 import React, { useState, useEffect } from "react";
 import { getUsers } from "utils/apiUsers";
 import User from "./User";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import ReactLoading from "react-loading";
 
 const Bodyuser = () => {
   const [filteringId, setFilteringId] = useState(false);
@@ -13,14 +14,29 @@ const Bodyuser = () => {
 
   const [filteringByIdValue, setFilteringByIdValue] = useState("");
   const [filteringByNameValue, setFilteringByNameValue] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setFiltro(users);
-  }, [executeQuery]);
+  }, [executeQuery, users]);
 
   useEffect(() => {
+    const fetchUsers = async () => {
+      setLoading(true);
+      await getUsers(
+        (response) => {
+          setUsers(response.data);
+          setExecuteQuery(false);
+          setLoading(false);
+        },
+        (error) => {
+          console.error(error);
+          setLoading(false);
+        }
+      );
+    };
     if (executeQuery) {
-      getUsers(setUsers, setExecuteQuery);
+      fetchUsers();
     }
   }, [executeQuery]);
 
@@ -32,7 +48,7 @@ const Bodyuser = () => {
           .includes(filteringByIdValue.toLowerCase());
       })
     );
-  }, [filteringByIdValue]);
+  }, [filteringByIdValue, users]);
 
   useEffect(() => {
     setFiltro(
@@ -42,103 +58,107 @@ const Bodyuser = () => {
           .includes(filteringByNameValue.toLowerCase());
       })
     );
-  }, [filteringByNameValue]);
+  }, [filteringByNameValue, users]);
 
   return (
     <body className="center-content mt-1">
       <div className="table">
-        <table className="ml-auto mr-auto">
-          <thead>
-            <tr>
-              <th>
-                {!filteringId ? (
-                  <>
-                    ID
-                    <button
-                      onClick={() => {
-                        setFilteringId(true);
-                      }}
-                      className="tableSearch"
-                    >
-                      <i className="bi bi-search"></i>
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <input
-                      value={filteringByIdValue}
-                      onChange={(e) => {
-                        setFilteringByIdValue(e.target.value);
-                      }}
-                      type="text"
-                      min="1"
-                      placeholder="Id del usuario"
-                    />
-                    <button
-                      onClick={() => {
-                        setFilteringId(false);
-                        setFilteringByIdValue("");
-                      }}
-                      className="tableSearch"
-                    >
-                      <i className="bi bi-x-circle-fill"></i>
-                    </button>
-                  </>
-                )}
-              </th>
-              <th>
-                {!filteringName ? (
-                  <>
-                    Nombre
-                    <button
-                      onClick={() => {
-                        setFilteringName(true);
-                      }}
-                      className="tableSearch"
-                    >
-                      <i className="bi bi-search"></i>
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <input
-                      type="text"
-                      min="1"
-                      value={filteringByNameValue}
-                      onChange={(e) => {
-                        setFilteringByNameValue(e.target.value);
-                      }}
-                      placeholder="Nombre del usuario"
-                    />
-                    <button
-                      onClick={() => {
-                        setFilteringName(false);
-                        setFilteringByNameValue("")
-                      }}
-                      className="tableSearch"
-                    >
-                      <i className="bi bi-x-circle-fill"></i>
-                    </button>
-                  </>
-                )}
-              </th>
-              <th>Estado</th>
-              <th>Rol</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filtro.map((user) => {
-              return (
-                <User
-                  key={nanoid}
-                  user={user}
-                  setExecuteQuery={setExecuteQuery}
-                />
-              );
-            })}
-          </tbody>
-        </table>
+        {loading ? (
+          <ReactLoading type="cylon" color="blue" height={667} width={375} />
+        ) : (
+          <table className="ml-auto mr-auto">
+            <thead>
+              <tr>
+                <th>
+                  {!filteringId ? (
+                    <>
+                      ID
+                      <button
+                        onClick={() => {
+                          setFilteringId(true);
+                        }}
+                        className="tableSearch"
+                      >
+                        <i className="bi bi-search"></i>
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <input
+                        value={filteringByIdValue}
+                        onChange={(e) => {
+                          setFilteringByIdValue(e.target.value);
+                        }}
+                        type="text"
+                        min="1"
+                        placeholder="Id del usuario"
+                      />
+                      <button
+                        onClick={() => {
+                          setFilteringId(false);
+                          setFilteringByIdValue("");
+                        }}
+                        className="tableSearch"
+                      >
+                        <i className="bi bi-x-circle-fill"></i>
+                      </button>
+                    </>
+                  )}
+                </th>
+                <th>
+                  {!filteringName ? (
+                    <>
+                      Nombre
+                      <button
+                        onClick={() => {
+                          setFilteringName(true);
+                        }}
+                        className="tableSearch"
+                      >
+                        <i className="bi bi-search"></i>
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <input
+                        type="text"
+                        min="1"
+                        value={filteringByNameValue}
+                        onChange={(e) => {
+                          setFilteringByNameValue(e.target.value);
+                        }}
+                        placeholder="Nombre del usuario"
+                      />
+                      <button
+                        onClick={() => {
+                          setFilteringName(false);
+                          setFilteringByNameValue("");
+                        }}
+                        className="tableSearch"
+                      >
+                        <i className="bi bi-x-circle-fill"></i>
+                      </button>
+                    </>
+                  )}
+                </th>
+                <th>Estado</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filtro.map((user) => {
+                return (
+                  <User
+                    key={nanoid}
+                    user={user}
+                    setExecuteQuery={setExecuteQuery}
+                  />
+                );
+              })}
+            </tbody>
+          </table>
+        )}
         <ToastContainer position="bottom-center" autoClose={5000} />
       </div>
     </body>
