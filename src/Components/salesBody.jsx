@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Sale from "./Sale";
-import Data from "../data.json";
 
 const SalesBody = () => {
-  const [tableData, setTableData] = useState(Data);
+  const [tableData, setTableData] = useState([]);
   const [filteringId, setFilteringId] = useState(false);
   const [filteringClientId, setFilteringClientId] = useState(false);
   const [filteringClient, setFilteringClient] = useState(false);

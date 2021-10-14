@@ -2,13 +2,16 @@ import React from "react";
 import ProductInSale from "./ProductInSale";
 const productsInSale = [
   { id: 200, name: "producto1", amount: 200, singlePrice: 2000 },
+  { id: 200, name: "producto1", amount: 200, singlePrice: 2000 },
+  { id: 200, name: "producto1", amount: 200, singlePrice: 2000 },
+  { id: 200, name: "producto1", amount: 200, singlePrice: 2000 },
 ];
 
 var date = new Date();
 var dd = date.getDate();
 var mm = date.getMonth() + 1;
 var yy = date.getFullYear();
-console.log(date)
+console.log(date);
 var fechaActual = dd + "/" + mm + "/" + yy;
 
 const FormBody = () => {
@@ -26,7 +29,10 @@ const FormBody = () => {
             <label className="labelForm" htmlFor="Estado">
               Estado
               <select id="EstadoVenta" className="InputForm" required>
-          <option value="-1" disabled selected>Seleccionar</option>
+                <option value="-1" disabled selected>Seleccionar</option>
+                <option>En proceso</option>
+                <option>Entregada</option>
+                <option>Cancelada</option>
               </select>
             </label>
             <label className="labelForm" htmlFor="IDProducto">
