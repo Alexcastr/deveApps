@@ -1,13 +1,16 @@
-import React from 'react'
-import Header from 'Components/header'
-import Bodyuser from 'Components/Bodyuser'
+import React from "react";
+import Header from "Components/header";
+import Bodyuser from "Components/Bodyuser";
+import PrivateRoute from "Components/PrivateRoute";
 const Users = () => {
-    return (
-        <>
-         <Header current="usuarios"/>
-         <Bodyuser/>
-        </>
-    )
-}
+  return (
+    <PrivateRoute>
+      <>
+        <Header current="usuarios" />
+        <Bodyuser />
+      </>
+    </PrivateRoute>
+  );
+};
 
-export default Users
+export default Users;

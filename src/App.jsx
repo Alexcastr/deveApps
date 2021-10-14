@@ -20,7 +20,8 @@ function App() {
     <Auth0Provider
     domain="deveapps.us.auth0.com"
     clientId="bIGQtLlA6nqcsJYJOvQYTUer2QTTOVxj"
-    redirectUri={window.location.origin}>
+    redirectUri={window.location.origin}
+    audience='api-autenticacion-deveapps'>
       
     <div className="App">
       <Router>
