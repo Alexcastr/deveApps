@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { getProducts } from "utils/apiProduct";
 import ProductRow from "./ProductRow";
 import ReactLoading from "react-loading";
+import PrivateComponent from "./PrivateComponent";
 
 const Bodyproduct = () => {
   const [filteringId, setFilteringId] = useState(false);
@@ -142,7 +143,9 @@ const Bodyproduct = () => {
               </th>
               <th>Valor unitario</th>
               <th>Estado</th>
+              <PrivateComponent roleList={['Administrador']}>
               <th>Acciones</th>
+              </PrivateComponent>
             </tr>
             <tr>
               <td colSpan="10">

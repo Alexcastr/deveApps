@@ -138,6 +138,7 @@ const User = ({ user, setExecuteQuery }) => {
           </option>
           <option value="Administrador">Administrador</option>
           <option value="Vendedor">Vendedor</option>
+          <option value="Sin rol">Sin rol</option>
         </select>
       </td>
       <td>

@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Dialog from "@mui/material/Dialog";
 import Tooltip from "@mui/material/Tooltip";
 import { updateProduct, deleteProduct } from "utils/apiProduct";
+import PrivateComponent from "./PrivateComponent";
 
 const ProductRow = ({ product, setEjecutarConsulta }) => {
   const [edit, setEdit] = useState(false);
@@ -116,26 +117,28 @@ const ProductRow = ({ product, setEjecutarConsulta }) => {
           <td>{product.name}</td>
           <td>{product.value}</td>
           <td>{product.selection}</td>
-          <td>
-            <div className="iconActions">
-              <Tooltip title="Editar producto" arrow>
-                <button className="editButton">
-                  <i
-                    onClick={() => setEdit(!edit)}
-                    class="bi bi-pencil-fill"
-                  ></i>
-                </button>
-              </Tooltip>
-              <Tooltip title="Eliminar producto" arrow>
-                <button className="deleteButton">
-                  <i
-                    onClick={() => setShowDialog(!showDialog)}
-                    class="bi bi-trash-fill"
-                  ></i>
-                </button>
-              </Tooltip>
-            </div>
-          </td>
+          <PrivateComponent roleList={['Administrador']}>
+            <td>
+              <div className="iconActions">
+                <Tooltip title="Editar producto" arrow>
+                  <button className="editButton">
+                    <i
+                      onClick={() => setEdit(!edit)}
+                      class="bi bi-pencil-fill"
+                    ></i>
+                  </button>
+                </Tooltip>
+                <Tooltip title="Eliminar producto" arrow>
+                  <button className="deleteButton">
+                    <i
+                      onClick={() => setShowDialog(!showDialog)}
+                      class="bi bi-trash-fill"
+                    ></i>
+                  </button>
+                </Tooltip>
+              </div>
+            </td>
+          </PrivateComponent>
           <Dialog open={showDialog}>
             <div className="deleteSaleDialog">
               <h2>Seguro que deseas eliminar este producto?</h2>
