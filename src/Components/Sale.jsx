@@ -8,40 +8,41 @@ const Sale = ({ datos }) => {
   const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
-    console.log("cambiado");
-  }, [showDialog]);
+    console.log("datos: ", datos);
+  }, []);
 
   return !editMode ? (
     <>
       <tr className="tablerow">
-        <td>{datos._id}</td>
-        <td>{datos.Value}</td>
+        <td>{datos._id.slice(20)}</td>
+        <td>${datos.valorTotal}</td>
         <td>
           <ul className="productList">
-            {datos.ProductIds.map((item) => {
-              return <li key={nanoid()}>{item}</li>;
+            {datos.productos.map((item) => {
+              return <li key={nanoid()}>{item.id.slice(20)}</li>;
             })}
           </ul>
         </td>
         <td>
           <ul className="productList">
-            {datos.ProductAmounts.map((item) => {
-              return <li key={nanoid()}>{item}</li>;
+            {datos.productos.map((item) => {
+              return <li key={nanoid()}>{item.amount}</li>;
             })}
           </ul>
         </td>
         <td>
           <ul className="productList">
-            {datos.ProductSinglePrice.map((item) => {
-              return <li key={nanoid()}>{item}</li>;
+            {datos.productos.map((item) => {
+              console.log(item);
+              return <li key={nanoid()}>{item.value}</li>;
             })}
           </ul>
         </td>
-        <td>{datos.Date}</td>
-        <td>{datos.ClientId}</td>
-        <td>{datos.Client}</td>
-        <td>{datos.State}</td>
-        <td>{datos.Seller}</td>
+        <td>{datos.fecha}</td>
+        <td>{datos.idCliente}</td>
+        <td>{datos.cliente}</td>
+        <td>{datos.estado}</td>
+        <td>{datos.vendedor[0].name}</td>
         <td>
           <div className="iconActions">
             <Tooltip title="Editar producto" arrow>

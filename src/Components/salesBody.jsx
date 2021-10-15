@@ -1,5 +1,5 @@
 //TODO
-  //SOLUCIONAR EL .map
+//SOLUCIONAR EL .map
 
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -24,39 +24,29 @@ const SalesBody = () => {
   const [filteringByClientIdValue, setFilteringByClientIdValue] = useState("");
   const [filteringClientValue, setFilteringClientValue] = useState("");
 
-  useEffect(() => {
-    setFiltro(
-      sales.filter((elemento) => {
-        return JSON.stringify(elemento._id)
-          .toLowerCase()
-          .includes(filteringByIdValue.toLowerCase());
-      })
-    );
-  }, [filteringByIdValue, sales]);
+  // useEffect(() => {
+  //   setFiltro(
+  //     sales.filter((elemento) => {
+  //       return JSON.stringify(elemento._id)
+  //         .toLowerCase()
+  //         .includes(filteringByIdValue.toLowerCase());
+  //     })
+  //   );
+  // }, [filteringByIdValue, sales]);
 
-  useEffect(() => {
-    setFiltro(
-      sales.filter((elemento) => {
-        return JSON.stringify(elemento.ClientId)
-          .toLowerCase()
-          .includes(filteringByClientIdValue.toLowerCase());
-      })
-    );
-  }, [filteringByClientIdValue, sales]);
-
-  useEffect(() => {
-    setFiltro(
-      sales.filter((elemento) => {
-        return JSON.stringify(elemento.Client)
-          .toLowerCase()
-          .includes(filteringClientValue.toLowerCase());
-      })
-    );
-  }, [filteringClientValue, sales]);
+  // useEffect(() => {
+  //   setFiltro(
+  //     sales.filter((elemento) => {
+  //       return JSON.stringify(elemento.ClientId)
+  //         .toLowerCase()
+  //         .includes(filteringByClientIdValue.toLowerCase());
+  //     })
+  //   );
+  // }, [filteringByClientIdValue, sales]);
 
   useEffect(() => {
     setFiltro(sales);
-  }, [ejecutarConsulta]);
+  }, [ejecutarConsulta, sales]);
 
   //Get Sales
   useEffect(() => {
@@ -77,6 +67,7 @@ const SalesBody = () => {
     if (ejecutarConsulta) {
       fetchSales();
     }
+    console.log("ventas: ", sales);
   }, [ejecutarConsulta]);
 
   return (

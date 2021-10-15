@@ -42,25 +42,25 @@ const Bodyproduct = () => {
     }
   }, [ejecutarConsulta]);
 
-  useEffect(() => {
-    setFiltro(
-      products.filter((elemento) => {
-        return JSON.stringify(elemento._id)
-          .toLowerCase()
-          .includes(filteringByIdValue.toLowerCase());
-      })
-    );
-  }, [filteringByIdValue, products]);
+  // useEffect(() => {
+  //   setFiltro(
+  //     products.filter((elemento) => {
+  //       return JSON.stringify(elemento._id)
+  //         .toLowerCase()
+  //         .includes(filteringByIdValue.toLowerCase());
+  //     })
+  //   );
+  // }, [filteringByIdValue, products]);
 
-  useEffect(() => {
-    setFiltro(
-      products.filter((elemento) => {
-        return JSON.stringify(elemento.name)
-          .toLowerCase()
-          .includes(filteringByNameValue.toLowerCase());
-      })
-    );
-  }, [filteringByNameValue, products]);
+  // useEffect(() => {
+  //   setFiltro(
+  //     products.filter((elemento) => {
+  //       return JSON.stringify(elemento.name)
+  //         .toLowerCase()
+  //         .includes(filteringByNameValue.toLowerCase());
+  //     })
+  //   );
+  // }, [filteringByNameValue, products]);
 
   return (
     <div className="center-content mt-1">

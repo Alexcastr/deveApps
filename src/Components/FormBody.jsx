@@ -1,6 +1,5 @@
-//TODO 
-  //AÑADIR CANTIDAD A CADA PRODUCTO INDIVIDUALMENTE
-  //SOLUCIONAR EL .map DE PRODUCTOS EN VENTA
+//TODO
+//AÑADIR CANTIDAD A CADA PRODUCTO INDIVIDUALMENTE
 
 import React, { useState, useEffect, useRef } from "react";
 import ProductInSale from "./ProductInSale";
@@ -23,9 +22,11 @@ const FormBody = () => {
   const [vendedores, setVendedores] = useState([]);
   const [productosEnVenta, setProductosEnVenta] = useState([]);
   const [productoSeleccionado, setProductoSeleccionado] = useState({});
+  const [cantidadProductosEnVenta, setCantidadProductosEnVenta] = useState(0);
+  const [valorTotal, setValorTotal] = useState(0);
 
   useEffect(() => {
-    console.log(productoSeleccionado);
+    console.log("producto seleccionado ", productoSeleccionado);
   }, [productoSeleccionado]);
 
   useEffect(() => {
@@ -65,8 +66,10 @@ const FormBody = () => {
       estado: nuevaVenta.estado,
       vendedor: vendedores.filter((el) => el._id === nuevaVenta.vendedor),
       productos: productosEnVenta,
-      cantidadProducto: nuevaVenta.cantidadProducto,
-      fecha: nuevaVenta.fecha,
+      cliente: nuevaVenta.nombreCliente,
+      idCliente: nuevaVenta.idCliente,
+      fecha: fechaActual,
+      valorTotal: valorTotal,
     };
 
     await addSale(
@@ -135,6 +138,10 @@ const FormBody = () => {
               <input
                 name="cantidadProducto"
                 type="number"
+                value={cantidadProductosEnVenta}
+                onChange={(e) => {
+                  setCantidadProductosEnVenta(e.target.value);
+                }}
                 min="1"
                 max="99"
                 className="InputForm"
@@ -144,10 +151,18 @@ const FormBody = () => {
             <button
               type="button"
               onClick={(e) => {
-                setProductosEnVenta([
-                  ...productosEnVenta,
-                  productoSeleccionado,
-                ]);
+                setValorTotal(
+                  valorTotal +
+                    parseInt(cantidadProductosEnVenta) *
+                      parseInt(productoSeleccionado[0].value)
+                );
+                const productoAnadido = {
+                  id: productoSeleccionado[0]._id,
+                  name: productoSeleccionado[0].name,
+                  value: productoSeleccionado[0].value,
+                  amount: cantidadProductosEnVenta,
+                };
+                setProductosEnVenta([...productosEnVenta, productoAnadido]);
                 console.log(productosEnVenta);
               }}
               className="addProductInSale IconAgregar"
@@ -203,6 +218,7 @@ const FormBody = () => {
         </div>
         <div className="DivForm3">
           <h1>Productos en la venta actual</h1>
+          <h4>Valor total: $ {valorTotal}</h4>
           <div className="productsInSaleDiv">
             <li className="productsInSale">
               <h4 className="productsInSaleItem1">ID</h4>
@@ -211,7 +227,15 @@ const FormBody = () => {
               <h4 className="productsInSaleItem2">PRECIO</h4>
             </li>
             {productosEnVenta.map((item) => {
-              return <ProductInSale id={item._id} name={item.name} price={item.value} />;
+              return (
+                <ProductInSale
+                  id={item.id}
+                  name={item.name}
+                  value={item.value}
+                  amount={item.amount}
+                  key={nanoid()}
+                />
+              );
             })}
           </div>
           <button className="addSaleButton">Añadir</button>
