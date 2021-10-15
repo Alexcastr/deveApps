@@ -42,121 +42,126 @@ const Bodyproduct = () => {
     }
   }, [ejecutarConsulta]);
 
-  useEffect(() => {
-    setFiltro(
-      products.filter((elemento) => {
-        return JSON.stringify(elemento._id)
-          .toLowerCase()
-          .includes(filteringByIdValue.toLowerCase());
-      })
-    );
-  }, [filteringByIdValue, products]);
+  // useEffect(() => {
+  //   setFiltro(
+  //     products.filter((elemento) => {
+  //       return JSON.stringify(elemento._id)
+  //         .toLowerCase()
+  //         .includes(filteringByIdValue.toLowerCase());
+  //     })
+  //   );
+  // }, [filteringByIdValue, products]);
 
-  useEffect(() => {
-    setFiltro(
-      products.filter((elemento) => {
-        return JSON.stringify(elemento.name)
-          .toLowerCase()
-          .includes(filteringByNameValue.toLowerCase());
-      })
-    );
-  }, [filteringByNameValue, products]);
+  // useEffect(() => {
+  //   setFiltro(
+  //     products.filter((elemento) => {
+  //       return JSON.stringify(elemento.name)
+  //         .toLowerCase()
+  //         .includes(filteringByNameValue.toLowerCase());
+  //     })
+  //   );
+  // }, [filteringByNameValue, products]);
 
   return (
-    <body className="center-content mt-1">
+    <div className="center-content mt-1">
       <div className="table">
         {loading ? (
           <ReactLoading type="cylon" color="blue" height={667} width={375} />
         ) : (
           <table className="ml-auto mr-auto">
-            <tr className="head-body">
-              <th>
-                {!filteringId ? (
-                  <>
-                    ID
-                    <button
-                      onClick={() => {
-                        setFilteringId(true);
-                      }}
-                      className="tableSearch"
-                    >
-                      <i className="bi bi-search"></i>
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <input
-                      type="text"
-                      value={filteringByIdValue}
-                      onChange={(e) => {
-                        setFilteringByIdValue(e.target.value);
-                      }}
-                      placeholder="ID del producto"
-                    />
-                    <button
-                      onClick={() => {
-                        setFilteringId(false);
-                        setFilteringByIdValue("");
-                      }}
-                      className="tableSearch"
-                    >
-                      <i className="bi bi-x-circle-fill"></i>
-                    </button>
-                  </>
-                )}
-              </th>
-              <th>
-                {!filteringName ? (
-                  <>
-                    Nombre
-                    <button
-                      onClick={() => {
-                        setFilteringName(true);
-                      }}
-                      className="tableSearch"
-                    >
-                      <i className="bi bi-search"></i>
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <input
-                      type="text"
-                      value={filteringByNameValue}
-                      onChange={(e) => {
-                        setFilteringByNameValue(e.target.value);
-                      }}
-                      placeholder="Nombre del producto"
-                    />
-                    <button
-                      onClick={() => {
-                        setFilteringName(false);
-                        setFilteringByNameValue("");
-                      }}
-                      className="tableSearch"
-                    >
-                      <i className="bi bi-x-circle-fill"></i>
-                    </button>
-                  </>
-                )}
-              </th>
-              <th>Valor unitario</th>
-              <th>Estado</th>
-              <th>Acciones</th>
-            </tr>
-            <tr>
-              <td colSpan="10">
-                <Link to="/productos/agregarproducto" className="tableAddLink">
-                  <i class="bi bi-plus-circle-fill tableAddIcon"></i>
-                </Link>
-              </td>
-            </tr>
+            <thead>
+              <tr className="head-body">
+                <th>
+                  {!filteringId ? (
+                    <>
+                      ID
+                      <button
+                        onClick={() => {
+                          setFilteringId(true);
+                        }}
+                        className="tableSearch"
+                      >
+                        <i className="bi bi-search"></i>
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <input
+                        type="text"
+                        value={filteringByIdValue}
+                        onChange={(e) => {
+                          setFilteringByIdValue(e.target.value);
+                        }}
+                        placeholder="ID del producto"
+                      />
+                      <button
+                        onClick={() => {
+                          setFilteringId(false);
+                          setFilteringByIdValue("");
+                        }}
+                        className="tableSearch"
+                      >
+                        <i className="bi bi-x-circle-fill"></i>
+                      </button>
+                    </>
+                  )}
+                </th>
+                <th>
+                  {!filteringName ? (
+                    <>
+                      Nombre
+                      <button
+                        onClick={() => {
+                          setFilteringName(true);
+                        }}
+                        className="tableSearch"
+                      >
+                        <i className="bi bi-search"></i>
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <input
+                        type="text"
+                        value={filteringByNameValue}
+                        onChange={(e) => {
+                          setFilteringByNameValue(e.target.value);
+                        }}
+                        placeholder="Nombre del producto"
+                      />
+                      <button
+                        onClick={() => {
+                          setFilteringName(false);
+                          setFilteringByNameValue("");
+                        }}
+                        className="tableSearch"
+                      >
+                        <i className="bi bi-x-circle-fill"></i>
+                      </button>
+                    </>
+                  )}
+                </th>
+                <th>Valor unitario</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
             <tbody>
+              <tr>
+                <td colSpan="10">
+                  <Link
+                    to="/productos/agregarproducto"
+                    className="tableAddLink"
+                  >
+                    <i class="bi bi-plus-circle-fill tableAddIcon"></i>
+                  </Link>
+                </td>
+              </tr>
               {filtro.map((product) => {
                 return (
                   <ProductRow
                     setEjecutarConsulta={setEjecutarConsulta}
-                    key={nanoid}
+                    key={product._id}
                     product={product}
                   />
                 );
@@ -166,7 +171,7 @@ const Bodyproduct = () => {
         )}
         <ToastContainer position="bottom-center" autoClose={5000} />
       </div>
-    </body>
+    </div>
   );
 };
 

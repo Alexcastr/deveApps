@@ -1,46 +1,113 @@
 import React, { useState, useEffect } from "react";
 import Dialog from "@mui/material/Dialog";
 import Tooltip from "@mui/material/Tooltip";
+import "react-toastify/dist/ReactToastify.css";
+import { getUsers } from "utils/apiUsers";
+import { updateSale, deleteSale } from "utils/apiSales";
+import { nanoid } from "nanoid";
+import { toast } from "react-toastify";
 
-const Sale = ({ datos }) => {
+const Sale = ({ setEjecutarConsulta, datos }) => {
   const [showDialog, setShowDialog] = useState(false);
   const [editMode, setEditMode] = useState(false);
+  const [vendedores, setVendedores] = useState([]);
+  const [nuevaVenta, setNuevaVenta] = useState({
+    estado: datos.estado,
+    cantidadProducto: datos.cantidadProducto,
+    vendedor: datos.vendedor,
+    productos: datos.productos,
+    cliente: datos.cliente,
+    idCliente: datos.idCliente,
+    fecha: datos.fecha,
+    valorTotal: datos.valorTotal,
+  });
 
   useEffect(() => {
-    console.log("cambiado");
-  }, [showDialog]);
+    console.log("Datos: ", datos);
+  }, []);
+  useEffect(() => {
+    getUsers(
+      (response) => {
+        setVendedores(response.data);
+        setEjecutarConsulta(false);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }, []);
+
+  const DeleteSale = async () => {
+    await deleteSale(
+      datos._id,
+      (response) => {
+        console.log(response.data);
+        setShowDialog(false);
+        setEjecutarConsulta(true);
+        toast.success("Venta eliminada con éxito");
+      },
+      (error) => {
+        console.error(error);
+        toast.error("Error eliminando la venta");
+      }
+    );
+  };
+
+  const UpdateSale = async () => {
+    await updateSale(
+      datos._id,
+      nuevaVenta,
+      (response) => {
+        console.log(response.data);
+        toast.success("Venta actualizada con éxito");
+        setEditMode(false);
+        setEjecutarConsulta(true);
+      },
+      (error) => {
+        console.error(error);
+        toast.error("Error actualizando la usuario");
+      }
+    );
+  };
+
+  const getSelectedState = () => {
+    const combo = document.getElementById("stateList");
+    const selected = combo.options[combo.selectedIndex].text;
+    setNuevaVenta({ ...nuevaVenta, estado: selected });
+    return nuevaVenta;
+  };
 
   return !editMode ? (
     <>
       <tr className="tablerow">
-        <td>{datos.ID}</td>
-        <td>{datos.Price}</td>
+        <td>{datos._id.slice(20)}</td>
+        <td>&#36;{datos.valorTotal}</td>
         <td>
           <ul className="productList">
-            {datos.ProductIds.map((item) => {
-              return <li key={item}>{item}</li>;
+            {datos.productos.map((item) => {
+              return <li key={nanoid()}>{item.id.slice(20)}</li>;
             })}
           </ul>
         </td>
         <td>
           <ul className="productList">
-            {datos.ProductAmounts.map((item) => {
-              return <li key={item}>{item}</li>;
+            {datos.productos.map((item) => {
+              return <li key={nanoid()}>{item.amount}</li>;
             })}
           </ul>
         </td>
         <td>
           <ul className="productList">
-            {datos.ProductSinglePrice.map((item) => {
-              return <li key={item}>{item}</li>;
+            {datos.productos.map((item) => {
+              return <li key={nanoid()}>&#36;{item.value}</li>;
             })}
           </ul>
         </td>
-        <td>{datos.Date}</td>
-        <td>{datos.ClientId}</td>
-        <td>{datos.Client}</td>
-        <td>{datos.State}</td>
-        <td>{datos.Seller}</td>
+        <td>{datos.fecha}</td>
+        <td>{datos.idCliente}</td>
+        <td>{datos.cliente}</td>
+        <td>{datos.estado}</td>
+        <td>{datos.vendedor[0].name}</td>
         <td>
           <div className="iconActions">
             <Tooltip title="Editar producto" arrow>
@@ -68,7 +135,7 @@ const Sale = ({ datos }) => {
           <div className="deleteSaleDialogButtonsDiv">
             <button
               onClick={() => {
-                setShowDialog(false);
+                DeleteSale();
               }}
               className="confirmSaleDelete"
             >
@@ -87,32 +154,30 @@ const Sale = ({ datos }) => {
     </>
   ) : (
     <tr className="tablerow">
-      <td>{datos.ID}</td>
-      <td>{datos.Price}</td>
+      <td>{datos._id.slice(20)}</td>
+      <td>{datos.valorTotal}</td>
       <td>
         <ul className="productList">
-          {datos.ProductIds.map((item) => {
-            return <li key={item}>{item}</li>;
+          {datos.productos.map((item) => {
+            return <li key={nanoid()}>{item.id.slice(20)}</li>;
           })}
         </ul>
       </td>
       <td>
         <ul className="productList">
-          {datos.ProductAmounts.map((item) => {
-            return <li key={item}>{item}</li>;
+          {datos.productos.map((item) => {
+            return <li key={nanoid()}>{item.amount}</li>;
           })}
         </ul>
       </td>
       <td>
         <ul className="productList">
-          {datos.ProductSinglePrice.map((item) => {
-            return <li key={item}>{item}</li>;
+          {datos.productos.map((item) => {
+            return <li key={nanoid()}>&#36;{item.value}</li>;
           })}
         </ul>
       </td>
-      <td>
-        <input type="date" />
-      </td>
+      <td>{datos.fecha}</td>
       <td>
         <input
           placeholder="ID del cliente"
@@ -120,6 +185,10 @@ const Sale = ({ datos }) => {
           name="clientIdInput"
           id="clientIdInput"
           className="editInput"
+          value={nuevaVenta.idCliente}
+          onChange={(e) => {
+            setNuevaVenta({ ...nuevaVenta, idCliente: e.target.value });
+          }}
         />
       </td>
       <td>
@@ -128,30 +197,31 @@ const Sale = ({ datos }) => {
           type="text"
           name="clientInput"
           id="clientInput"
+          value={nuevaVenta.cliente}
+          onChange={(e) => {
+            setNuevaVenta({ ...nuevaVenta, cliente: e.target.value });
+          }}
         />
       </td>
       <td>
-        <select>
+        <select
+          id="stateList"
+          name="stateList"
+          onChange={() => getSelectedState()}
+        >
           <option disabled>Seleccionar</option>
           <option>En proceso</option>
           <option>En Camino</option>
           <option>Cancelada</option>
         </select>
       </td>
-      <td>
-        <input
-          placeholder="Nombre del Vendedor"
-          type="text"
-          name="sellerNameInput"
-          id="sellerNameInput"
-        />
-      </td>
+      <td>{datos.vendedor[0].name}</td>
       <td>
         <div className="iconActions">
           <Tooltip title="Confirmar edición" arrow>
             <button
               onClick={() => {
-                setEditMode(!editMode);
+                UpdateSale();
               }}
               className="confirmButton"
             >
