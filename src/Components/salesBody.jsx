@@ -1,10 +1,6 @@
-//TODO
-//SOLUCIONAR EL .map
-
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Sale from "./Sale";
-import "react-toastify/dist/ReactToastify.css";
 import { nanoid } from "nanoid";
 import { ToastContainer } from "react-toastify";
 import { getSales } from "utils/apiSales";
@@ -16,33 +12,14 @@ const SalesBody = () => {
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
   const [loading, setLoading] = useState(false);
 
-  //Filtros
   const [filteringId, setFilteringId] = useState(false);
   const [filteringClientId, setFilteringClientId] = useState(false);
   const [filteringClient, setFilteringClient] = useState(false);
+
+  //Filtros
   const [filteringByIdValue, setFilteringByIdValue] = useState("");
   const [filteringByClientIdValue, setFilteringByClientIdValue] = useState("");
   const [filteringClientValue, setFilteringClientValue] = useState("");
-
-  // useEffect(() => {
-  //   setFiltro(
-  //     sales.filter((elemento) => {
-  //       return JSON.stringify(elemento._id)
-  //         .toLowerCase()
-  //         .includes(filteringByIdValue.toLowerCase());
-  //     })
-  //   );
-  // }, [filteringByIdValue, sales]);
-
-  // useEffect(() => {
-  //   setFiltro(
-  //     sales.filter((elemento) => {
-  //       return JSON.stringify(elemento.ClientId)
-  //         .toLowerCase()
-  //         .includes(filteringByClientIdValue.toLowerCase());
-  //     })
-  //   );
-  // }, [filteringByClientIdValue, sales]);
 
   useEffect(() => {
     setFiltro(sales);
@@ -67,8 +44,37 @@ const SalesBody = () => {
     if (ejecutarConsulta) {
       fetchSales();
     }
-    console.log("ventas: ", sales);
   }, [ejecutarConsulta]);
+
+  useEffect(() => {
+    setFiltro(
+      sales.filter((elemento) => {
+        return JSON.stringify(elemento._id)
+          .toLowerCase()
+          .includes(filteringByIdValue.toLowerCase());
+      })
+    );
+  }, [filteringByIdValue, sales]);
+
+  useEffect(() => {
+    setFiltro(
+      sales.filter((elemento) => {
+        return JSON.stringify(elemento.idCliente)
+          .toLowerCase()
+          .includes(filteringByClientIdValue.toLowerCase());
+      })
+    );
+  }, [filteringByClientIdValue, sales]);
+
+  useEffect(() => {
+    setFiltro(
+      sales.filter((elemento) => {
+        return JSON.stringify(elemento.cliente)
+          .toLowerCase()
+          .includes(filteringClientValue.toLowerCase());
+      })
+    );
+  }, [filteringClientValue, sales]);
 
   return (
     <div className="salesTable">
@@ -130,6 +136,9 @@ const SalesBody = () => {
                       <input
                         type="number"
                         min="1"
+                        onChange={(e) => {
+                          setFilteringByClientIdValue(e.target.value);
+                        }}
                         placeholder="Id del cliente"
                       />
                       <button
@@ -154,7 +163,13 @@ const SalesBody = () => {
                     </>
                   ) : (
                     <>
-                      <input type="text" placeholder="Nombre del cliente" />
+                      <input
+                        type="text"
+                        onChange={(e) => {
+                          setFilteringClientValue(e.target.value);
+                        }}
+                        placeholder="Nombre del cliente"
+                      />
                       <button
                         onClick={() => setFilteringClient(false)}
                         className="tableSearch"
@@ -177,7 +192,7 @@ const SalesBody = () => {
                   </Link>
                 </td>
               </tr>
-              {sales.map((item) => {
+              {filtro.map((item) => {
                 return <Sale key={nanoid()} datos={item} />;
               })}
             </tbody>

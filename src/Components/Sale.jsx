@@ -34,7 +34,7 @@ const Sale = ({ datos }) => {
           <ul className="productList">
             {datos.productos.map((item) => {
               console.log(item);
-              return <li key={nanoid()}>{item.value}</li>;
+              return <li key={nanoid()}>${item.value}</li>;
             })}
           </ul>
         </td>

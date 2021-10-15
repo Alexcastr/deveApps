@@ -150,7 +150,7 @@ const Bodyuser = () => {
               {filtro.map((user) => {
                 return (
                   <User
-                    key={user._id}
+                    key={nanoid()}
                     user={user}
                     setExecuteQuery={setExecuteQuery}
                   />

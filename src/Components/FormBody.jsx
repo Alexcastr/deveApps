@@ -212,7 +212,13 @@ const FormBody = () => {
             </label>
             <label className="labelForm2" htmlFor="IDCliente">
               ID Cliente
-              <input name="idCliente" className="InputForm" required />
+              <input
+                name="idCliente"
+                type="number"
+                className="InputForm"
+                min="1"
+                required
+              />
             </label>
           </div>
         </div>
