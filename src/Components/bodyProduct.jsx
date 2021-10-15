@@ -147,13 +147,16 @@ const Bodyproduct = () => {
               </tr>
             </thead>
             <tbody>
-            <tr>
-              <td colSpan="10">
-                <Link to="/productos/agregarproducto" className="tableAddLink">
-                  <i class="bi bi-plus-circle-fill tableAddIcon"></i>
-                </Link>
-              </td>
-            </tr>
+              <tr>
+                <td colSpan="10">
+                  <Link
+                    to="/productos/agregarproducto"
+                    className="tableAddLink"
+                  >
+                    <i class="bi bi-plus-circle-fill tableAddIcon"></i>
+                  </Link>
+                </td>
+              </tr>
               {filtro.map((product) => {
                 return (
                   <ProductRow

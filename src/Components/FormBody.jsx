@@ -76,10 +76,10 @@ const FormBody = () => {
       infoConsolidada,
       (response) => {
         console.log(response.data);
-        toast.success("Producto agregado con éxito");
+        toast.success("Venta agregada con éxito");
       },
       (error) => {
-        toast.error("Error agregando el producto");
+        toast.error("Error agregando la venta");
         console.error(error);
       }
     );
@@ -163,7 +163,6 @@ const FormBody = () => {
                   amount: cantidadProductosEnVenta,
                 };
                 setProductosEnVenta([...productosEnVenta, productoAnadido]);
-                console.log(productosEnVenta);
               }}
               className="addProductInSale IconAgregar"
             >
@@ -224,7 +223,7 @@ const FormBody = () => {
         </div>
         <div className="DivForm3">
           <h1>Productos en la venta actual</h1>
-          <h4>Valor total: $ {valorTotal}</h4>
+          <h4>Valor total: &#36;{valorTotal}</h4>
           <div className="productsInSaleDiv">
             <li className="productsInSale">
               <h4 className="productsInSaleItem1">ID</h4>

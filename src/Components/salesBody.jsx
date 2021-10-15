@@ -15,11 +15,13 @@ const SalesBody = () => {
   const [filteringId, setFilteringId] = useState(false);
   const [filteringClientId, setFilteringClientId] = useState(false);
   const [filteringClient, setFilteringClient] = useState(false);
+  const [filteringSeller, setFilteringSeller] = useState(false);
 
   //Filtros
   const [filteringByIdValue, setFilteringByIdValue] = useState("");
   const [filteringByClientIdValue, setFilteringByClientIdValue] = useState("");
   const [filteringClientValue, setFilteringClientValue] = useState("");
+  const [filteringSellerValue, setFilteringSellerValue] = useState("");
 
   useEffect(() => {
     setFiltro(sales);
@@ -75,6 +77,16 @@ const SalesBody = () => {
       })
     );
   }, [filteringClientValue, sales]);
+
+  useEffect(() => {
+    setFiltro(
+      sales.filter((elemento) => {
+        return JSON.stringify(elemento.vendedor)
+          .toLowerCase()
+          .includes(filteringSellerValue.toLowerCase());
+      })
+    );
+  }, [filteringSellerValue, sales]);
 
   return (
     <div className="salesTable">
@@ -180,7 +192,35 @@ const SalesBody = () => {
                   )}
                 </th>
                 <th>Estado</th>
-                <th>Vendedor</th>
+                <th>
+                  {!filteringSeller ? (
+                    <>
+                      Vendedor
+                      <button
+                        className="tableSearch"
+                        onClick={() => setFilteringSeller(true)}
+                      >
+                        <i className="bi bi-search"></i>
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <input
+                        type="text"
+                        onChange={(e) => {
+                          setFilteringSellerValue(e.target.value);
+                        }}
+                        placeholder="Nombre del vendedor"
+                      />
+                      <button
+                        onClick={() => setFilteringSeller(false)}
+                        className="tableSearch"
+                      >
+                        <i className="bi bi-x-circle-fill"></i>
+                      </button>
+                    </>
+                  )}
+                </th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -193,12 +233,19 @@ const SalesBody = () => {
                 </td>
               </tr>
               {filtro.map((item) => {
-                return <Sale key={nanoid()} datos={item} />;
+                return (
+                  <Sale
+                    key={nanoid()}
+                    datos={item}
+                    setEjecutarConsulta={setEjecutarConsulta}
+                  />
+                );
               })}
             </tbody>
           </table>
         )}
       </div>
+      <ToastContainer position="bottom-center" autoClose={5000} />
     </div>
   );
 };
