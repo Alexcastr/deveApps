@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Dialog from "@mui/material/Dialog";
 import Tooltip from "@mui/material/Tooltip";
+import { nanoid } from "nanoid";
 
 const Sale = ({ datos }) => {
   const [showDialog, setShowDialog] = useState(false);
@@ -13,26 +14,26 @@ const Sale = ({ datos }) => {
   return !editMode ? (
     <>
       <tr className="tablerow">
-        <td>{datos.ID}</td>
-        <td>{datos.Price}</td>
+        <td>{datos._id}</td>
+        <td>{datos.Value}</td>
         <td>
           <ul className="productList">
             {datos.ProductIds.map((item) => {
-              return <li key={item}>{item}</li>;
+              return <li key={nanoid()}>{item}</li>;
             })}
           </ul>
         </td>
         <td>
           <ul className="productList">
             {datos.ProductAmounts.map((item) => {
-              return <li key={item}>{item}</li>;
+              return <li key={nanoid()}>{item}</li>;
             })}
           </ul>
         </td>
         <td>
           <ul className="productList">
             {datos.ProductSinglePrice.map((item) => {
-              return <li key={item}>{item}</li>;
+              return <li key={nanoid()}>{item}</li>;
             })}
           </ul>
         </td>
@@ -92,21 +93,21 @@ const Sale = ({ datos }) => {
       <td>
         <ul className="productList">
           {datos.ProductIds.map((item) => {
-            return <li key={item}>{item}</li>;
+            return <li key={nanoid()}>{item}</li>;
           })}
         </ul>
       </td>
       <td>
         <ul className="productList">
           {datos.ProductAmounts.map((item) => {
-            return <li key={item}>{item}</li>;
+            return <li key={nanoid()}>{item}</li>;
           })}
         </ul>
       </td>
       <td>
         <ul className="productList">
           {datos.ProductSinglePrice.map((item) => {
-            return <li key={item}>{item}</li>;
+            return <li key={nanoid()}>{item}</li>;
           })}
         </ul>
       </td>

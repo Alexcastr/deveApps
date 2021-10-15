@@ -11,6 +11,8 @@ export const getUsers = async (successCallback, errorCallback) => {
   await axios.request(options).then(successCallback).catch(errorCallback);
 };
 
+
+
 export const updateUser = async (id, data, successCallback, errorCallback) => {
   const options = {
     method: "PATCH",

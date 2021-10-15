@@ -61,7 +61,7 @@ const Bodyuser = () => {
   }, [filteringByNameValue, users]);
 
   return (
-    <body className="center-content mt-1">
+    <div className="center-content mt-1">
       <div className="table">
         {loading ? (
           <ReactLoading type="cylon" color="blue" height={667} width={375} />
@@ -150,7 +150,7 @@ const Bodyuser = () => {
               {filtro.map((user) => {
                 return (
                   <User
-                    key={nanoid}
+                    key={user._id}
                     user={user}
                     setExecuteQuery={setExecuteQuery}
                   />
@@ -161,7 +161,7 @@ const Bodyuser = () => {
         )}
         <ToastContainer position="bottom-center" autoClose={5000} />
       </div>
-    </body>
+    </div>
   );
 };
 

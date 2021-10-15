@@ -1,11 +1,14 @@
-import React from "react";
+//TODO 
+  //AÑADIR CANTIDAD A CADA PRODUCTO INDIVIDUALMENTE
+  //SOLUCIONAR EL .map DE PRODUCTOS EN VENTA
+
+import React, { useState, useEffect, useRef } from "react";
 import ProductInSale from "./ProductInSale";
-const productsInSale = [
-  { id: 200, name: "producto1", amount: 200, singlePrice: 2000 },
-  { id: 200, name: "producto1", amount: 200, singlePrice: 2000 },
-  { id: 200, name: "producto1", amount: 200, singlePrice: 2000 },
-  { id: 200, name: "producto1", amount: 200, singlePrice: 2000 },
-];
+import { getUsers } from "utils/apiUsers";
+import { getProducts } from "utils/apiProduct";
+import { nanoid } from "nanoid";
+import { ToastContainer, toast } from "react-toastify";
+import { addSale } from "utils/apiSales";
 
 var date = new Date();
 var dd = date.getDate();
@@ -15,21 +18,88 @@ console.log(date);
 var fechaActual = dd + "/" + mm + "/" + yy;
 
 const FormBody = () => {
+  const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
+  const [productos, setProductos] = useState([]);
+  const [vendedores, setVendedores] = useState([]);
+  const [productosEnVenta, setProductosEnVenta] = useState([]);
+  const [productoSeleccionado, setProductoSeleccionado] = useState({});
+
+  useEffect(() => {
+    console.log(productoSeleccionado);
+  }, [productoSeleccionado]);
+
+  useEffect(() => {
+    getProducts(
+      (response) => {
+        setProductos(response.data);
+        setEjecutarConsulta(false);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+    getUsers(
+      (response) => {
+        setVendedores(response.data);
+        setEjecutarConsulta(false);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }, []);
+
+  const form = useRef(null);
+  const nuevaVenta = {};
+
+  const submitForm = async (e) => {
+    e.preventDefault();
+    const fd = new FormData(form.current);
+
+    fd.forEach((value, key) => {
+      console.log(value, key);
+      nuevaVenta[key] = value;
+    });
+
+    const infoConsolidada = {
+      estado: nuevaVenta.estado,
+      vendedor: vendedores.filter((el) => el._id === nuevaVenta.vendedor),
+      productos: productosEnVenta,
+      cantidadProducto: nuevaVenta.cantidadProducto,
+      fecha: nuevaVenta.fecha,
+    };
+
+    await addSale(
+      infoConsolidada,
+      (response) => {
+        console.log(response.data);
+        toast.success("Producto agregado con éxito");
+      },
+      (error) => {
+        toast.error("Error agregando el producto");
+        console.error(error);
+      }
+    );
+  };
+
   return (
     <div className="FormVenta">
-      <form>
+      <ToastContainer />
+      <form ref={form} onSubmit={submitForm}>
         <div className="Div1">
           <div className="DivForm1">
-            <label className="labelForm" htmlFor="ID">
-               Vendedor
-              <select id="SeleccionarVendedor" className="InputForm" required>
-              <option value="1" selected disabled>Seleccionar</option>
-              </select>
-            </label>
             <label className="labelForm" htmlFor="Estado">
               Estado
-              <select id="EstadoVenta" className="InputForm" required>
-                <option value="-1" disabled selected>Seleccionar</option>
+              <select
+                name="estado"
+                id="EstadoVenta"
+                className="InputForm"
+                defaultValue="-1"
+                required
+              >
+                <option value="-1" disabled>
+                  Seleccionar
+                </option>
                 <option>En proceso</option>
                 <option>Entregada</option>
                 <option>Cancelada</option>
@@ -37,20 +107,83 @@ const FormBody = () => {
             </label>
             <label className="labelForm" htmlFor="IDProducto">
               Producto
-              <select id="SeleccionarProducto" className="InputForm" required>
-                <option value="0" disabled selected>Seleccionar</option>
+              <select
+                name="producto"
+                id="SeleccionarProducto"
+                className="InputForm"
+                required
+                onChange={(e) => {
+                  setProductoSeleccionado(
+                    productos.filter((el) => el._id === e.target.value)
+                  );
+                }}
+              >
+                <option selected disabled>
+                  Seleccionar
+                </option>
+                {productos.map((p) => {
+                  return (
+                    <option value={p._id} key={p._id}>
+                      {p.name}
+                    </option>
+                  );
+                })}
               </select>
             </label>
             <label className="labelForm" htmlFor="Cantidad">
               Cantidad
-              <input type="number" min="0" max="99" className="InputForm" required />
+              <input
+                name="cantidadProducto"
+                type="number"
+                min="1"
+                max="99"
+                className="InputForm"
+                required
+              />
             </label>
-            
+            <button
+              type="button"
+              onClick={(e) => {
+                setProductosEnVenta([
+                  ...productosEnVenta,
+                  productoSeleccionado,
+                ]);
+                console.log(productosEnVenta);
+              }}
+              className="addProductInSale IconAgregar"
+            >
+              <i className="bi bi-plus-circle-fill"></i>
+            </button>
+            <h2 className="addProductInSaleLabel">Añadir Producto</h2>
           </div>
           <div className="DivForm2">
+            <label className="labelForm" htmlFor="ID">
+              Vendedor
+              <select
+                name="vendedor"
+                id="SeleccionarVendedor"
+                className="InputForm"
+                defaultValue="-1"
+                required
+              >
+                <option value="-1" disabled>
+                  Seleccionar
+                </option>
+                {vendedores.map((v) => {
+                  if (v.role.toLowerCase() === "vendedor") {
+                    return (
+                      <option value={v._id} key={nanoid()}>
+                        {v.name}
+                      </option>
+                    );
+                  }
+                })}
+              </select>
+            </label>
             <label className="labelForm2" htmlFor="Fecha">
               Fecha
               <input
+                name="fecha"
                 type="text"
                 value={fechaActual}
                 disabled
@@ -60,16 +193,12 @@ const FormBody = () => {
             </label>
             <label className="labelForm2" htmlFor="Cliente">
               Cliente
-              <input className="InputForm" required />
+              <input name="nombreCliente" className="InputForm" required />
             </label>
             <label className="labelForm2" htmlFor="IDCliente">
               ID Cliente
-              <input className="InputForm" required />
+              <input name="idCliente" className="InputForm" required />
             </label>
-            <button className="addProductInSale IconAgregar">
-              <i className="bi bi-plus-circle-fill"></i>
-            </button>
-            <h2 className="addProductInSaleLabel">Añadir Producto</h2>
           </div>
         </div>
         <div className="DivForm3">
@@ -81,21 +210,11 @@ const FormBody = () => {
               <h4 className="productsInSaleItem1">CANTIDAD</h4>
               <h4 className="productsInSaleItem2">PRECIO</h4>
             </li>
-            {productsInSale.map((item) => {
-              return (
-                <ProductInSale
-                  key={item.id}
-                  id={item.id}
-                  name={item.name}
-                  amount={item.amount}
-                  singlePrice={item.singlePrice}
-                />
-              );
+            {productosEnVenta.map((item) => {
+              return <ProductInSale id={item._id} name={item.name} price={item.value} />;
             })}
           </div>
-          <button type="submit" className="addSaleButton">
-            Añadir
-          </button>
+          <button className="addSaleButton">Añadir</button>
         </div>
       </form>
     </div>
