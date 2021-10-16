@@ -46,20 +46,6 @@ const User = ({ user, setExecuteQuery }) => {
     );
   };
 
-  const getSelectedState = () => {
-    const combo = document.getElementById("state");
-    const selected = combo.options[combo.selectedIndex].text;
-    setInfoNewUser({ ...infoNewUser, state: selected });
-    return infoNewUser;
-  };
-
-  const getSelectedRole = () => {
-    const combo = document.getElementById("role");
-    const selected = combo.options[combo.selectedIndex].text;
-    setInfoNewUser({ ...infoNewUser, role: selected });
-    return infoNewUser;
-  };
-
   return !isEditing ? (
     <>
       <tr className="tablerow">
@@ -126,7 +112,12 @@ const User = ({ user, setExecuteQuery }) => {
         />
       </td>
       <td>
-        <select name="state" id="state" onChange={() => getSelectedState()}>
+        <select
+          name="state"
+          onChange={(e) =>
+            setInfoNewUser({ ...infoNewUser, state: e.target.value })
+          }
+        >
           <option selected disabled>
             seleccione una opción
           </option>
@@ -136,12 +127,18 @@ const User = ({ user, setExecuteQuery }) => {
         </select>
       </td>
       <td>
-        <select name="role" id="role" onChange={() => getSelectedRole()}>
-        <option selected disabled>
+        <select
+          name="role"
+          onChange={(e) =>
+            setInfoNewUser({ ...infoNewUser, role: e.target.value })
+          }
+        >
+          <option selected disabled>
             seleccione una opción
           </option>
           <option value="Administrador">Administrador</option>
           <option value="Vendedor">Vendedor</option>
+          <option value="Sin rol">Sin rol</option>
         </select>
       </td>
       <td>

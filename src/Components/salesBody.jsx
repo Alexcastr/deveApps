@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import PrivateComponent from "./PrivateComponent";
 import Sale from "./Sale";
 import { nanoid } from "nanoid";
 import { ToastContainer } from "react-toastify";
@@ -237,6 +238,7 @@ const SalesBody = () => {
               </tr>
             </thead>
             <tbody>
+              <PrivateComponent roleList={['Administrador', 'Vendedor']}>
               <tr>
                 <td colSpan="11">
                   <Link to="/ventas/agregarventa" className="tableAddLink">
@@ -244,6 +246,7 @@ const SalesBody = () => {
                   </Link>
                 </td>
               </tr>
+              </PrivateComponent>
               {filtro.map((item) => {
                 return (
                   <Sale
