@@ -41,7 +41,14 @@ function App() {
                     <AddSale />
                   </Route>
                   <Route path="/ventas">
-                    <PrivateR roleList={["Vendedor", "Administrador"]}>
+                    <PrivateR
+                      roleList={[
+                        "Vendedor",
+                        "Administrador",
+                        "vendedor",
+                        "administrador",
+                      ]}
+                    >
                       <Sales />
                     </PrivateR>
                   </Route>
