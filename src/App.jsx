@@ -35,20 +35,12 @@ function App() {
               <Route path={["/ventas/agregarventa", "/ventas"]}>
                 <Switch>
                   <Route path="/ventas/agregarventa">
-                    <PrivateR
-                      roleList={["Administrador", "Vendedor"]}
-                    ></PrivateR>
-                    <AddSale />
+                    <PrivateR roleList={["Administrador", "Vendedor"]}>
+                      <AddSale />
+                    </PrivateR>
                   </Route>
                   <Route path="/ventas">
-                    <PrivateR
-                      roleList={[
-                        "Vendedor",
-                        "Administrador",
-                        "vendedor",
-                        "administrador",
-                      ]}
-                    >
+                    <PrivateR roleList={["Vendedor", "Administrador"]}>
                       <Sales />
                     </PrivateR>
                   </Route>
