@@ -249,3 +249,11 @@ select:focus {
 .forbidden{
   font-size: xx-large;
 }
+
+.userInfo{
+  color: white;
+}
+
+.userImg{
+  border-radius: 50%;
+}

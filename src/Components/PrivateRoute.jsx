@@ -11,7 +11,7 @@ const PrivateRoute = ({ children }) => {
     isAuthenticated,
     isLoading,
     loginWithRedirect,
-    getAccessTokenSilently,
+    getAccessTokenSilently, logout
   } = useAuth0();
 
   useEffect(() => {
@@ -30,6 +30,8 @@ const PrivateRoute = ({ children }) => {
         (error) => {
           console.error(error);
           setLoadingUserInfo(false);
+          logout({ returnTo: "http://localhost:3000/goto" });
+
         }
       );
     };
