@@ -22,6 +22,7 @@ const FormBody = () => {
   const [vendedores, setVendedores] = useState([]);
   const [productosEnVenta, setProductosEnVenta] = useState([]);
   const [productoSeleccionado, setProductoSeleccionado] = useState({});
+  const [vendedorSeleccionado, setVendedorSeleccionado] = useState("");
   const [cantidadProductosEnVenta, setCantidadProductosEnVenta] = useState(0);
   const [valorTotal, setValorTotal] = useState(0);
 
@@ -34,15 +35,19 @@ const FormBody = () => {
       (response) => {
         setProductos(response.data);
         setEjecutarConsulta(false);
+        console.log("productos: ", productos);
       },
       (error) => {
         console.error(error);
       }
     );
+  }, []);
+  useEffect(() => {
     getUsers(
       (response) => {
         setVendedores(response.data);
         setEjecutarConsulta(false);
+        console.log("vendedores: ", vendedores);
       },
       (error) => {
         console.error(error);
@@ -84,7 +89,6 @@ const FormBody = () => {
       }
     );
   };
-
   return (
     <div className="FormVenta">
       <ToastContainer />
@@ -179,13 +183,22 @@ const FormBody = () => {
                 id="SeleccionarVendedor"
                 className="InputForm"
                 defaultValue=""
+                onChange={(e) => {
+                  setVendedorSeleccionado(e.target.value);
+                }}
+                value={vendedorSeleccionado}
                 required
               >
                 <option value="" disabled>
                   Seleccionar
                 </option>
                 {vendedores.map((v) => {
-                  if (v.role.toLowerCase() === "vendedor") {
+                  console.log("Vendedores: ", vendedores);
+                  if (
+                    v.role.toLowerCase() === "vendedor" &&
+                    v.state.toLowerCase() === "autorizado"
+                  ) {
+                    console.log("Vendedor: ", v);
                     return (
                       <option value={v._id} key={nanoid()}>
                         {v.name}
