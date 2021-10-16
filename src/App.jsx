@@ -19,7 +19,6 @@ import { UserContext } from "context/userContext";
 import PrivateR from "Components/PrivateR";
 
 function App() {
-
   const [userData, setUserData] = useState([]);
 
   return (
@@ -30,7 +29,7 @@ function App() {
       audience="api-autenticacion-deveapps"
     >
       <div className="App">
-        <UserContext.Provider value={{userData, setUserData}}>
+        <UserContext.Provider value={{ userData, setUserData }}>
           <Router>
             <Switch>
               <Route path={["/ventas/agregarventa", "/ventas"]}>
@@ -46,7 +45,9 @@ function App() {
               <Route path={["/productos", "/productos/agregarproducto"]}>
                 <Switch>
                   <Route path="/productos/agregarproducto">
-                    <AddProducts />
+                    <PrivateR roleList={['Administrador']}>
+                      <AddProducts />
+                    </PrivateR>
                   </Route>
                   <Route path="/productos">
                     <Products />
@@ -57,8 +58,8 @@ function App() {
                 <Redirect />
               </Route>
               <Route path="/usuarios">
-                <PrivateR roleList={['Administrador']}>
-                <Users />
+                <PrivateR roleList={["Administrador"]}>
+                  <Users />
                 </PrivateR>
               </Route>
               <Route path="/">
