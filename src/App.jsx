@@ -23,11 +23,11 @@ function App() {
 
   return (
     <Auth0Provider
-    domain="deveapps.us.auth0.com"
-    clientId="bIGQtLlA6nqcsJYJOvQYTUer2QTTOVxj"
-    redirectUri={"http://localhost:3000/goto"}
-    audience='api-autenticacion-deveapps'>
-      
+      domain="deveapps.us.auth0.com"
+      clientId="bIGQtLlA6nqcsJYJOvQYTUer2QTTOVxj"
+      redirectUri={"http://localhost:3000/goto"}
+      audience="api-autenticacion-deveapps"
+    >
       <div className="App">
         <UserContext.Provider value={{ userData, setUserData }}>
           <Router>
@@ -35,22 +35,29 @@ function App() {
               <Route path={["/ventas/agregarventa", "/ventas"]}>
                 <Switch>
                   <Route path="/ventas/agregarventa">
+                    <PrivateR
+                      roleList={["Administrador", "Vendedor"]}
+                    ></PrivateR>
                     <AddSale />
                   </Route>
                   <Route path="/ventas">
-                    <Sales />
+                    <PrivateR roleList={["Vendedor", "Administrador"]}>
+                      <Sales />
+                    </PrivateR>
                   </Route>
                 </Switch>
               </Route>
               <Route path={["/productos", "/productos/agregarproducto"]}>
                 <Switch>
                   <Route path="/productos/agregarproducto">
-                    <PrivateR roleList={['Administrador']}>
+                    <PrivateR roleList={["Administrador"]}>
                       <AddProducts />
                     </PrivateR>
                   </Route>
                   <Route path="/productos">
-                    <Products />
+                    <PrivateR roleList={["Administrador", "Vendedor"]}>
+                      <Products />
+                    </PrivateR>
                   </Route>
                 </Switch>
               </Route>
