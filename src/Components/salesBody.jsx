@@ -119,7 +119,10 @@ const SalesBody = () => {
                         placeholder="Id de la venta"
                       />
                       <button
-                        onClick={() => setFilteringId(false)}
+                        onClick={() => {
+                          setFilteringId(false);
+                          setFilteringByIdValue("");
+                        }}
                         className="tableSearch"
                       >
                         <i className="bi bi-x-circle-fill"></i>
@@ -154,7 +157,10 @@ const SalesBody = () => {
                         placeholder="Id del cliente"
                       />
                       <button
-                        onClick={() => setFilteringClientId(false)}
+                        onClick={() => {
+                          setFilteringClientId(false);
+                          setFilteringByClientIdValue("");
+                        }}
                         className="tableSearch"
                       >
                         <i className="bi bi-x-circle-fill"></i>
@@ -183,7 +189,10 @@ const SalesBody = () => {
                         placeholder="Nombre del cliente"
                       />
                       <button
-                        onClick={() => setFilteringClient(false)}
+                        onClick={() => {
+                          setFilteringClient(false);
+                          setFilteringClientValue("");
+                        }}
                         className="tableSearch"
                       >
                         <i className="bi bi-x-circle-fill"></i>
@@ -213,7 +222,10 @@ const SalesBody = () => {
                         placeholder="Nombre del vendedor"
                       />
                       <button
-                        onClick={() => setFilteringSeller(false)}
+                        onClick={() => {
+                          setFilteringSeller(false);
+                          setFilteringSellerValue("");
+                        }}
                         className="tableSearch"
                       >
                         <i className="bi bi-x-circle-fill"></i>
