@@ -245,3 +245,7 @@ select:focus {
 .tableSearch:hover {
   background-color: grey;
 }
+
+.forbidden{
+  font-size: xx-large;
+}
