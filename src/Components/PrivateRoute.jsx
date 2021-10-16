@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import ReactLoading from "react-loading";
 import { getUserData } from "utils/apiUsers";
@@ -11,30 +11,37 @@ const PrivateRoute = ({ children }) => {
     isLoading,
     loginWithRedirect,
     getAccessTokenSilently,
+    logout
   } = useAuth0();
-
+  const [loadingUserInformation, setLoadingUserInformation] = useState(false);
+//pedir token
   useEffect(() => {
+    setLoadingUserInformation(true);
     const fetchAuth0Token = async () => {
       const accessToken = await getAccessTokenSilently({
         audience: "api-autenticacion-deveapps",
       });
       localStorage.setItem("token", accessToken);
+      console.log(accessToken);
       await getUserData(
         (response) => {
           console.log("response", response);
           setUserData(response.data);
+          setLoadingUserInformation(false);
         },
         (error) => {
-          console.error(error);
+          console.error('error',error);
+          setLoadingUserInformation(false);
+          logout({ returnTo: 'http://localhost:3000/admin' });
         }
       );
     };
     if (isAuthenticated) {
       fetchAuth0Token();
     }
-  }, [isAuthenticated, getAccessTokenSilently, setUserData]);
+  }, [isAuthenticated, getAccessTokenSilently,setUserData]);
 
-  if (isLoading) {
+  if (isLoading || loadingUserInformation) {
     return (
       <div>
         <ReactLoading type="cylon" color="blue" height={667} width={375} />

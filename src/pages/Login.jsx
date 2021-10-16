@@ -1,10 +1,10 @@
-import PrivateRoute from "Components/PrivateRoute";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <PrivateRoute>
+    
+    
       <>
         <main>
           <section className="mainContainer">
@@ -44,7 +44,7 @@ const Login = () => {
           </section>
         </main>
       </>
-    </PrivateRoute>
+    
   );
 };
 

@@ -148,11 +148,13 @@ const Bodyproduct = () => {
               </PrivateComponent>
             </tr>
             <tr>
+            <PrivateComponent roleList={['Administrador','Vendedor']}>
               <td colSpan="10">
                 <Link to="/productos/agregarproducto" className="tableAddLink">
                   <i class="bi bi-plus-circle-fill tableAddIcon"></i>
                 </Link>
               </td>
+              </PrivateComponent>
             </tr>
             <tbody>
               {filtro.map((product) => {

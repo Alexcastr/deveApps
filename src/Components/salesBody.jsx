@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import PrivateComponent from "./PrivateComponent";
 import Sale from "./Sale";
 
 const SalesBody = () => {
@@ -97,11 +98,13 @@ const SalesBody = () => {
           </thead>
           <tbody>
             <tr>
+            <PrivateComponent roleList={['Administrador','Vendedor']}>
               <td colSpan="11">
                 <Link to="/ventas/agregarventa" className="tableAddLink">
                   <i class="bi bi-plus-circle-fill tableAddIcon"></i>
                 </Link>
               </td>
+            </PrivateComponent>
             </tr>
             {tableData.map((item) => {
               return <Sale key={item.ID} datos={item} setData={setTableData} />;

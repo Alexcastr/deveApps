@@ -16,6 +16,7 @@ import "Styles/formProduct.css";
 import "Styles/EntryStyles.css";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { UserContext } from "context/userContext";
+import PrivateR from "Components/PrivateR";
 
 function App() {
 
@@ -56,7 +57,9 @@ function App() {
                 <Redirect />
               </Route>
               <Route path="/usuarios">
+                <PrivateR roleList={['Administrador']}>
                 <Users />
+                </PrivateR>
               </Route>
               <Route path="/">
                 <Login />
