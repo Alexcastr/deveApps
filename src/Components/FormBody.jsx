@@ -97,10 +97,10 @@ const FormBody = () => {
                 name="estado"
                 id="EstadoVenta"
                 className="InputForm"
-                defaultValue="-1"
+                defaultValue=""
                 required
               >
-                <option value="-1" disabled>
+                <option value="" disabled>
                   Seleccionar
                 </option>
                 <option>En proceso</option>
@@ -114,6 +114,7 @@ const FormBody = () => {
                 name="producto"
                 id="SeleccionarProducto"
                 className="InputForm"
+                defaultValue=""
                 required
                 onChange={(e) => {
                   setProductoSeleccionado(
@@ -121,7 +122,7 @@ const FormBody = () => {
                   );
                 }}
               >
-                <option selected disabled>
+                <option value="" disabled>
                   Seleccionar
                 </option>
                 {productos.map((p) => {
@@ -177,10 +178,10 @@ const FormBody = () => {
                 name="vendedor"
                 id="SeleccionarVendedor"
                 className="InputForm"
-                defaultValue="-1"
+                defaultValue=""
                 required
               >
-                <option value="-1" disabled>
+                <option value="" disabled>
                   Seleccionar
                 </option>
                 {vendedores.map((v) => {
