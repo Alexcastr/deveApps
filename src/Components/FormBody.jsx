@@ -1,6 +1,3 @@
-//TODO
-//AÑADIR CANTIDAD A CADA PRODUCTO INDIVIDUALMENTE
-
 import React, { useState, useEffect, useRef } from "react";
 import ProductInSale from "./ProductInSale";
 import { getUsers } from "utils/apiUsers";
@@ -8,6 +5,7 @@ import { getProducts } from "utils/apiProduct";
 import { nanoid } from "nanoid";
 import { ToastContainer, toast } from "react-toastify";
 import { addSale } from "utils/apiSales";
+import { Dialog } from "@mui/material";
 
 var date = new Date();
 var dd = date.getDate();
@@ -23,8 +21,11 @@ const FormBody = () => {
   const [productosEnVenta, setProductosEnVenta] = useState([]);
   const [productoSeleccionado, setProductoSeleccionado] = useState({});
   const [vendedorSeleccionado, setVendedorSeleccionado] = useState("");
-  const [cantidadProductosEnVenta, setCantidadProductosEnVenta] = useState(0);
+  const [cantidadProductosEnVenta, setCantidadProductosEnVenta] = useState(1);
   const [valorTotal, setValorTotal] = useState(0);
+  const [dialogoProductosVacios, setDialogoProductosVacios] = useState(false);
+  const [dialogoProductoSeleccionado, setDialogoProductoSeleccionado] =
+    useState(false);
 
   useEffect(() => {
     console.log("producto seleccionado ", productoSeleccionado);
@@ -42,6 +43,7 @@ const FormBody = () => {
       }
     );
   }, []);
+
   useEffect(() => {
     getUsers(
       (response) => {
@@ -60,34 +62,38 @@ const FormBody = () => {
 
   const submitForm = async (e) => {
     e.preventDefault();
-    const fd = new FormData(form.current);
+    if (productosEnVenta.length === 0) {
+      setDialogoProductosVacios(true);
+    } else {
+      const fd = new FormData(form.current);
 
-    fd.forEach((value, key) => {
-      console.log(value, key);
-      nuevaVenta[key] = value;
-    });
+      fd.forEach((value, key) => {
+        console.log(value, key);
+        nuevaVenta[key] = value;
+      });
 
-    const infoConsolidada = {
-      estado: nuevaVenta.estado,
-      vendedor: vendedores.filter((el) => el._id === nuevaVenta.vendedor),
-      productos: productosEnVenta,
-      cliente: nuevaVenta.nombreCliente,
-      idCliente: nuevaVenta.idCliente,
-      fecha: fechaActual,
-      valorTotal: valorTotal,
-    };
+      const infoConsolidada = {
+        estado: nuevaVenta.estado,
+        vendedor: vendedores.filter((el) => el._id === nuevaVenta.vendedor),
+        productos: productosEnVenta,
+        cliente: nuevaVenta.nombreCliente,
+        idCliente: nuevaVenta.idCliente,
+        fecha: fechaActual,
+        valorTotal: valorTotal,
+      };
 
-    await addSale(
-      infoConsolidada,
-      (response) => {
-        console.log(response.data);
-        toast.success("Venta agregada con éxito");
-      },
-      (error) => {
-        toast.error("Error agregando la venta");
-        console.error(error);
-      }
-    );
+      await addSale(
+        infoConsolidada,
+        (response) => {
+          console.log(response.data);
+          toast.success("Venta agregada con éxito");
+        },
+        (error) => {
+          toast.error("Error agregando la venta");
+          console.error(error);
+        }
+      );
+    }
   };
   return (
     <div className="FormVenta">
@@ -156,18 +162,23 @@ const FormBody = () => {
             <button
               type="button"
               onClick={(e) => {
-                setValorTotal(
-                  valorTotal +
-                    parseInt(cantidadProductosEnVenta) *
-                      parseInt(productoSeleccionado[0].value)
-                );
-                const productoAnadido = {
-                  id: productoSeleccionado[0]._id,
-                  name: productoSeleccionado[0].name,
-                  value: productoSeleccionado[0].value,
-                  amount: cantidadProductosEnVenta,
-                };
-                setProductosEnVenta([...productosEnVenta, productoAnadido]);
+                e.preventDefault();
+                if (Object.keys(productoSeleccionado).length === 0) {
+                  setDialogoProductoSeleccionado(true);
+                } else {
+                  setValorTotal(
+                    valorTotal +
+                      parseInt(cantidadProductosEnVenta) *
+                        parseInt(productoSeleccionado[0].value)
+                  );
+                  const productoAnadido = {
+                    id: productoSeleccionado[0]._id,
+                    name: productoSeleccionado[0].name,
+                    value: productoSeleccionado[0].value,
+                    amount: cantidadProductosEnVenta,
+                  };
+                  setProductosEnVenta([...productosEnVenta, productoAnadido]);
+                }
               }}
               className="addProductInSale IconAgregar"
             >
@@ -260,6 +271,38 @@ const FormBody = () => {
           <button className="addSaleButton">Añadir</button>
         </div>
       </form>
+      <Dialog open={dialogoProductosVacios}>
+        <div className="deleteSaleDialog">
+          <h2>No has añadido productos a la venta</h2>
+          <div className="deleteSaleDialogButtonsDiv">
+            <button
+              onClick={() => {
+                setDialogoProductosVacios(false);
+              }}
+              className="confirmSaleDelete"
+            >
+              OK
+              <i className="bi bi-check" />
+            </button>
+          </div>
+        </div>
+      </Dialog>
+      <Dialog open={dialogoProductoSeleccionado}>
+        <div className="deleteSaleDialog">
+          <h2>No has seleccionado un producto</h2>
+          <div className="deleteSaleDialogButtonsDiv">
+            <button
+              onClick={() => {
+                setDialogoProductoSeleccionado(false);
+              }}
+              className="confirmSaleDelete"
+            >
+              OK
+              <i className="bi bi-check" />
+            </button>
+          </div>
+        </div>
+      </Dialog>
     </div>
   );
 };
