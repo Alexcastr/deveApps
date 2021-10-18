@@ -17,9 +17,10 @@ import "Styles/EntryStyles.css";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { UserContext } from "context/userContext";
 import PrivateR from "Components/PrivateR";
+import PrivateRoute from "Components/PrivateRoute";
 
 function App() {
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState({});
 
   return (
     <Auth0Provider
@@ -35,28 +36,36 @@ function App() {
               <Route path={["/ventas/agregarventa", "/ventas"]}>
                 <Switch>
                   <Route path="/ventas/agregarventa">
-                    <PrivateR roleList={["Administrador", "Vendedor"]}>
-                      <AddSale />
-                    </PrivateR>
+                    <PrivateRoute>
+                      <PrivateR roleList={["Administrador", "Vendedor"]}>
+                        <AddSale />
+                      </PrivateR>
+                    </PrivateRoute>
                   </Route>
                   <Route path="/ventas">
-                    <PrivateR roleList={["Vendedor", "Administrador"]}>
-                      <Sales />
-                    </PrivateR>
+                    <PrivateRoute>
+                      <PrivateR roleList={["Vendedor", "Administrador"]}>
+                        <Sales />
+                      </PrivateR>
+                    </PrivateRoute>
                   </Route>
                 </Switch>
               </Route>
               <Route path={["/productos", "/productos/agregarproducto"]}>
                 <Switch>
                   <Route path="/productos/agregarproducto">
-                    <PrivateR roleList={["Administrador"]}>
-                      <AddProducts />
-                    </PrivateR>
+                    <PrivateRoute>
+                      <PrivateR roleList={["Administrador"]}>
+                        <AddProducts />
+                      </PrivateR>
+                    </PrivateRoute>
                   </Route>
                   <Route path="/productos">
-                    <PrivateR roleList={["Administrador", "Vendedor"]}>
-                      <Products />
-                    </PrivateR>
+                    <PrivateRoute>
+                      <PrivateR roleList={["Administrador", "Vendedor"]}>
+                        <Products />
+                      </PrivateR>
+                    </PrivateRoute>
                   </Route>
                 </Switch>
               </Route>
@@ -64,9 +73,11 @@ function App() {
                 <Redirect />
               </Route>
               <Route path="/usuarios">
-                <PrivateR roleList={["Administrador"]}>
-                  <Users />
-                </PrivateR>
+                <PrivateRoute>
+                  <PrivateR roleList={["Administrador"]}>
+                    <Users />
+                  </PrivateR>
+                </PrivateRoute>
               </Route>
               <Route path="/">
                 <Login />
