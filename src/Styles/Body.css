@@ -1,0 +1,259 @@
+html,
+body {
+  height: 100vh;
+  background-color: #010740;
+}
+
+body .center-content {
+  overflow-y: scroll;
+  text-align: center;
+  border: 1px solid #1228ec3d;
+  margin: 0 250px;
+  background-color: #31376998;
+  height: 98vh;
+  border-collapse: separate;
+  border-spacing: 10;
+  border: 1px solid black;
+  border-radius: 15px;
+  -moz-border-radius: 20px;
+  padding: 2px;
+}
+
+.center-content tr:hover {
+  background-color: #242e79;
+}
+
+.salesTable tr:hover {
+  background-color: #242e79;
+}
+
+body table {
+  margin-top: 3px;
+  color: white;
+  width: 98%;
+}
+
+select {
+  border-radius: 5px;
+  background-color: #fff;
+  text-align: center;
+  background-color: #31376998;
+  color: white;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+select:focus {
+  border-color: #aaa;
+  box-shadow: 0 0 1px 3px rgba(186, 193, 201, 0.7);
+  color: white;
+  outline: none;
+}
+
+.salesTable {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  text-align: center;
+  border: 1px solid #1228ec3d;
+  background-color: #31376998;
+  margin: 0 auto;
+  height: 89vh;
+  border-collapse: separate;
+  border-spacing: 10;
+  border: 1px solid black;
+  border-radius: 15px;
+  -moz-border-radius: 20px;
+  padding: 2px;
+  width: 90%;
+}
+
+.tableAddLink {
+  display: block;
+}
+
+.tableAddLink:hover {
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.tableAddIcon {
+  color: white;
+  font-size: 3.5em;
+}
+
+.table th {
+  vertical-align: middle;
+}
+
+.tablerow td {
+  vertical-align: middle;
+}
+
+.productList {
+  list-style-type: none;
+  padding: 0px;
+  margin-bottom: 0px;
+}
+
+.mainRedirect {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.redirectContainer {
+  width: 75%;
+  padding: 30px;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #24225a;
+  box-shadow: 0px 0px 15px 4px white;
+  border-radius: 15px;
+}
+
+.gotoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #a1afd6;
+  height: fit-content;
+  margin: 8px;
+  width: 40%;
+  box-shadow: 0px 0px 13px 2px black;
+  border-radius: 20px;
+  border: 7px solid black;
+}
+
+.gotoContainer:hover {
+  transform: none;
+}
+
+.redirectButton {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.redirectButton>h1 {
+  color: white;
+  margin-bottom: 50px;
+  text-shadow: 3px 3px 5px black;
+}
+
+.redirectButton:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.redirectButton:hover>.redirectIcon {
+  color: red;
+}
+
+.redirectIcon {
+  font-size: 10em;
+  color: white;
+}
+
+.iconActions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: large;
+  margin: 0px;
+  padding: 0px;
+}
+
+.editButton,
+.confirmButton,
+.deleteButton {
+  background-color: rgb(48, 48, 236);
+  color: #fff;
+  border-radius: 50%;
+  border: 0px;
+}
+
+.confirmButton {
+  background-color: rgb(14, 235, 51);
+}
+
+.deleteButton {
+  background-color: rgb(241, 25, 25);
+}
+
+.deleteButton:hover {
+  transform: scale(1.15);
+  background-color: red;
+  transition: all .2s ease-in-out;
+}
+
+.editButton:hover {
+  transform: scale(1.15);
+  background-color: rgb(47, 47, 231);
+}
+
+.confirmButton:hover {
+  transform: scale(1.15);
+  background-color: rgb(7, 146, 19);
+  transition: all .2s ease-in-out;
+}
+
+.cancelProductButton {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+}
+
+.cancelProductButton:hover {
+  transform: scale(1.15);
+  background-color: rgba(218, 21, 21, 0.644);
+  transition: all .2s ease-in-out;
+}
+
+.confirmButton:focus,
+.editButton:focus,
+.deleteButton:focus {
+  outline: none;
+}
+
+.editInput {
+  border-radius: 5%;
+  width: 80%;
+  border: 0px;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.tableSearch {
+  margin-left: 5px;
+  outline: none;
+}
+
+.tableSearch:focus {
+  outline: none;
+}
+
+.tableSearch:hover {
+  background-color: grey;
+}
+
+.forbidden{
+  font-size: xx-large;
+}
+
+.userInfo{
+  color: white;
+}
+
+.userImg{
+  border-radius: 50%;
+}
