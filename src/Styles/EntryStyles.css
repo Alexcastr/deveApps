@@ -1,0 +1,104 @@
+.deleteSaleDialog {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.deleteSaleDialog h2 {
+    margin-bottom: 20px;
+}
+
+.deleteSaleDialogButtonsDiv {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 5px;
+}
+
+.deleteSaleDialogButtonsDiv>button {
+    color: white;
+    font-weight: bolder;
+    font-size: 2em;
+    padding: 10px;
+    margin: 3px 20px;
+    border-radius: 15px;
+    box-shadow: 0px 2px 3px 0px grey;
+    border: none;
+    transition: all .2s ease-in-out
+}
+
+.deleteSaleDialogButtonsDiv>button:focus {
+    outline: none;
+}
+
+.confirmSaleDelete {
+    background-color: green;
+    width: 50%;
+}
+
+.confirmSaleDelete:hover {
+    background-color: rgb(0, 90, 0);
+    transform: scale(1.1)
+}
+
+.cancelSaleDelete {
+    background-color: red;
+    width: 50%;
+}
+
+.cancelSaleDelete:hover {
+    background-color: rgb(200, 0, 0);
+    transform: scale(1.1)
+}
+
+.entryButton {
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 2em;
+    margin: 0px 3px;
+}
+
+.entryButton:hover {
+    transform: scale(1.2);
+    transition: all .2s ease-in-out;
+}
+
+.editSaleButton:hover {
+    transition: all .2s ease-in-out;
+    color: rgb(0, 127, 173)
+}
+
+.entryButton:focus {
+    outline: none;
+}
+
+.editSaleButton {
+    color: #0BF
+}
+
+.cancelButton {
+    color: red
+}
+
+.cancelButton:hover {
+    transition: all .2s ease-in-out;
+    color: rgb(128, 0, 0);
+}
+
+.saveButton {
+    color: green
+}
+
+.saveButton:hover {
+    color: rgb(0, 90, 0)
+}
+
+.deleteSaleButton {
+    color: #D00;
+}
+
+.deleteSaleButton:hover {
+    color: #A00;
+}

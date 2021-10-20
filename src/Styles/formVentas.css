@@ -1,0 +1,176 @@
+.AddVenta {
+    background-color: #e0e9ff;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+
+.FormVenta {
+    background-color: #cfdbff;
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 40px;
+    box-shadow: 0px 0px 15px 1px black;
+}
+
+.DivForm1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.DivForm2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.DivForm3 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-height: 36%;
+    margin: auto;
+    width: 76%;
+}
+
+.labelForm {
+    margin: 15px;
+    font-size: 1.8em;
+}
+
+.labelForm2 {
+    margin: 15px;
+    font-size: 1.8em;
+}
+
+.productInSale>td {
+    padding: 3px;
+    border: 1px white solid;
+}
+
+.labelForm3 {
+    margin: 15px;
+    font-size: 1.8em;
+}
+
+.InputForm {
+    margin-left: 20px;
+    border-radius: 10px;
+    outline: none;
+    border-color: white;
+    width: 300px;
+    height: 35px;
+    display: block;
+}
+
+.Div1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.addSaleButton {
+    background: #3C538F;
+    color: white;
+    font-weight: bolder;
+    font-size: 1.5em;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.addSaleButton:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.1);
+    background-color: #5874bb;
+}
+
+.addSaleButton:focus {
+    border: none;
+    outline: none;
+}
+
+.addProductInSale {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.addProductInSale:focus {
+    border: none;
+    outline: none;
+}
+
+.addProductInSaleLabel {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.productsInSaleDiv {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 150px;
+    border: 2px black solid;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.productsInSaleItem1 {
+    border: 1px black solid;
+    border-radius: 20px;
+    margin: 5px;
+    text-align: center;
+    width: 100%;
+    padding: 2px;
+    background-color: white;
+    font-weight: bold;
+}
+
+.productsInSaleItem2 {
+    border: 1px black solid;
+    border-radius: 20px;
+    margin: 5px;
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    background-color: #5874bb;
+    color: white
+}
+
+.productsInSale {
+    width: 100%;
+    display: flex;
+}
+
+.IconAgregar {
+    font-size: 4em;
+    margin: auto;
+}
+
+.IconAgregar:hover {
+    cursor: pointer;
+    color: #3C538F;
+    transform: scale(1.1);
+}
+
+#EstadoVenta,
+#SellerDropdown {
+    background-color: white;
+    color: black;
+}
+
+#SeleccionarProducto{
+    background-color: white;
+    color: black;
+}
+
+#SeleccionarVendedor{
+    background-color: white;
+    color: black;
+}

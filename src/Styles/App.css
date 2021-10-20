@@ -1,0 +1,117 @@
+.mainContainer{
+  background: linear-gradient(#010740, #210339);
+  width: 100vw;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+}
+
+.loginContainer {
+  width: 350px;
+  height: 55%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 auto;
+  background-color: #24225a;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px rgb(3, 3, 100);
+}
+
+.formField {
+  height: 50%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.formTittle {
+  color: white;
+  border-bottom: 1px solid white;
+  font-weight: bold;
+  width: 80%;
+  font-size: xx-large;
+  text-align: center;
+}
+
+.label {
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+}
+
+.newAccount{
+  font-size: small;
+}
+
+.newAccount:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.dataSection {
+  border-bottom: 1px solid white;
+  margin: 1%;
+  height: 50%;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.dataSection > label {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  height: 75%;
+}
+
+.field{
+  height: 80%;
+  display: flex;
+  border: 0px;
+  border-radius: 5px;
+}
+
+.buttonField {
+  width: 80%;
+  height: 25%;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginButton {
+  display: flex;
+  height: 40%;
+  width: 40%;
+  margin: 1%;
+  box-shadow: 2px 2px rgb(45, 4, 121);
+  border-radius: 10px;
+}
+
+.loginButton > button{
+  background-color: white;
+  border: 0px;
+  border-radius: 10px;
+  font-weight: bolder;
+  font-size: large;
+  flex-grow: 1;
+}
+
+.loginButton > button:hover {
+  cursor: pointer;
+  transform: scale(1.09);
+}
+
+.field:focus {
+  border-color: black;
+  box-shadow: 1px 1px rgba(1, 2, 12, 0.7);
+}
+
+.BannerDenegado{
+  color: red;
+  size: 8em;
+}
+ 
