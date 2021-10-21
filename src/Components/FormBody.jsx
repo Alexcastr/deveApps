@@ -136,7 +136,7 @@ const FormBody = () => {
                   Seleccionar
                 </option>
                 {productos.map((p) => {
-                  if (p.selection.toLowercase === "disponible") {
+                  if (p.selection.toLowercase() === "disponible") {
                     return (
                       <option value={p._id} key={p._id}>
                         {p.name}
