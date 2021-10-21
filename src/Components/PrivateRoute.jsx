@@ -31,7 +31,7 @@ const PrivateRoute = ({ children }) => {
         (error) => {
           console.error(error);
           setLoadingUserInfo(false);
-          logout({ returnTo: "http://localhost:3000/goto" });
+          logout({ returnTo: "https://guarded-cliffs-20567.herokuapp.com/goto" });
         }
       );
     };
