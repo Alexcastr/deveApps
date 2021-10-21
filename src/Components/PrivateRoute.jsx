@@ -29,9 +29,11 @@ const PrivateRoute = ({ children }) => {
           setLoadingUserInfo(false);
         },
         (error) => {
-          console.error(error);
+          console.error("error al obtener datos de usuario: ", error);
           setLoadingUserInfo(false);
-          logout({ returnTo: "https://guarded-cliffs-20567.herokuapp.com/goto" });
+          logout({
+            returnTo: "https://guarded-cliffs-20567.herokuapp.com/goto",
+          });
         }
       );
     };

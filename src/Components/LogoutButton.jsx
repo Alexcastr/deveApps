@@ -4,7 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 const LogoutButton = () => {
     
   const cerrarSesion =() =>{
-    logout({ returnTo: window.location.origin })
+    logout({ returnTo: "https://guarded-cliffs-20567.herokuapp.com/goto" })
     localStorage.setItem('token', null)
   }
   
