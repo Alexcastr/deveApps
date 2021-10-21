@@ -142,9 +142,10 @@ const FormBody = () => {
                         {p.name}
                       </option>
                     );
-                  } else {
-                    return null;
                   }
+                  // else {
+                  //   return null;
+                  // }
                 })}
               </select>
             </label>
