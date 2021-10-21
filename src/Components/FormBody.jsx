@@ -136,11 +136,15 @@ const FormBody = () => {
                   Seleccionar
                 </option>
                 {productos.map((p) => {
-                  return (
-                    <option value={p._id} key={p._id}>
-                      {p.name}
-                    </option>
-                  );
+                  if (p.selection.toLowercase === "disponible") {
+                    return (
+                      <option value={p._id} key={p._id}>
+                        {p.name}
+                      </option>
+                    );
+                  } else {
+                    return null;
+                  }
                 })}
               </select>
             </label>
