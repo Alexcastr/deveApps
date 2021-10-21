@@ -4,7 +4,7 @@ import GetToken from "./getToken";
 export const getUsers = async (successCallback, errorCallback) => {
   const options = {
     method: "GET",
-    url: "http://localhost:5000/usuarios",
+    url: "https://guarded-cliffs-20567.herokuapp.com/usuarios",
     headers: { Authorization: GetToken() },
   };
 
@@ -14,7 +14,7 @@ export const getUsers = async (successCallback, errorCallback) => {
 export const getUserData = async (successCallback, errorCallback) => {
   const options = {
     method: "GET",
-    url: "http://localhost:5000/usuarios/self",
+    url: "https://guarded-cliffs-20567.herokuapp.com/usuarios/self",
     headers: { Authorization: GetToken() },
   };
 
@@ -24,7 +24,7 @@ export const getUserData = async (successCallback, errorCallback) => {
 export const updateUser = async (id, data, successCallback, errorCallback) => {
   const options = {
     method: "PATCH",
-    url: `http://localhost:5000/usuarios/${id}/`,
+    url: `https://guarded-cliffs-20567.herokuapp.com/usuarios/${id}/`,
     headers: { "Content-Type": "application/json", Authorization: GetToken() },
     data,
   };
@@ -34,7 +34,7 @@ export const updateUser = async (id, data, successCallback, errorCallback) => {
 export const deleteUser = async (id, successCallback, errorCallback) => {
   const options = {
     method: "DELETE",
-    url: `http://localhost:5000/usuarios/${id}/`,
+    url: `https://guarded-cliffs-20567.herokuapp.com/usuarios/${id}/`,
     headers: { "Content-Type": "application/json", Authorization: GetToken() },
   };
 

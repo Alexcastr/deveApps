@@ -4,7 +4,7 @@ import GetToken from "./getToken";
 export const getSales = async (successCallback, errorCallback) => {
   const options = {
     method: "GET",
-    url: "http://localhost:5000/ventas/",
+    url: "https://guarded-cliffs-20567.herokuapp.com/ventas/",
     headers: { Authorization: GetToken(),}
   };
   await axios.request(options).then(successCallback).catch(errorCallback);
@@ -13,7 +13,7 @@ export const getSales = async (successCallback, errorCallback) => {
 export const addSale = async (data, successCallback, errorCallback) => {
   const options = {
     method: "POST",
-    url: "http://localhost:5000/ventas/",
+    url: "https://guarded-cliffs-20567.herokuapp.com/ventas/",
     headers: { "Content-Type": "application/json", Authorization: GetToken(), },
     data,
   };
@@ -28,7 +28,7 @@ export const updateSale = async (
 ) => {
   const options = {
     method: "PATCH",
-    url: `http://localhost:5000/ventas/${id}/`,
+    url: `https://guarded-cliffs-20567.herokuapp.com/ventas/${id}/`,
     headers: { "Content-Type": "application/json" , Authorization: GetToken(),},
     data,
   };
@@ -38,7 +38,7 @@ export const updateSale = async (
 export const deleteSale = async (id, successCallback, errorCallback) => {
   const options = {
     method: "DELETE",
-    url: `http://localhost:5000/ventas/${id}/`,
+    url: `https://guarded-cliffs-20567.herokuapp.com/ventas/${id}/`,
     headers: { "Content-Type": "application/json", Authorization: GetToken(), },
   };
   await axios.request(options).then(successCallback).catch(errorCallback);

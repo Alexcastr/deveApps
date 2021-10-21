@@ -26,7 +26,7 @@ function App() {
     <Auth0Provider
       domain="deveapps.us.auth0.com"
       clientId="bIGQtLlA6nqcsJYJOvQYTUer2QTTOVxj"
-      redirectUri={"http://localhost:3000/goto"}
+      redirectUri={"https://guarded-cliffs-20567.herokuapp.com/goto"}
       audience="api-autenticacion-deveapps"
     >
       <div className="App">
